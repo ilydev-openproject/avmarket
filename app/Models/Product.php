@@ -36,7 +36,7 @@ class Product extends Model implements HasMedia
     ];
     public function kategori()
     {
-        return $this->belongsTo(kategori::class, 'id_kategori');
+        return $this->belongsTo(Kategori::class, 'id_kategori');
     }
 
     public function tags()
