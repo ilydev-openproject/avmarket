@@ -64,10 +64,18 @@ return [
             'visibility' => 'public',
         ],
 
-        'media' => [
+        'user' => [
             'driver' => 'local',
-            'root'   => public_path('media'),
-            'url'    => env('APP_URL') . '/media',
+            'root'   => public_path('user'),
+            'url'    => env('APP_URL') . '/user',
+        ],
+
+        'foto_product' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/foto_product'),
+            'url' => env('APP_URL') . '/storage/foto_product',
+            'visibility' => 'public',
+            'throw' => false,
         ],
 
 

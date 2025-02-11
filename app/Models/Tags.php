@@ -10,10 +10,7 @@ class Tags extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'nama_tag',
-        'slug',
-    ];
+    protected $guarded = [];
 
     public function products()
     {

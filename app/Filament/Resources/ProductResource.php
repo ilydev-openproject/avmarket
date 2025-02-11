@@ -28,6 +28,8 @@ use Filament\Forms\Components\ToggleButtons;
 use App\Filament\Resources\ProductResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class ProductResource extends Resource
 {
@@ -50,7 +52,8 @@ class ProductResource extends Resource
                             ->live(onBlur: true)
                             ->maxLength(255)
                             ->afterStateUpdated(fn(string $operation, $state, Forms\Set $set) => $set('slug', Str::slug($state)))
-                            ->required(),
+                            ->required()
+                            ->unique(),
                         TextInput::make('slug')
                             ->disabled()
                             ->dehydrated()
@@ -58,21 +61,18 @@ class ProductResource extends Resource
                             ->maxLength(255)
                             ->unique(Product::class, 'slug', ignoreRecord: true),
                         TextInput::make('brand')
-                            ->label('Brand'),
+                            ->label('Brand')
+                            ->required(),
                         TextInput::make('bpom')
-                            ->label('No. Bpom'),
-                    ])
-                    ->columns(2),
-                Section::make('Stok')
-                    ->schema([
+                            ->label('No. Bpom')
+                            ->required()
+                            ->unique(),
                         TextInput::make('stok')
-                            ->label('Stok'),
+                            ->label('Stok')
+                            ->required(),
                         TextInput::make('terjual')
-                            ->label('Terjual'),
-                    ])
-                    ->columns(2),
-                Section::make('Kategori & Harga')
-                    ->schema([
+                            ->label('Terjual')
+                            ->required(),
                         Select::make('id_kategori')
                             ->label('Kategori')
                             ->options(Kategori::all()->pluck('nama_kategori', 'id_kategori'))
@@ -86,45 +86,47 @@ class ProductResource extends Resource
                             ->label('Harga Asli')
                             ->required(),
                     ])
-                    ->columns(3),
+                    ->columnSpan(1)
+                    ->columns(1),
                 Section::make('Foto & Tags')
                     ->schema([
-                        FileUpload::make('foto_product')
+                        SpatieMediaLibraryFileUpload::make('foto_product')
                             ->label('Foto')
-                            ->image()
+                            ->disk('foto_product')
+                            ->collection('foto_product')
                             ->multiple()
-                            ->directory('/image/product')
                             ->required(),
-
-                        Select::make('tags')
-                            ->label('Tags')
-                            ->options(Tags::all()->pluck('nama_tag', 'id_tag'))
-                            ->multiple()
-                            ->relationship('tags', 'nama_tag')
-                            ->preload()
-                            ->required(),
+                        Section::make([
+                            RichEditor::make('ringkasan')
+                                ->label('Ringkasan Max 300 Character')
+                                ->maxLength(300)
+                                ->columnSpan(3),
+                            RichEditor::make('deskripsi')
+                                ->label('Meta Description')
+                                ->columnSpan(3),
+                            Select::make('tags')
+                                ->label('Tags')
+                                ->options(Tags::all()->pluck('nama_tag', 'id_tag'))
+                                ->multiple()
+                                ->relationship('tags', 'nama_tag')
+                                ->preload()
+                                ->required()
+                                ->columnSpan(2),
+                            Select::make('label')
+                                ->preload()
+                                ->searchable()
+                                ->options([
+                                    '1' => 'Best Price',
+                                    '0' => 'Normal Price'
+                                ])
+                                ->columnSpan(1)
+                        ])
+                            ->columns(3)
                     ])
-                    ->columns(2),
-                Section::make('Deskripsi & Keyword')
-                    ->schema([
-                        RichEditor::make('ringkasan')
-                            ->label('Ringkasan Max 300 Character')
-                            ->maxLength(300),
-                        RichEditor::make('keyword')
-                            ->label('Keyword'),
-                        RichEditor::make('deskripsi')
-                            ->label('Deskripsi'),
-                    ]),
-                Section::make('Label')
-                    ->schema([
-                        Select::make('label')
-                            ->options([
-                                '1' => 'Best Price',
-                                '0' => 'Normal Price'
-                            ])
-                    ])
-                    ->columnSpan(1)
-            ]);
+                    ->columnSpan(3)
+                    ->columns(1)
+            ])
+            ->columns(4);
     }
 
     public static function table(Table $table): Table
@@ -143,7 +145,9 @@ class ProductResource extends Resource
                     ->formatStateUsing(fn($state) => 'Rp ' . number_format($state, 0, ',', '.')),
                 TextColumn::make('kategori.nama_kategori')
                     ->label('Kategori'),
-                ImageColumn::make('foto_product')
+                SpatieMediaLibraryImageColumn::make('foto_product')
+                    ->collection('foto_product')
+                    ->stacked()
                     ->circular(),
                 TextColumn::make('stok')
                     ->label('Stok')

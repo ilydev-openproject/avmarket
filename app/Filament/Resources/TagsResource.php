@@ -6,12 +6,14 @@ use Filament\Forms;
 use App\Models\Tags;
 use Filament\Tables;
 use App\Models\Product;
+use Filament\Forms\Set;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Filament\Resources\Resource;
 use Filament\Actions\CreateAction;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
@@ -33,20 +35,18 @@ class TagsResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Tags')
-                    ->label('Masukkan data tags')
-                    ->schema([
-                        TextInput::make('nama_tag')
-                            ->label('Nama Tag')
-                            ->live(onBlur: true)
-                            ->afterStateUpdated(fn(string $operation, $state, Forms\Set $set) => $set('slug', Str::slug($state)))
-                            ->required(),
-                        TextInput::make('slug')
-                            ->label('Slug')
-                            ->disabled()
-                            ->dehydrated()
-                            ->unique(Tags::class, 'slug', ignoreRecord: true)
-                    ])
+                Section::make([
+                    TextInput::make('nama_tag')
+                        ->label('Nama Tag')
+                        ->live(onBlur: true)
+                        ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state)))
+                        ->required(),
+                    TextInput::make('slug')
+                        ->label('Slug')
+                        ->readOnly()
+                        ->unique(Tags::class, 'slug', ignoreRecord: true)
+                ])
+                    ->columnSpanFull()
                     ->columns(2)
             ]);
     }

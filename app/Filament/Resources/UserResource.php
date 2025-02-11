@@ -50,7 +50,7 @@ class UserResource extends Resource
                     ->required()
                     ->label('Jobs Role'),
                 FileUpload::make('foto_user')
-                    ->directory('storage/image/user')
+                    ->directory('/user')
                     ->image()
                     ->required()
                     ->columnSpan('full'),
