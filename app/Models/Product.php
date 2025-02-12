@@ -43,4 +43,9 @@ class Product extends Model implements HasMedia
     {
         return $this->belongsToMany(Tags::class, 'product_tag', 'id_product', 'id_tag');
     }
+
+    public function hero()
+    {
+        return $this->hasMany(Hero::class);
+    }
 }

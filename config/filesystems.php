@@ -78,6 +78,14 @@ return [
             'throw' => false,
         ],
 
+        'gambar' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/gambar'),
+            'url' => env('APP_URL') . '/storage/gambar',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
 
 
     ],

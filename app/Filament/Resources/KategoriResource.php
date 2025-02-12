@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\KategoriResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\KategoriResource\RelationManagers;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class KategoriResource extends Resource
 {
@@ -31,22 +33,28 @@ class KategoriResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Kategori')
-                    ->label('Masukkan data Kategori')
-                    ->schema([
-                        TextInput::make('nama_kategori')
-                            ->label('Nama kategori')
-                            ->live(onBlur: true)
-                            ->afterStateUpdated(fn(string $operation, $state, Forms\Set $set) => $set('slug', Str::slug($state)))
-                            ->required(),
-                        TextInput::make('slug')
-                            ->label('Slug')
-                            ->disabled()
-                            ->dehydrated()
-                            ->unique(Kategori::class, 'slug', ignoreRecord: true)
-                    ])
-                    ->columns(2)
-            ]);
+                Section::make([
+                    TextInput::make('nama_kategori')
+                        ->label('Nama kategori')
+                        ->live(onBlur: true)
+                        ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state)))
+                        ->required(),
+                    TextInput::make('slug')
+                        ->label('Slug')
+                        ->readOnly()
+                        ->unique(Kategori::class, 'slug', ignoreRecord: true)
+                        ->required()
+                ])
+                    ->columnSpan(1),
+                Section::make([
+                    SpatieMediaLibraryFileUpload::make('foto_kategori')
+                        ->disk('gambar')
+                        ->collection('foto_kategori')
+                        ->required()
+                ])
+                    ->columnSpan(3)
+            ])
+            ->columns(4);
     }
 
     public static function table(Table $table): Table
@@ -56,7 +64,9 @@ class KategoriResource extends Resource
                 TextColumn::make('nama_kategori')
                     ->label('Nama Kategori'),
                 TextColumn::make('slug')
-                    ->label('Slug')
+                    ->label('Slug'),
+                SpatieMediaLibraryImageColumn::make('foto_kategori')
+                    ->collection('foto_kategori')
             ])
             ->filters([
                 //
