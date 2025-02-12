@@ -37,7 +37,7 @@
 
     <!-- header-area-start -->
     <header>
-        <!-- <div class="header__top theme-bg-1 d-none d-md-block">
+        <div class="header__top theme-bg-1 d-none d-md-block">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12">
@@ -90,7 +90,7 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
         <div id="header-sticky" class="header__main-area d-none d-xl-block">
             <div class="container">
                 <div class="header__for-megamenu p-relative">
