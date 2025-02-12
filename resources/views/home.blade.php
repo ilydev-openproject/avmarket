@@ -478,7 +478,7 @@
                                     <a href="shop-details-3.html"><img src="{{ $kategori->getFirstMediaUrl('foto_kategori')}}" alt="{{ $kategori->nama_kategori }}"></a>
                                 </div>
                                 <div class="category__content">
-                                    <h5 class="category__title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="shop-details-4.html">{{ ucfirst($kategori->nama_kategori) }}</a></h5>
+                                    <h5 class="category__title" style="overflow: hidden; text-overflow: ellipsis;"><a href="shop-details-4.html">{{ ucfirst($kategori->nama_kategori) }}</a></h5>
                                     <span class="category__count">{{ $kategori->Product->count() }} items</span>
                                 </div>
                             </div>
