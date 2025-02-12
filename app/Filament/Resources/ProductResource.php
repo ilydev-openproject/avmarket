@@ -91,7 +91,7 @@ class ProductResource extends Resource
                 Section::make('Foto & Tags')
                     ->schema([
                         SpatieMediaLibraryFileUpload::make('foto_product')
-                            ->label('Foto')
+                            ->label('Foto atau desain (600x600)')
                             ->disk('foto_product')
                             ->collection('foto_product')
                             ->multiple()

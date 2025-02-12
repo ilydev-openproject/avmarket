@@ -47,6 +47,7 @@ class HeroResource extends Resource
                     RichEditor::make('paragraph')
                         ->required(),
                     SpatieMediaLibraryFileUpload::make('foto_hero')
+                        ->label('Gambar atau desain hero (762x495)')
                         ->collection('foto_hero')
                         ->disk('gambar')
                         ->required()

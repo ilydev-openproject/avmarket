@@ -48,6 +48,7 @@ class KategoriResource extends Resource
                     ->columnSpan(1),
                 Section::make([
                     SpatieMediaLibraryFileUpload::make('foto_kategori')
+                        ->label('Gambar atau desain (80x80)')
                         ->disk('gambar')
                         ->collection('foto_kategori')
                         ->required()

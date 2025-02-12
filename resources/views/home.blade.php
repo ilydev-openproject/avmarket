@@ -37,7 +37,7 @@
 
     <!-- header-area-start -->
     <header>
-        <div class="header__top theme-bg-1 d-none d-md-block">
+        <!-- <div class="header__top theme-bg-1 d-none d-md-block">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12">
@@ -90,14 +90,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div id="header-sticky" class="header__main-area d-none d-xl-block">
             <div class="container">
                 <div class="header__for-megamenu p-relative">
                     <div class="row align-items-center">
                         <div class="col-xl-3">
                             <div class="header__logo">
-                                <a href="index.html"><img src="orfarm/assets/img/logo/logo.png" alt="logo"></a>
+                                <a href="index.html"><img src="image/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-6">
@@ -436,7 +436,7 @@
                                             <h2 class="tpslider__title mb-30">{{ $hero->header }}.</h2>
                                             <p>{!! $hero->paragraph !!}</p>
                                             <div class="tpslider__btn">
-                                                <a class="tp-btn" href="shop-2.html">Shop Now</a>
+                                                <a class="tp-btn" href="shop-2.html">Get Now</a>
                                             </div>
                                         </div>
                                     </div>
@@ -497,7 +497,7 @@
                     <div class="col-lg-12 text-center">
                         <div class="tpsection mb-35">
                             <h4 class="tpsection__sub-title">~ Special Products ~</h4>
-                            <h4 class="tpsection__title">Weekly Food Offers</h4>
+                            <h4 class="tpsection__title">Weekly Product Offers</h4>
                             <p>The liber tempor cum soluta nobis eleifend option congue doming quod mazim.</p>
                         </div>
                     </div>
