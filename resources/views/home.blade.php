@@ -426,7 +426,7 @@
             <div class="swiper-container slider-active">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide ">
-                        <div class="tpslider pt-90 pb-0 grey-bg" data-background="orfarm/assets/img/slider/shape-bg.jpg">
+                        <div class="tpslider pt-90 pb-0 grey-bg" data-background="orfarm/assets/img/slider/shape-bg.jpg" style="background-repeat: no-repeat;">
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-xxl-5 col-lg-6 col-md-6 col-12 col-sm-6">
