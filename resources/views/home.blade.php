@@ -468,17 +468,21 @@
 
         <!-- category-area-start -->
         <section class="category-area grey-bg pb-40">
-            <div class="container d-flex justify-content-center">
+            <div class="container d-flex">
                 <div class="swiper-container category-active w-100">
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper {{ count($kategori) < 8 ? 'd-flex justify-content-center' : '' }}">
                         @foreach ($kategori as $kategori)
                         <div class="swiper-slide">
                             <div class="category__item mb-30">
                                 <div class="category__thumb fix mb-15">
-                                    <a href="shop-details-3.html"><img src="{{ $kategori->getFirstMediaUrl('foto_kategori')}}" alt="{{ $kategori->nama_kategori }}"></a>
+                                    <a href="shop-details-3.html">
+                                        <img src="{{ $kategori->getFirstMediaUrl('foto_kategori')}}" alt="{{ $kategori->nama_kategori }}">
+                                    </a>
                                 </div>
                                 <div class="category__content">
-                                    <h5 class="category__title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="shop-details-4.html">{{ ucfirst($kategori->nama_kategori) }}</a></h5>
+                                    <h5 class="category__title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        <a href="shop-details-4.html">{{ ucfirst($kategori->nama_kategori) }}</a>
+                                    </h5>
                                     <span class="category__count">{{ $kategori->Product->count() }} items</span>
                                 </div>
                             </div>
