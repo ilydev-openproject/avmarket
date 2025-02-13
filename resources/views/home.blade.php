@@ -468,8 +468,8 @@
 
         <!-- category-area-start -->
         <section class="category-area grey-bg pb-40">
-            <div class="container">
-                <div class="swiper-container category-active">
+            <div class="container d-flex justify-content-center">
+                <div class="swiper-container category-active w-100">
                     <div class="swiper-wrapper">
                         @foreach ($kategori as $kategori)
                         <div class="swiper-slide">
