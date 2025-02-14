@@ -16,4 +16,9 @@ class Tags extends Model
     {
         return $this->belongsToMany(Product::class, 'product_tag', 'id_tag', 'id_product');
     }
+
+    public function hero()
+    {
+        return $this->hasMany(Hero::class);
+    }
 }

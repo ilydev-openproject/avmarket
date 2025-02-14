@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="orfarfm/assets/img/logo/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="image/logo/icon.png">
 
     <!-- CSS here -->
     <link rel="stylesheet" href="orfarm/assets/css/bootstrap.min.css">
@@ -502,7 +502,7 @@
                         <div class="tpsection mb-35">
                             <h4 class="tpsection__sub-title">~ Special Products ~</h4>
                             <h4 class="tpsection__title">Weekly Product Offers</h4>
-                            <p>The liber tempor cum soluta nobis eleifend option congue doming quod mazim.</p>
+                            <p>Nikmati diskon eksklusif setiap minggu untuk produk pilihan! Hemat lebih banyak dan temukan barang favorit Anda dengan harga terbaik.</p>
                         </div>
                     </div>
                 </div>

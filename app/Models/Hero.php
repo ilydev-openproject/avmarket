@@ -17,4 +17,14 @@ class Hero extends Model implements HasMedia
     {
         return $this->belongsTo(Product::class, 'cta');
     }
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'cta');
+    }
+
+    public function tags()
+    {
+        return $this->belongsTo(Tags::class, 'cta');
+    }
 }

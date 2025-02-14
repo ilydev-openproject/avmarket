@@ -2,24 +2,26 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\HeroResource\Pages;
-use App\Filament\Resources\HeroResource\RelationManagers;
-use App\Models\Hero;
-use App\Models\Product;
 use Filament\Forms;
-use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use App\Models\Hero;
+use App\Models\Tags;
 use Filament\Tables;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Columns\TextColumn;
+use App\Models\Product;
+use App\Models\Kategori;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Section;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\HeroResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\HeroResource\RelationManagers;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class HeroResource extends Resource
 {
@@ -36,11 +38,24 @@ class HeroResource extends Resource
                         ->required(),
                     TextInput::make('header')
                         ->required(),
+                    TextInput::make('cta_text')
+                        ->label('Text CTA')
+                        ->required(),
                     Select::make('cta')
-                        ->options(Product::all()->pluck('nama_product', 'id'))
+                        ->options([
+                            'Kategori' => Kategori::pluck('nama_kategori', 'slug')->map(fn($nama) => ucfirst($nama))->toArray(),
+                            'Product' => Product::pluck('nama_product', 'slug')->map(fn($nama) => ucfirst($nama))->toArray(),
+                            'Tags' => Tags::pluck('nama_tag', 'slug')->map(fn($nama) => ucfirst($nama))->toArray(),
+                        ])
                         ->preload()
                         ->searchable()
                         ->required()
+                        ->afterStateUpdated(fn($state, $set) => $set('cta', match (true) {
+                            Kategori::where('slug', $state)->exists() => 'kategori/' . $state,
+                            Product::where('slug', $state)->exists() => 'product/' . $state,
+                            Tags::where('slug', $state)->exists() => 'tags/' . $state,
+                            default => $state
+                        }))
                 ])
                     ->columnSpan(1),
                 Section::make([
@@ -60,19 +75,24 @@ class HeroResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('subheader'),
-                TextColumn::make('header'),
+                TextColumn::make('subheader')
+                    ->limit(12),
+                TextColumn::make('header')
+                    ->limit(30),
                 SpatieMediaLibraryImageColumn::make('foto_hero')
                     ->label('gambar')
                     ->collection('foto_hero'),
-                TextColumn::make('product.slug')
-                    ->prefix('https://product/'),
+                TextColumn::make('cta_text')
+                    ->label('Text CTA'),
+                TextColumn::make('cta')
+                    ->formatStateUsing(fn($state) => $state ? config('app.url') . '/' . $state : '-')
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
