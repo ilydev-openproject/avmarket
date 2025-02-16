@@ -509,14 +509,19 @@
                 <div class="tpproduct__arrow p-relative">
                     <div class="swiper-container tpproduct-active tpslider-bottom p-relative">
                         <div class="swiper-wrapper">
+                            @foreach ($product as $product)
                             <div class="swiper-slide">
                                 <div class="tpproduct p-relative">
                                     <div class="tpproduct__thumb p-relative text-center">
-                                        <a href="shop-details-4.html"><img src="orfarm/assets/img/product/products21-min.jpg" alt=""></a>
-                                        <a class="tpproduct__thumb-img" href="shop-details-4.html"><img src="orfarm/assets/img/product/products1-min.jpg" alt=""></a>
+                                        <a href="shop-details-4.html">
+                                            <img src="{{ $product->getMedia('foto_product')->first()?->getUrl() }}" alt="{{$product->nama_product}}">
+                                        </a>
+                                        <a class="tpproduct__thumb-img" href="shop-details-4.html">
+                                            <img src="{{ $product->getMedia('foto_product')->get(1)?->getUrl() }}" alt="{{$product->nama_product}}">
+                                        </a>
                                         <div class="tpproduct__info bage">
-                                            <span class="tpproduct__info-discount bage__discount">-50%</span>
-                                            <span class="tpproduct__info-hot bage__hot">HOT</span>
+                                            <span class="tpproduct__info-discount bage__discount">{{$product->diskon}}%</span>
+                                            <span class="tpproduct__info-hot bage__hot">{{ $product->label == 1 ? 'SUPER MURAH🔥' : '' }}</span>
                                         </div>
                                         <div class="tpproduct__shopping">
                                             <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
@@ -526,11 +531,10 @@
                                     </div>
                                     <div class="tpproduct__content">
                                         <span class="tpproduct__content-weight">
-                                            <a href="shop-details-4.html">Fresh Fruits</a>,
-                                            <a href="shop-details-4.html">Vagetables</a>
+                                            <a href="shop-details-4.html">{{ ucfirst($product->kategori->nama_kategori) }}</a>
                                         </span>
                                         <h4 class="tpproduct__title">
-                                            <a href="shop-details-4.html">Mangosteen Organic From VietNamese</a>
+                                            <a href="shop-details-4.html">{{ ucfirst($product->nama_product) }}</a>
                                         </h4>
                                         <div class="tpproduct__rating mb-5">
                                             <a href="#"><i class="icon-star_outline1"></i></a>
@@ -540,8 +544,8 @@
                                             <a href="#"><i class="icon-star_outline1"></i></a>
                                         </div>
                                         <div class="tpproduct__price">
-                                            <span>$56.00</span>
-                                            <del>$19.00</del>
+                                            <span>Rp{{ number_format($product->harga, 0, ',', '.') }}</span><br>
+                                            <del>Rp{{ number_format($product->harga + ($product->harga * $product->diskon / 100), 0, ',', '.') }}</del>
                                         </div>
                                     </div>
                                     <div class="tpproduct__hover-text">
@@ -558,244 +562,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="tpproduct p-relative">
-                                    <div class="tpproduct__thumb p-relative text-center">
-                                        <a href="shop-details-4.html"><img src="orfarm/assets/img/product/products22-min.jpg" alt=""></a>
-                                        <a class="tpproduct__thumb-img" href="shop-details-4.html"><img src="orfarm/assets/img/product/products11-min.jpg" alt=""></a>
-                                        <div class="tpproduct__info bage">
-                                            <span class="tpproduct__info-discount bage__discount">-40%</span>
-                                        </div>
-                                        <div class="tpproduct__shopping">
-                                            <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
-                                            <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
-                                            <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="tpproduct__content">
-                                        <span class="tpproduct__content-weight">
-                                            <a href="shop-details-4.html">Fresh Fruits</a>
-                                        </span>
-                                        <h4 class="tpproduct__title">
-                                            <a href="shop-details-4.html">Soda Sparkling Water Maker (Rose Gold)</a>
-                                        </h4>
-                                        <div class="tpproduct__rating mb-5">
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                        </div>
-                                        <div class="tpproduct__price">
-                                            <span>$56.00</span>
-                                            <del>$19.00</del>
-                                        </div>
-                                    </div>
-                                    <div class="tpproduct__hover-text">
-                                        <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                            <a class="tp-btn-2" href="shop-details-4.html">Add to cart</a>
-                                        </div>
-                                        <div class="tpproduct__descrip">
-                                            <ul>
-                                                <li>Type: Organic</li>
-                                                <li>MFG: August 4.2021</li>
-                                                <li>LIFE: 60 days</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="tpproduct p-relative">
-                                    <div class="tpproduct__thumb p-relative text-center">
-                                        <a href="shop-details-4.html"><img src="orfarm/assets/img/product/products4-min.jpg" alt=""></a>
-                                        <a class="tpproduct__thumb-img" href="shop-details-4.html"><img src="orfarm/assets/img/product/products23-min.jpg" alt=""></a>
-                                        <div class="tpproduct__info bage">
-                                            <span class="tpproduct__info-discount bage__discount">-10%</span>
-                                        </div>
-                                        <div class="tpproduct__shopping">
-                                            <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
-                                            <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
-                                            <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="tpproduct__content">
-                                        <span class="tpproduct__content-weight">
-                                            <a href="shop-details-3.html">Vagetables</a>
-                                        </span>
-                                        <h4 class="tpproduct__title">
-                                            <a href="shop-details-4.html">HOT - Lettuce Fresh Produce Fruit Vegetables</a>
-                                        </h4>
-                                        <div class="tpproduct__rating mb-5">
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                        </div>
-                                        <div class="tpproduct__price">
-                                            <span>$56.00</span>
-                                            <del>$19.00</del>
-                                        </div>
-                                    </div>
-                                    <div class="tpproduct__hover-text">
-                                        <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                            <a class="tp-btn-2" href="shop-details-4.html">Add to cart</a>
-                                        </div>
-                                        <div class="tpproduct__descrip">
-                                            <ul>
-                                                <li>Type: Organic</li>
-                                                <li>MFG: August 4.2021</li>
-                                                <li>LIFE: 60 days</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="tpproduct p-relative">
-                                    <div class="tpproduct__thumb p-relative text-center">
-                                        <a href="#"><img src="orfarm/assets/img/product/products27-min.jpg" alt=""></a>
-                                        <a class="tpproduct__thumb-img" href="shop-details.html"><img src="orfarm/assets/img/product/products14-min.jpg" alt=""></a>
-                                        <div class="tpproduct__info bage">
-                                            <span class="tpproduct__info-discount bage__discount">-90%</span>
-                                            <span class="tpproduct__info-hot bage__hot">HOT</span>
-                                        </div>
-                                        <div class="tpproduct__shopping">
-                                            <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
-                                            <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
-                                            <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="tpproduct__content">
-                                        <span class="tpproduct__content-weight">
-                                            <a href="shop-details-4.html">Fresh Fruits</a>
-                                        </span>
-                                        <h4 class="tpproduct__title">
-                                            <a href="shop-details-4.html">Pure Irish Organic Beef Quarter Pounder Burgers</a>
-                                        </h4>
-                                        <div class="tpproduct__rating mb-5">
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                        </div>
-                                        <div class="tpproduct__price">
-                                            <span>$56.00</span>
-                                            <del>$19.00</del>
-                                        </div>
-                                    </div>
-                                    <div class="tpproduct__hover-text">
-                                        <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                            <a class="tp-btn-2" href="shop-details-4.html">Add to cart</a>
-                                        </div>
-                                        <div class="tpproduct__descrip">
-                                            <ul>
-                                                <li>Type: Organic</li>
-                                                <li>MFG: August 4.2021</li>
-                                                <li>LIFE: 60 days</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="tpproduct p-relative">
-                                    <div class="tpproduct__thumb p-relative text-center">
-                                        <a href="#"><img src="orfarm/assets/img/product/products16-min.jpg" alt=""></a>
-                                        <a class="tpproduct__thumb-img" href="shop-details-grid.html"><img src="orfarm/assets/img/product/products11-min.jpg" alt=""></a>
-                                        <div class="tpproduct__info bage">
-                                            <span class="tpproduct__info-discount bage__discount">-50%</span>
-                                        </div>
-                                        <div class="tpproduct__shopping">
-                                            <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
-                                            <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
-                                            <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="tpproduct__content">
-                                        <span class="tpproduct__content-weight">
-                                            <a href="shop-details-4.html">Fresh Fruits</a>,
-                                            <a href="shop-details-3.html">Vagetables</a>
-                                        </span>
-                                        <h4 class="tpproduct__title">
-                                            <a href="shop-details-4.html">Ginger Fresh, Whole, Organic - 250gram</a>
-                                        </h4>
-                                        <div class="tpproduct__rating mb-5">
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                        </div>
-                                        <div class="tpproduct__price">
-                                            <span>$56.00</span>
-                                            <del>$19.00</del>
-                                        </div>
-                                    </div>
-                                    <div class="tpproduct__hover-text">
-                                        <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                            <a class="tp-btn-2" href="shop-details-4.html">Add to cart</a>
-                                        </div>
-                                        <div class="tpproduct__descrip">
-                                            <ul>
-                                                <li>Type: Organic</li>
-                                                <li>MFG: August 4.2021</li>
-                                                <li>LIFE: 60 days</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="tpproduct p-relative">
-                                    <div class="tpproduct__thumb p-relative text-center">
-                                        <a href="#"><img src="orfarm/assets/img/product/products17-min.jpg" alt=""></a>
-                                        <a class="tpproduct__thumb-img" href="shop-details-grid.html"><img src="orfarm/assets/img/product/products37-min.jpg" alt=""></a>
-                                        <div class="tpproduct__info bage">
-                                            <span class="tpproduct__info-discount bage__discount">-40%</span>
-                                            <span class="tpproduct__info-hot bage__hot">HOT</span>
-                                        </div>
-                                        <div class="tpproduct__shopping">
-                                            <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
-                                            <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
-                                            <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="tpproduct__content">
-                                        <span class="tpproduct__content-weight">
-                                            <a href="shop-details-4.html">Fresh Fruits</a>
-                                        </span>
-                                        <h4 class="tpproduct__title">
-                                            <a href="shop-details-4.html">Laffy Taffy Laff Bites Gone Bananas - 4 Packs</a>
-                                        </h4>
-                                        <div class="tpproduct__rating mb-5">
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                            <a href="#"><i class="icon-star_outline1"></i></a>
-                                        </div>
-                                        <div class="tpproduct__price">
-                                            <span>$56.00</span>
-                                            <del>$19.00</del>
-                                        </div>
-                                    </div>
-                                    <div class="tpproduct__hover-text">
-                                        <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                            <a class="tp-btn-2" href="shop-details-4.html">Add to cart</a>
-                                        </div>
-                                        <div class="tpproduct__descrip">
-                                            <ul>
-                                                <li>Type: Organic</li>
-                                                <li>MFG: August 4.2021</li>
-                                                <li>LIFE: 60 days</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="tpproduct-btn">

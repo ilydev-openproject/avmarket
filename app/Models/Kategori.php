@@ -20,7 +20,7 @@ class Kategori extends Model implements HasMedia
 
     public function Product()
     {
-        return $this->hasMany(Product::class, 'id');
+        return $this->hasMany(Product::class, 'id_kategori');
     }
 
     public function hero()

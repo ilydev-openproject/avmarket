@@ -53,7 +53,7 @@ class ProductResource extends Resource
                             ->maxLength(255)
                             ->afterStateUpdated(fn(string $operation, $state, Forms\Set $set) => $set('slug', Str::slug($state)))
                             ->required()
-                            ->unique(),
+                            ->unique(Product::class, 'nama_product', ignoreRecord: true),
                         TextInput::make('slug')
                             ->disabled()
                             ->dehydrated()
@@ -66,7 +66,7 @@ class ProductResource extends Resource
                         TextInput::make('bpom')
                             ->label('No. Bpom')
                             ->required()
-                            ->unique(),
+                            ->unique(Product::class, 'bpom', ignoreRecord: true),
                         TextInput::make('stok')
                             ->label('Stok')
                             ->required(),

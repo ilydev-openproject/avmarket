@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hero;
 use App\Models\Kategori;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,7 @@ class HomeController extends Controller
     {
         $hero = Hero::with('product')->get();
         $kategori = Kategori::with('product')->get();
-        return view('home', compact('hero', 'kategori'));
+        $product = Product::with('kategori')->get();
+        return view('home', compact('hero', 'kategori', 'product'));
     }
 }
