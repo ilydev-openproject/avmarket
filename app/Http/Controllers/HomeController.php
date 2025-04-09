@@ -15,6 +15,7 @@ class HomeController extends Controller
         $hero = Hero::with('product')->get();
         $kategori = Kategori::with('product')->get();
         $product = Product::with('kategori')->get();
-        return view('home', compact('hero', 'kategori', 'product'));
+        $products = Product::with('kategori')->inRandomOrder()->first();
+        return view('home', compact('hero', 'kategori', 'product', 'products'));
     }
 }
