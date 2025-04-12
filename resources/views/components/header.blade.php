@@ -1,144 +1,36 @@
 <!-- header-area-start -->
 <header>
-    <!-- <div class="header__top theme-bg-1 d-none d-md-block">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="header__top-left">
-                            <span>Due to the <strong>COVID-19</strong> epidemic, orders may be processed with a slight delay.</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <div class="header__top-right d-flex align-items-center">
-                            <div class="header__top-link">
-                                <a href="#">Store Location</a>
-                                <a href="#">Order Tracking</a>
-                                <a href="faq.html">FAQs</a>
-                            </div>
-                            <div class="header__lang">
-                                <span class="header__lang-select">English <i class="far fa-angle-down"></i></span>
-                                <ul class="header__lang-submenu">
-                                    <li>
-                                        <a href="#">Australia</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Spain</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Brazil</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">English</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">France</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">United States</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="header__top-price">
-                                <select>
-                                    <option>USD</option>
-                                    <option>ARS</option>
-                                    <option>AUD</option>
-                                    <option>BRL</option>
-                                    <option>GBP</option>
-                                    <option>DKK</option>
-                                    <option>EUR</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
     <div id="header-sticky" class="header__main-area d-none d-xl-block">
         <div class="container">
             <div class="header__for-megamenu p-relative">
                 <div class="row align-items-center">
                     <div class="col-xl-3">
                         <div class="header__logo">
-                            <a href="index.html"><img src="image/logo/logo.png" alt=""></a>
+                            <a href="/"><img src="{{ asset('image/logo/logo.png') }}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="header__menu main-menu text-center">
                             <nav id="mobile-menu">
                                 <ul>
-                                    <li class="has-dropdown has-homemenu">
-                                        <a href="index.html">Home</a>
-                                        <ul class="sub-menu home-menu-style">
-                                            <li>
-                                                <a href="index.html"><img src="orfarm/assets/img//header/home1-1.jpg" alt=""> Home Page V1</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-2.html"><img src="orfarm/assets/img//header/home2-1.jpg" alt=""> Home Page V2</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-3.html"><img src="orfarm/assets/img//header/home3-1.jpg" alt=""> Home Page V3</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-4.html"><img src="orfarm/assets/img//header/home4-1.jpg" alt=""> Home Page V4</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-5.html"><img src="orfarm/assets/img//header/home5-1.jpg" alt=""> Home Page V5</a>
-                                            </li>
-                                            <li>
-                                                <a href="index-6.html"><img src="orfarm/assets/img//header/home6-1.jpg" alt=""> Home Page V6</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-dropdown has-megamenu">
-                                        <a href="course-grid.html">Shop</a>
-                                        <ul class="sub-menu mega-menu" data-background="orfarm/assets/img/banner/mega-menu-shop-1.jpg">
-                                            <li>
-                                                <a class="mega-menu-title">Shop layout</a>
-                                                <ul>
-                                                    <li><a href="shop-left-sidebar.html">Shop With Banner </a></li>
-                                                    <li><a href="shop-3.html">Shop Without Banner</a></li>
-                                                    <li><a href="shop-2.html">Shop Version</a></li>
-                                                    <li><a href="shop-left-sidebar.html">Shop Left sidebar</a></li>
-                                                    <li><a href="shop-right-sidebar.html">Shop Right sidebar</a></li>
-                                                    <li><a href="shop-list-view.html">Shop List view</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="mega-menu-title">Product layout</a>
-                                                <ul>
-                                                    <li><a href="shop-details-3.html">Image scroll</a></li>
-                                                    <li><a href="shop-details-grid.html">Product grid</a></li>
-                                                    <li><a href="shop-details-top.html">Top Thumb Product</a></li>
-                                                    <li><a href="shop-details.html">Bottom Thumb Product</a></li>
-                                                    <li><a href="shop-details-4.html">Simple Product</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="mega-menu-title">Product type</a>
-                                                <ul>
-                                                    <li><a href="shop-details.html">Products Simple</a></li>
-                                                    <li><a href="shop-details-grid.html">Products Group</a></li>
-                                                    <li><a href="shop-details-3.html">Products Variable</a></li>
-                                                    <li><a href="shop-details-3.html">Special</a></li>
-                                                    <li><a href="shop-details-4.html">Decoration</a></li>
-                                                    <li><a href="shop-details-top.html">Contruction</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="mega-menu-title">Product category</a>
-                                                <ul>
-                                                    <li><a href="shop-details.html">Fresh bakery</a></li>
-                                                    <li><a href="shop-details-3.html">Fresh fruits</a></li>
-                                                    <li><a href="shop-details-4.html">Fresh meat</a></li>
-                                                    <li><a href="shop-details.html">Fruit drink</a></li>
-                                                    <li><a href="shop-details.html">Fresh bakery</a></li>
-                                                    <li><a href="shop-details-grid.html">Biscuits snack</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                    <li class="has-homemenu">
+                                        <a href="/">Beranda</a>
                                     </li>
                                     <li class="has-dropdown">
+                                        <a href="/toko">Toko</a>
+                                        <ul class="sub-menu">
+                                            @php
+                                            use App\Models\Kategori;
+                                            use App\Models\Product;
+
+                                            $kategori = Kategori::with('product')->get();
+                                            @endphp
+                                            @foreach ($kategori as $kat)
+                                            <li><a href="/toko/{{ $kat->slug }}">{{ ucfirst($kat->nama_kategori) }}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    <li class=" has-dropdown">
                                         <a href="blog.html">Blog</a>
                                         <ul class="sub-menu">
                                             <li><a href="blog.html">Big image</a></li>
@@ -179,7 +71,7 @@
                                 <a href="wishlist.html"><i class="icon-heart icons"></i></a>
                             </div>
                             <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
-                                <button><i><img src="orfarm/assets/img/icon/cart-1.svg" alt=""></i>
+                                <button><i><img src="{{ asset('orfarm/assets/img/icon/cart-1.svg') }}" alt=""></i>
                                     <span>5</span>
                                 </button>
                             </div>
@@ -223,7 +115,7 @@
                         <li>
                             <div class="tpcart__item">
                                 <div class="tpcart__img">
-                                    <img src="orfarm/assets/img/product/products1-min.jpg" alt="">
+                                    <img src="{{ asset('orfarm/assets/img/product/products1-min.jpg') }}" alt="">
                                     <div class="tpcart__del">
                                         <a href="#"><i class="icon-x-circle"></i></a>
                                     </div>
@@ -241,7 +133,7 @@
                         <li>
                             <div class="tpcart__item">
                                 <div class="tpcart__img">
-                                    <img src="orfarm/assets/img/product/products12-min.jpg" alt="">
+                                    <img src="{{ asset('orfarm/assets/img/product/products12-min.jpg') }}" alt="">
                                     <div class="tpcart__del">
                                         <a href="#"><i class="icon-x-circle"></i></a>
                                     </div>
@@ -259,7 +151,7 @@
                         <li>
                             <div class="tpcart__item">
                                 <div class="tpcart__img">
-                                    <img src="orfarm/assets/img/product/products3-min.jpg" alt="">
+                                    <img src="{{ asset('orfarm/assets/img/product/products3-min.jpg') }}" alt="">
                                     <div class="tpcart__del">
                                         <a href="#"><i class="icon-x-circle"></i></a>
                                     </div>
@@ -306,7 +198,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-6 col-sm-4">
                     <div class="header__logo text-center">
-                        <a href="index.html"><img src="orfarm/assets/img/logo/logo.png" alt="logo"></a>
+                        <a href="index.html"><img src="{{ asset('orfarm/assets/img/logo/logo.png') }}" alt=" logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-3 col-sm-5">
@@ -321,7 +213,7 @@
                             <a href="wishlist.html"><i class="icon-heart icons"></i></a>
                         </div>
                         <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
-                            <button><i><img src="orfarm/assets/img/icon/cart-1.svg" alt=""></i>
+                            <button><i><img src="{{ asset('orfarm/assets/img/icon/cart-1.svg') }}" alt=""></i>
                                 <span>5</span>
                             </button>
                         </div>

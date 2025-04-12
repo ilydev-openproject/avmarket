@@ -18,22 +18,7 @@ class Product extends Model implements HasMedia
         'foto_product' => 'array',
     ];
 
-    protected $fillable = [
-        'nama_product',
-        'slug',
-        'brand',
-        'bpom',
-        'harga',
-        'stok',
-        'terjual',
-        'diskon',
-        'foto_product',
-        'id_kategori',
-        'deskripsi',
-        'ringkasan',
-        'keyword',
-        'label',
-    ];
+    protected $guarded = [];
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'id_kategori');

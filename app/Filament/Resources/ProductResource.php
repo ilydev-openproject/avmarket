@@ -104,6 +104,15 @@ class ProductResource extends Resource
                             RichEditor::make('deskripsi')
                                 ->label('Meta Description')
                                 ->columnSpan(3),
+                            RichEditor::make('ingredient')
+                                ->label('Ingredient (Pisah dengan ",")')
+                                ->columnSpan(2),
+                            RichEditor::make('manfaat')
+                                ->label('Manfaat (Berikan Poin)')
+                                ->columnSpan(2),
+                            TextInput::make('size')
+                                ->label('Size "Sertakan gramasi"')
+                                ->columnSpan(1),
                             Select::make('tags')
                                 ->label('Tags')
                                 ->options(Tags::all()->pluck('nama_tag', 'id_tag'))

@@ -1,13 +1,78 @@
 <footer>
+    <!-- feature-area-start -->
+    <section class="feature-area mainfeature__bg pt-50 pb-40" data-background="{{ asset('orfarm/assets/img/shape/footer-shape-1') }}.svg">
+        <div class="container">
+            <div class="mainfeature__border pb-15">
+                <div class="row row-cols-lg-5 row-cols-md-3 row-cols-2">
+                    <div class="col">
+                        <div class="mainfeature__item text-center mb-30">
+                            <div class="mainfeature__icon">
+                                <img src="{{ asset('orfarm/assets/img/icon/feature-icon-1.svg') }}" alt="">
+                            </div>
+                            <div class="mainfeature__content">
+                                <h4 class="mainfeature__title">Pengiriman Cepat</h4>
+                                <p>Lintas pulau jawa & Provinsi</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mainfeature__item text-center mb-30">
+                            <div class="mainfeature__icon">
+                                <img src="{{ asset('orfarm/assets/img/icon/feature-icon-2.svg') }}" alt="">
+                            </div>
+                            <div class="mainfeature__content">
+                                <h4 class="mainfeature__title">pembayaran aman</h4>
+                                <p>100% Secure Payment</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mainfeature__item text-center mb-30">
+                            <div class="mainfeature__icon">
+                                <img src="{{ asset('orfarm/assets/img/icon/feature-icon-3.svg') }}" alt="">
+                            </div>
+                            <div class="mainfeature__content">
+                                <h4 class="mainfeature__title">Diskon Online</h4>
+                                <p>Diskon dalam pembelian besar</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mainfeature__item text-center mb-30">
+                            <div class="mainfeature__icon">
+                                <img src="{{ asset('orfarm/assets/img/icon/feature-icon-4.svg') }}" alt="">
+                            </div>
+                            <div class="mainfeature__content">
+                                <h4 class="mainfeature__title">Help Center</h4>
+                                <p>Layan tersedia 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mainfeature__item text-center mb-30">
+                            <div class="mainfeature__icon">
+                                <img src="{{ asset('orfarm/assets/img/icon/feature-icon-5.svg') }}" alt="">
+                            </div>
+                            <div class="mainfeature__content">
+                                <h4 class="mainfeature__title">Item Pilihan</h4>
+                                <p>Dari Pabrik Langsung</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- feature-area-end -->
     <div class="tpfooter__area theme-bg-2">
         <div class="tpfooter__top pb-15">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                         <div class="tpfooter__widget footer-col-1 mb-50">
-                            <h4 class="tpfooter__widget-title">Let Us Help You</h4>
-                            <p>If you have any question, please <br> contact us at:
-                                <a href="mailto:support@example.com">support@example.com</a>
+                            <h4 class="tpfooter__widget-title">Biarkan Kami Membantu Anda</h4>
+                            <p>Jika anda ingin bertanya, silahkan <br> hubungi kami di:
+                                <a href="mailto:hallo.averrosindonesia@gmail.com">hallo.averrosindonesia@gmail.com</a>
                             </p>
                             <div class="tpfooter__widget-social mt-45">
                                 <span class="tpfooter__widget-social-title mb-5">Social Media:</span>
@@ -21,38 +86,43 @@
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
                         <div class="tpfooter__widget footer-col-2 mb-50">
-                            <h4 class="tpfooter__widget-title">Looking for Orfarm?</h4>
-                            <p>68 St. Vicent Place, Glasgow, Greater <br> Newyork NH2012, UK.</p>
+                            <h4 class="tpfooter__widget-title">Mencari Averros?</h4>
+                            <p>Demak, Indonesia.</p>
                             <div class="tpfooter__widget-time-info mt-35">
-                                <span>Monday – Friday: <b>8:10 AM – 6:10 PM</b></span>
-                                <span>Saturday: <b>10:10 AM – 06:10 PM</b></span>
-                                <span>Sunday: <b>Close</b></span>
+                                <span>Senin – Sabtu: <b>8:10 AM – 4:00 PM</b></span>
+                                <span>Sabtu: <b>10:10 AM – 4:00 PM</b></span>
+                                <span>Minggu: <b>Tutup</b></span>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-2 col-lg-4 col-md-4 col-sm-5">
                         <div class="tpfooter__widget footer-col-3 mb-50">
-                            <h4 class="tpfooter__widget-title">HOT CATEGORIES</h4>
+                            <h4 class="tpfooter__widget-title">Kategori terlaris</h4>
                             <div class="tpfooter__widget-links">
                                 <ul>
-                                    <li><a href="#">Fruits & Vegetables</a></li>
-                                    <li><a href="#">Dairy Products</a></li>
-                                    <li><a href="#">Package Foods</a></li>
-                                    <li><a href="#">Beverage</a></li>
-                                    <li><a href="#">Health & Wellness</a></li>
+                                    @php
+                                    use App\Models\Kategori;
+                                    use App\Models\Product;
+
+                                    $kategori = Kategori::with('product')->limit(5)->get();
+                                    @endphp
+                                    @foreach ($kategori as $kat)
+                                    <li><a href="toko/{{$kat->slug}}">{{ ucfirst($kat->nama_kategori) }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-6 col-md-8 col-sm-7">
                         <div class="tpfooter__widget footer-col-4 mb-50">
-                            <h4 class="tpfooter__widget-title">Our newsletter</h4>
+                            <h4 class="tpfooter__widget-title">Berita Kami</h4>
                             <div class="tpfooter__widget-newsletter">
-                                <p>Subscribe to the Orfarm mailing list to receive updates <br> on new arrivals & other information.</p>
+                                <p>Berlangganan email Averros Herbal untuk menerima pembaruan
+                                    tentang produk baru dan informasi lainnya.</p>
                                 <form action="index.html">
-                                    <span><i><img src="orfarm/assets/img/shape/message-1.svg" alt=""></i></span>
-                                    <input type="email" placeholder="Your email address...">
-                                    <button class="tpfooter__widget-newsletter-submit tp-news-btn">Subscribe</button>
+                                    <span><i><img src="{{ asset('orfarm/assets/img/shape/message-1.svg') }}" alt=""></i></span>
+                                    <input type="email" placeholder="Masukka Email Anda...">
+                                    <button class="tpfooter__widget-newsletter-submit tp-news-btn">Langganan</button>
                                 </form>
                                 <div class="tpfooter__widget-newsletter-check mt-10">
                                     <div class="form-check">
@@ -73,12 +143,12 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7 col-sm-12">
                         <div class="tpfooter__copyright">
-                            <span class="tpfooter__copyright-text">Copyright © <a href="#">ORFARM</a> all rights reserved. Powered by <a href="#">ThemePure</a>.</span>
+                            <span class="tpfooter__copyright-text">Copyright 2025© <a href="#">AVERROS INDONESIA</a> all rights reserved.</span>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5 col-sm-12">
                         <div class="tpfooter__copyright-thumb text-end">
-                            <img src="orfarm/assets/img/shape/footer-payment.png " alt="">
+                            <img src="{{ asset('orfarm/assets/img/shape/footer-payment.png ') }}" alt="">
                         </div>
                     </div>
                 </div>
