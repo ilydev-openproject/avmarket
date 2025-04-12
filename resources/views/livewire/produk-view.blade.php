@@ -32,8 +32,8 @@
                 <div class="col">
                     <div class="tpproduct p-relative mb-20">
                         <div class="tpproduct__thumb p-relative text-center">
-                            <a href="#"><img src="{{ $product->getMedia('foto_product')->first()?->getUrl() }}" alt="{{$product->nama_product}}"></a>
-                            <a class="tpproduct__thumb-img" href="shop-details-grid.html"><img src="{{ $product->getMedia('foto_product')->get(1)?->getUrl() }}" alt="{{$product->nama_product}}"></a>
+                            <a href="detail/{{ $product->slug }}"><img src="{{ $product->getMedia('foto_product')->first()?->getUrl() }}" alt="{{$product->nama_product}}" style="aspect-ratio: 1/1; object-fit: cover;"></a>
+                            <a class="tpproduct__thumb-img" href="detail/{{ $product->slug }}"><img src="{{ $product->getMedia('foto_product')->get(1)?->getUrl() }}" alt="{{$product->nama_product}}" style="aspect-ratio: 1/1; object-fit: cover;"></a>
                             <div class="tpproduct__info bage">
                                 <span class="tpproduct__info-discount bage__discount">{{$product->diskon}}%</span>
                                 <span class="tpproduct__info-hot bage__hot">{{ $product->label == 1 ? 'SUPER MURAH🔥' : 'MURAH' }}</span>

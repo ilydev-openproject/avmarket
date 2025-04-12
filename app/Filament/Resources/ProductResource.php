@@ -99,7 +99,7 @@ class ProductResource extends Resource
                         Section::make([
                             RichEditor::make('ringkasan')
                                 ->label('Ringkasan Max 300 Character')
-                                ->maxLength(300)
+                                ->maxLength(5000)
                                 ->columnSpan(3),
                             RichEditor::make('deskripsi')
                                 ->label('Meta Description')

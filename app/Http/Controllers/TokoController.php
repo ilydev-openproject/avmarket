@@ -19,4 +19,9 @@ class TokoController extends Controller
         $products = Product::with('kategori')->get();
         return view('toko', compact('kategori', 'product', 'products', 'kategoris', 'produk', 'prodkats', 'kat'));
     }
+
+    public  function detail()
+    {
+        $product = Product::with('Kategori')->where('id', $)
+    }
 }
