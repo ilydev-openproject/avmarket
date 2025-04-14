@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Kategori;
+use App\View\Components\Home\Produk;
 use Illuminate\Http\Request;
 
 class TokoController extends Controller
@@ -28,7 +29,8 @@ class TokoController extends Controller
             ->latest()
             ->take(4)
             ->get();
+        $recentProduct = Product::with('kategori', 'tags')->orderBy('id', 'desc')->limit(3)->get();
 
-        return view('detail', compact('product', 'relatedProducts'));
+        return view('detail', compact('product', 'relatedProducts', 'recentProduct'));
     }
 }

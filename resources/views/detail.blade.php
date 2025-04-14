@@ -6,7 +6,7 @@
                 <div class="col-lg-12">
                     <div class="tp-breadcrumb__content">
                         <div class="tp-breadcrumb__list">
-                            <span class="tp-breadcrumb__active"><a href="index.html">Home</a></span>
+                            <span class="tp-breadcrumb__active"><a href="/">Home</a></span>
                             <span class="dvdr">/</span>
                             <span class="tp-breadcrumb__active"><a href="/toko">Toko</a></span>
                             <span class="dvdr">/</span>
@@ -281,24 +281,24 @@
                             </ul>
                         </div>
                         <div class="tpsidebar__banner mb-30">
-                            <img src="assets/img/shape/sidebar-product-1.png" alt="">
+                            <img src="{{ asset('orfarm/assets/img/shape/sidebar-product-1.png') }}" alt="">
                         </div>
                         <div class="tpsidebar__product">
                             <h4 class="tpsidebar__title mb-15">Recent Products</h4>
-                            @foreach ($relatedProducts as $related)
+                            @foreach ($recentProduct as $recent)
                             <div class="tpsidebar__product-item">
                                 <div class="tpsidebar__product-thumb p-relative">
-                                    <img src="assets/img/product/sidebar-pro-1.jpg" alt="">
+                                    <img src="{{ $recent->getMedia('foto_product')->first()?->getUrl() }}" alt="foto_{{ $recent->nama_product}}" style="aspect-ratio: 1/1; object-fit: cover;">
                                     <div class="tpsidebar__info bage">
-                                        <span class="tpproduct__info-hot bage__hot">HOT</span>
+                                        <span class="tpproduct__info-hot bage__hot">{{ $recent->label == 1 ? 'SUPER MURAH🔥' : 'MURAH' }}</span>
                                     </div>
                                 </div>
                                 <div class="tpsidebar__product-content">
                                     <span class="tpproduct__product-category">
-                                        <a href="shop-details-3.html">Fresh Fruits</a>
+                                        <a href="shop-details-3.html">{{ $recent->kategori->nama_kategori }}</a>
                                     </span>
                                     <h4 class="tpsidebar__product-title">
-                                        <a href="shop-details-3.html">Fresh Mangosteen 100% Organic From VietNamese</a>
+                                        <a href="shop-details-3.html">{{ $recent->nama_product }}</a>
                                     </h4>
                                     <div class="tpproduct__rating mb-5">
                                         <a href="#"><i class="icon-star_outline1"></i></a>
@@ -308,8 +308,8 @@
                                         <a href="#"><i class="icon-star_outline1"></i></a>
                                     </div>
                                     <div class="tpproduct__price">
-                                        <span>$56.00</span>
-                                        <del>$19.00</del>
+                                        <span>Rp{{ number_format($recent->harga, 0, ',', '.') }}</span>
+                                        <del>Rp{{ number_format($recent->harga + ($recent->harga * $recent->diskon / 100), 0, ',', '.') }}</del>
                                     </div>
                                 </div>
                             </div>
@@ -322,71 +322,6 @@
     </section>
     <!-- shop-details-area-end -->
 
-    <!-- product-area-start -->
-    <section class="product-area whight-product pt-75 pb-80">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h5 class="tpdescription__product-title mb-20">Related Products</h5>
-                </div>
-            </div>
-            <div class="tpproduct__arrow double-product p-relative">
-                <div class="swiper-container tpproduct-active tpslider-bottom p-relative">
-                    <div class="swiper-wrapper">
-                        @foreach ($relatedProducts as $related)
-                        <div class="swiper-slide">
-                            <div class="tpproduct p-relative">
-                                <div class="tpproduct__thumb p-relative text-center">
-                                    <a href="#"><img src="assets/img/product/products29-min.jpg" alt=""></a>
-                                    <a class="tpproduct__thumb-img" href="shop-details.html"><img src="assets/img/product/products30-min.jpg" alt=""></a>
-                                    <div class="tpproduct__info bage">
-                                        <span class="tpproduct__info-discount bage__discount">-50%</span>
-                                        <span class="tpproduct__info-hot bage__hot">HOT</span>
-                                    </div>
-                                    <div class="tpproduct__shopping">
-                                        <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
-                                        <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
-                                        <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
-                                    </div>
-                                </div>
-                                <div class="tpproduct__content">
-                                    <span class="tpproduct__content-weight">
-                                        <a href="shop-details.html">Fresh Meat</a>
-                                    </span>
-                                    <h4 class="tpproduct__title">
-                                        <a href="shop-details-top-.html">{{ $related->nama_product}}</a>
-                                    </h4>
-                                    <div class="tpproduct__rating mb-5">
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                    </div>
-                                    <div class="tpproduct__price">
-                                        <span>$56.00</span>
-                                        <del>$19.00</del>
-                                    </div>
-                                </div>
-                                <div class="tpproduct__hover-text">
-                                    <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                        <a class="tp-btn-2" href="cart.html">Add to cart</a>
-                                    </div>
-                                    <div class="tpproduct__descrip">
-                                        <ul>
-                                            <li>Type: Organic</li>
-                                            <li>MFG: August 4.2021</li>
-                                            <li>LIFE: 60 days</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- product-area-end -->
+    <x-toko.related-product :relatedProducts="$relatedProducts" />
+
 </x-app>
