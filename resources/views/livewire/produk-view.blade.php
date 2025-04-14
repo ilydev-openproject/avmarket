@@ -46,10 +46,10 @@
                         </div>
                         <div class="tpproduct__content">
                             <span class="tpproduct__content-weight">
-                                <a href="shop-details-4.html">{{ ucfirst($product->kategori->nama_kategori) }}</a>
+                                <a href="toko/{{ $product->slug }}">{{ ucfirst($product->kategori->nama_kategori) }}</a>
                             </span>
                             <h4 class="tpproduct__title">
-                                <a href="shop-details-4.html">{{ ucfirst($product->nama_product) }}</a>
+                                <a href="toko/{{ $product->slug }}">{{ ucfirst($product->nama_product) }}</a>
                             </h4>
                             <div class="tpproduct__rating mb-5">
                                 <a href="#"><i class="icon-star_outline1"></i></a>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="tpproduct__hover-text">
                             <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                <a class="tp-btn-2" href="shop-details-4.html">Add to cart</a>
+                                <a class="tp-btn-2" href="">Add to cart</a>
                             </div>
                             <div class="tpproduct__descrip">
                                 <ul>
