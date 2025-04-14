@@ -27,7 +27,7 @@ class TokoController extends Controller
         $relatedProducts = Product::where('id_kategori', $product->id_kategori)
             ->where('id', '!=', $product->id)
             ->latest()
-            ->take(4)
+            ->take(6)
             ->get();
         $recentProduct = Product::with('kategori', 'tags')->orderBy('id', 'desc')->limit(3)->get();
 
