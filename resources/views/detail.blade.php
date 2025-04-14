@@ -75,8 +75,8 @@
                                             <div class="product__details-price-box">
                                                 <del>Rp{{ number_format($product->harga + ($product->harga * $product->diskon / 100), 0, ',', '.') }}</del>
                                                 <h5 class="product__details-price">Rp{{ number_format($product->harga, 0, ',', '.') }}</h5>
-                                                <div>
-                                                    {!! $product->manfaat !!}
+                                                <div class="ms-4">
+                                                    <span>{!! $product->manfaat !!}</span>
                                                 </div>
                                             </div>
                                             <div class="product__details-cart">
@@ -93,7 +93,7 @@
                                                 </div>
                                                 <ul class="product__details-check">
                                                     <li>
-                                                        <span><i class="icon-key"></i> Jaminan Privas Aman</span>
+                                                        <span><i class="icon-key"></i> Jaminan Privasi Aman</span>
                                                     </li>
                                                     <li>
                                                         <a href="#"><i class="icon-share-2"></i> Share</a>
@@ -254,7 +254,7 @@
                                             <i class="icon-package"></i>
                                         </div>
                                         <div class="tpsidebar__warning-text">
-                                            <p>Free shipping apply to all <br> orders over $90</p>
+                                            <p>Gratis ongkir untuk pulau jawa atau belanja lebih dari 150ribu.</p>
                                         </div>
                                     </div>
                                 </li>
@@ -264,7 +264,7 @@
                                             <i class="icon-shield"></i>
                                         </div>
                                         <div class="tpsidebar__warning-text">
-                                            <p>Guaranteed 100% Organic <br> from nature farms</p>
+                                            <p>Garansi produk 100% ori dari pabrik langsung.</p>
                                         </div>
                                     </div>
                                 </li>
@@ -274,7 +274,7 @@
                                             <i class="icon-package"></i>
                                         </div>
                                         <div class="tpsidebar__warning-text">
-                                            <p>60 days returns if you change <br> your mind</p>
+                                            <p>60 Hari retur produk jika pesanan tidak sesuai.</p>
                                         </div>
                                     </div>
                                 </li>
@@ -283,38 +283,7 @@
                         <div class="tpsidebar__banner mb-30">
                             <img src="{{ asset('orfarm/assets/img/shape/sidebar-product-1.png') }}" alt="">
                         </div>
-                        <div class="tpsidebar__product">
-                            <h4 class="tpsidebar__title mb-15">Recent Products</h4>
-                            @foreach ($recentProduct as $recent)
-                            <div class="tpsidebar__product-item">
-                                <div class="tpsidebar__product-thumb p-relative">
-                                    <img src="{{ $recent->getMedia('foto_product')->first()?->getUrl() }}" alt="foto_{{ $recent->nama_product}}" style="aspect-ratio: 1/1; object-fit: cover;">
-                                    <div class="tpsidebar__info bage">
-                                        <span class="tpproduct__info-hot bage__hot">{{ $recent->label == 1 ? 'SUPER MURAH🔥' : 'MURAH' }}</span>
-                                    </div>
-                                </div>
-                                <div class="tpsidebar__product-content">
-                                    <span class="tpproduct__product-category">
-                                        <a href="shop-details-3.html">{{ $recent->kategori->nama_kategori }}</a>
-                                    </span>
-                                    <h4 class="tpsidebar__product-title">
-                                        <a href="shop-details-3.html">{{ $recent->nama_product }}</a>
-                                    </h4>
-                                    <div class="tpproduct__rating mb-5">
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                    </div>
-                                    <div class="tpproduct__price">
-                                        <span>Rp{{ number_format($recent->harga, 0, ',', '.') }}</span>
-                                        <del>Rp{{ number_format($recent->harga + ($recent->harga * $recent->diskon / 100), 0, ',', '.') }}</del>
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
+                        <x-toko.recent-product :recentProduct="$recentProduct"></x-toko.recent-product>
                     </div>
                 </div>
             </div>
