@@ -12,10 +12,12 @@
         </div>
         <div class="tpsidebar__product-content">
             <span class="tpproduct__product-category">
-                <a href="shop-details-3.html">{{ $recent->kategori->nama_kategori }}</a>
+                <a href="/toko/{{ $recent->slug }}">
+                    <small>{{ $recent->kategori->nama_kategori }}</small>
+                </a>
             </span>
             <h4 class="tpsidebar__product-title">
-                <a href="shop-details-3.html">{{ $recent->nama_product }}</a>
+                <a href="/toko/{{ $recent->slug }}">{{ $recent->nama_product }}</a>
             </h4>
             <div class="tpproduct__rating mb-5">
                 <a href="#"><i class="icon-star_outline1"></i></a>
