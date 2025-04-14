@@ -14,8 +14,8 @@
                     <div class="swiper-slide">
                         <div class="tpproduct p-relative">
                             <div class="tpproduct__thumb p-relative text-center">
-                                <a href="toko/{{ $related->slug }}"><img src="{{ $related->getMedia('foto_product')->first()?->getUrl() }}" alt="" style="aspect-ratio: 1/1; object-fit: cover; width: 100%;"></a>
-                                <a class="tpproduct__thumb-img" href="toko/{{ $product->slug }}"><img src="{{ $related->getMedia('foto_product')->get(1)?->getUrl() }}" alt="" style="aspect-ratio: 1/1; object-fit: cover; width: 100%;"></a>
+                                <a href="/toko/{{ $related->slug }}"><img src="{{ $related->getMedia('foto_product')->first()?->getUrl() }}" alt="" style="aspect-ratio: 1/1; object-fit: cover; width: 100%;"></a>
+                                <a class="tpproduct__thumb-img" href="/toko/{{ $related->slug }}"><img src="{{ $related->getMedia('foto_product')->get(1)?->getUrl() }}" alt="" style="aspect-ratio: 1/1; object-fit: cover; width: 100%;"></a>
                                 <div class="tpproduct__info bage">
                                     <span class="tpproduct__info-discount bage__discount">-50%</span>
                                     <span class="tpproduct__info-hot bage__hot">HOT</span>
@@ -31,7 +31,7 @@
                                     <a href="">{{ $related->kategori->nama_kategori }}</a>
                                 </span>
                                 <h4 class="tpproduct__title">
-                                    <a href="toko/{{ $related->slug }}">{{ $related->nama_product}}</a>
+                                    <a href="/toko/{{ $related->slug }}">{{ $related->nama_product}}</a>
                                 </h4>
                                 <div class="tpproduct__rating mb-5">
                                     <a href="#"><i class="icon-star_outline1"></i></a>
