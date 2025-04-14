@@ -28,7 +28,7 @@
                             </div>
                             <div class="tpproduct__content">
                                 <span class="tpproduct__content-weight">
-                                    <a href="">{{ $related->kategori->nama_kategori }}</a>
+                                    <a href="">{{ ucwords($related->kategori->nama_kategori) }}</a>
                                 </span>
                                 <h4 class="tpproduct__title">
                                     <a href="/toko/{{ $related->slug }}">{{ $related->nama_product}}</a>

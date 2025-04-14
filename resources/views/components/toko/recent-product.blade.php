@@ -13,7 +13,7 @@
         <div class="tpsidebar__product-content">
             <span class="tpproduct__product-category">
                 <a href="/toko/{{ $recent->slug }}">
-                    <small>{{ $recent->kategori->nama_kategori }}</small>
+                    <small class="tpproduct__content-weight">{{ ucwords($recent->kategori->nama_kategori) }}</small>
                 </a>
             </span>
             <h4 class="tpsidebar__product-title">
