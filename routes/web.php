@@ -6,4 +6,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/toko', [TokoController::class, 'index']);
-Route::get('/toko/detail/{any}', [TokoController::class, 'detail']);
+Route::get('/toko/{any}', [TokoController::class, 'detail']);

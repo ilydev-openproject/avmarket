@@ -20,8 +20,15 @@ class TokoController extends Controller
         return view('toko', compact('kategori', 'product', 'products', 'kategoris', 'produk', 'prodkats', 'kat'));
     }
 
-    public  function detail()
+    public function detail($slug)
     {
-        $product = Product::with('Kategori')->where('id', $)
+        $product = Product::with('kategori', 'tags')->where('slug', $slug)->firstOrFail();
+        $relatedProducts = Product::where('id_kategori', $product->id_kategori)
+            ->where('id', '!=', $product->id)
+            ->latest()
+            ->take(4)
+            ->get();
+
+        return view('detail', compact('product', 'relatedProducts'));
     }
 }

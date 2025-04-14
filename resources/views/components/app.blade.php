@@ -49,6 +49,11 @@
         .text-success-custom {
             color: #96AE00 !important;
         }
+
+        .tag-link:hover {
+            color: #96AE00;
+            /* warna hijau yang kamu pakai sebelumnya */
+        }
     </style>
 </head>
 
