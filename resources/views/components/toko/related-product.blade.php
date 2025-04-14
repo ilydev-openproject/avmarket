@@ -17,8 +17,8 @@
                                 <a href="/toko/{{ $related->slug }}"><img src="{{ $related->getMedia('foto_product')->first()?->getUrl() }}" alt="" style="aspect-ratio: 1/1; object-fit: cover; width: 100%;"></a>
                                 <a class="tpproduct__thumb-img" href="/toko/{{ $related->slug }}"><img src="{{ $related->getMedia('foto_product')->get(1)?->getUrl() }}" alt="" style="aspect-ratio: 1/1; object-fit: cover; width: 100%;"></a>
                                 <div class="tpproduct__info bage">
-                                    <span class="tpproduct__info-discount bage__discount">-50%</span>
-                                    <span class="tpproduct__info-hot bage__hot">HOT</span>
+                                    <span class="tpproduct__info-discount bage__discount">{{$related->diskon}}%</span>
+                                    <span class="tpproduct__info-hot bage__hot">{{ $related->label == 1 ? 'SUPER MURAH🔥' : 'MURAH' }}</span>
                                 </div>
                                 <div class="tpproduct__shopping">
                                     <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
@@ -51,9 +51,9 @@
                                 </div>
                                 <div class="tpproduct__descrip">
                                     <ul>
-                                        <li>Type: Organic</li>
-                                        <li>MFG: August 4.2021</li>
-                                        <li>LIFE: 60 days</li>
+                                        <li>Terjual {{ $related->terjual }}+ </li>
+                                        <li>{{ $related->created_at->since() }}</li>
+                                        <li>Jaminan Privasi Aman</li>
                                     </ul>
                                 </div>
                             </div>
