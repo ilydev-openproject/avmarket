@@ -6,6 +6,7 @@
         <div class="tpsidebar__product-thumb p-relative">
             <img src="{{ $recent->getMedia('foto_product')->first()?->getUrl() }}" alt="foto_{{ $recent->nama_product}}" style="aspect-ratio: 1/1; object-fit: cover;">
             <div class="tpsidebar__info bage">
+                <span class="tpproduct__info-discount bage__discount">{{$recent->diskon}}%</span>
                 <span class="tpproduct__info-hot bage__hot">{{ $recent->label == 1 ? 'SUPER MURAH🔥' : 'MURAH' }}</span>
             </div>
         </div>
