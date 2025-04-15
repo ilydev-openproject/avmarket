@@ -6,4 +6,3 @@
         @endif
     </button>
 </div>
-<!-- <button wire:click="updateCount">Refresh Count</button> -->

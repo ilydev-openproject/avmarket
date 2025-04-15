@@ -9,6 +9,7 @@ class AddToFavorite extends Component
 {
 
     public $productId;
+    public string $view = 'livewire.add-to-favorite';
 
     public function addToFavorite()
     {
@@ -31,6 +32,6 @@ class AddToFavorite extends Component
 
     public function render()
     {
-        return view('livewire.add-to-favorite');
+        return view($this->view);
     }
 }

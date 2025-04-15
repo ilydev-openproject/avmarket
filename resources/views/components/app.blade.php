@@ -86,6 +86,8 @@
     <script src="{{ asset('orfarm/assets/js/meanmenu.js') }}"></script>
     <script src="{{ asset('orfarm/assets/js/main.js') }}"></script>
 
+    <script src="//unpkg.com/alpinejs" defer></script>
+
     <script>
         document.addEventListener('livewire:load', function() {
             Livewire.on('favorite-updated', () => {
