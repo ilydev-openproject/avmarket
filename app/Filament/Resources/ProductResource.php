@@ -146,7 +146,8 @@ class ProductResource extends Resource
                     ->label('Judul')
                     ->limit(20),
                 TextColumn::make('slug')
-                    ->label('Slug'),
+                    ->label('Slug')
+                    ->limit(20),
                 TextColumn::make('diskon')
                     ->label('Diskon')
                     ->formatStateUsing(fn($state) => $state . '%'),
