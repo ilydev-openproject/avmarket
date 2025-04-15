@@ -143,7 +143,8 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('nama_product')
-                    ->label('Judul'),
+                    ->label('Judul')
+                    ->limit(20),
                 TextColumn::make('slug')
                     ->label('Slug'),
                 TextColumn::make('diskon')

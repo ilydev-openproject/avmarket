@@ -67,9 +67,8 @@
                             <div class="header__info-user tpcolor__yellow ml-10">
                                 <a href="log-in.html"><i class="icon-user"></i></a>
                             </div>
-                            <div class="header__info-wishlist tpcolor__greenish ml-10">
-                                <a href="wishlist.html"><i class="icon-heart icons"></i></a>
-                            </div>
+
+                            <livewire:favorite-counter />
                             <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
                                 <button><i><img src="{{ asset('orfarm/assets/img/icon/cart-1.svg') }}" alt=""></i>
                                     <span>5</span>

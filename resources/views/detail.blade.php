@@ -96,6 +96,9 @@
                                                         <span><i class="icon-key"></i> Jaminan Privasi Aman</span>
                                                     </li>
                                                     <li>
+                                                        <livewire:add-to-favorite :productId="$product->id" />
+                                                    </li>
+                                                    <li>
                                                         <a href="#"><i class="icon-share-2"></i> Share</a>
                                                     </li>
                                                 </ul>
