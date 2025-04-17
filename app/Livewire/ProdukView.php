@@ -13,9 +13,11 @@ class ProdukView extends Component
 
     public $viewType = 'list';
     public $sort = 'default';
+    public $kategoriSlug;
 
     protected $paginationTheme = 'bootstrap';
     protected $queryString = ['sort'];
+
     public function setSort($value)
     {
         $this->sort = $value;
@@ -30,6 +32,12 @@ class ProdukView extends Component
     {
         $products = Product::query();
 
+        if ($this->kategoriSlug) {
+            $products->whereHas('kategori', function ($query) {
+                $query->where('slug', $this->kategoriSlug);
+            });
+        }
+
         if ($this->sort === 'termurah') {
             $products = $products->orderBy('harga', 'asc');
         } elseif ($this->sort === 'terlaris') {
@@ -39,7 +47,7 @@ class ProdukView extends Component
         }
 
         return view('livewire.produk-view', [
-            'products' => $products->paginate(10),
+            'products' => $products->paginate(5),
         ]);
     }
 }

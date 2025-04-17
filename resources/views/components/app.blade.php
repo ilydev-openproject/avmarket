@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('orfarm/assets/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('orfarm/assets/css/icon-dukamarket.css') }}">
     <link rel="stylesheet" href="{{ asset('orfarm/assets/css/main.css') }}">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     @livewireStyles
 
     <style>
@@ -86,18 +88,28 @@
     <script src="{{ asset('orfarm/assets/js/meanmenu.js') }}"></script>
     <script src="{{ asset('orfarm/assets/js/main.js') }}"></script>
 
-    <script src="//unpkg.com/alpinejs" defer></script>
 
-    <script>
-        document.addEventListener('livewire:load', function() {
-            Livewire.on('favorite-updated', () => {
-                alert('Produk ditambahkan ke favorit!');
-            });
-        });
-    </script>
 
 
     @livewireScripts
+    <!-- Toastr CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        Livewire.on('toastr', ({
+            type,
+            message
+        }) => {
+            toastr.options = {
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "timeOut": "3000",
+                "positionClass": "toast-top-center",
+            };
+            toastr[type](message);
+        });
+    </script>
 </body>
 
 </html>

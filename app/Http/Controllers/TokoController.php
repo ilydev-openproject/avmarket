@@ -18,7 +18,8 @@ class TokoController extends Controller
         $kategoris = Kategori::with('product')->get();
         $kat = Kategori::all();
         $products = Product::with('kategori')->get();
-        return view('toko', compact('kategori', 'product', 'products', 'kategoris', 'produk', 'prodkats', 'kat'));
+        $kategoriSlug = null;
+        return view('toko', compact('kategori', 'product', 'products', 'kategoris', 'produk', 'prodkats', 'kat', 'kategoriSlug'));
     }
 
     public function detail($slug)
@@ -32,5 +33,15 @@ class TokoController extends Controller
         $recentProduct = Product::with('kategori', 'tags')->orderBy('id', 'desc')->limit(3)->get();
 
         return view('detail', compact('product', 'relatedProducts', 'recentProduct'));
+    }
+
+    public function kategori($kategoriSlug)
+    {
+        $kategori = Kategori::where('slug', $kategoriSlug)->firstOrFail();  // Ambil kategori berdasarkan slug
+
+        // Ambil produk berdasarkan kategori
+        $products = Product::where('id_kategori', $kategori->id)->paginate(10);
+        $kategoris = Kategori::with('product')->get();
+        return view('toko', compact('kategoriSlug', 'products', 'kategoris'));
     }
 }

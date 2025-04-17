@@ -21,7 +21,6 @@
                                     <span class="tpproduct__info-hot bage__hot">{{ $related->label == 1 ? 'SUPER MURAH🔥' : 'MURAH' }}</span>
                                 </div>
                                 <div class="tpproduct__shopping">
-                                    <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
                                     <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
                                     <livewire:add-to-favorite :productId="$related->id" view="livewire.icon-favorite" />
                                 </div>
@@ -46,9 +45,7 @@
                                 </div>
                             </div>
                             <div class="tpproduct__hover-text">
-                                <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                    <a class="tp-btn-2" href="cart.html">Add to cart</a>
-                                </div>
+                                <livewire:add-to-cart :productId="$related->id" />
                                 <div class="tpproduct__descrip">
                                     <ul>
                                         <li>Terjual {{ $related->terjual }}+ </li>

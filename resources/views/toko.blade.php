@@ -8,7 +8,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="tpshop__details">
                         <x-toko.kategori :kategoris="$kategoris" />
-                        <livewire:produk-view />
+                        <livewire:produk-view :kategoriSlug="$kategoriSlug" />
                     </div>
                 </div>
             </div>

@@ -40,7 +40,7 @@
                             </div>
                             <div class="tpproduct__hover-text">
                                 <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                    <a class="tp-btn-2" href="shop-details-4.html">Add to cart</a>
+                                    <livewire:add-to-cart :productId="$prod->id" />
                                 </div>
                                 <div class="tpproduct__descrip">
                                     <ul>

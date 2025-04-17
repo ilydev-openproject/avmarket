@@ -69,11 +69,7 @@
                             </div>
 
                             <livewire:favorite-counter />
-                            <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
-                                <button><i><img src="{{ asset('orfarm/assets/img/icon/cart-1.svg') }}" alt=""></i>
-                                    <span>5</span>
-                                </button>
-                            </div>
+                            <livewire:cart-counter />
                         </div>
                     </div>
                 </div>

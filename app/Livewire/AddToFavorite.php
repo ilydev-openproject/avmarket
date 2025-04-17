@@ -10,6 +10,7 @@ class AddToFavorite extends Component
 
     public $productId;
     public string $view = 'livewire.add-to-favorite';
+    public $isFavorite = false;
 
     public function addToFavorite()
     {

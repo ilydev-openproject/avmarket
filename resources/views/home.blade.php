@@ -53,13 +53,13 @@
                     <div class="swiper-slide">
                         <div class="category__item mb-30">
                             <div class="category__thumb fix mb-15">
-                                <a href="shop-details-3.html">
+                                <a href="{{ route('toko.kategori', ['kategoriSlug' => $kategori->slug]) }}">
                                     <img src="{{ $kategori->getFirstMediaUrl('foto_kategori')}}" alt="{{ $kategori->nama_kategori }}">
                                 </a>
                             </div>
                             <div class="category__content">
                                 <h5 class="category__title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                    <a href="shop-details-4.html">{{ ucfirst($kategori->nama_kategori) }}</a>
+                                    <a href="{{ route('toko.kategori', ['kategoriSlug' => $kategori->slug]) }}">{{ ucfirst($kategori->nama_kategori) }}</a>
                                 </h5>
                                 <span class="category__count">{{ $kategori->Product->count() }} items</span>
                             </div>
@@ -91,10 +91,10 @@
                         <div class="swiper-slide">
                             <div class="tpproduct p-relative">
                                 <div class="tpproduct__thumb p-relative text-center">
-                                    <a href="shop-details-4.html">
+                                    <a href="/toko/{{ $product->slug }}">
                                         <img src="{{ $product->getMedia('foto_product')->first()?->getUrl() }}" alt="{{$product->nama_product}}">
                                     </a>
-                                    <a class="tpproduct__thumb-img" href="shop-details-4.html">
+                                    <a class="tpproduct__thumb-img" href="/toko/{{ $product->slug }}">
                                         <img src="{{ $product->getMedia('foto_product')->get(1)?->getUrl() }}" alt="{{$product->nama_product}}">
                                     </a>
                                     <div class="tpproduct__info bage">
@@ -109,10 +109,10 @@
                                 </div>
                                 <div class="tpproduct__content">
                                     <span class="tpproduct__content-weight">
-                                        <a href="shop-details-4.html">{{ ucfirst($product->kategori->nama_kategori) }}</a>
+                                        <a href="/toko/{{ $product->slug }}">{{ ucfirst($product->kategori->nama_kategori) }}</a>
                                     </span>
                                     <h4 class="tpproduct__title">
-                                        <a href="shop-details-4.html">{{ ucfirst($product->nama_product) }}</a>
+                                        <a href="/toko/{{ $product->slug }}">{{ ucfirst($product->nama_product) }}</a>
                                     </h4>
                                     <div class="tpproduct__rating mb-5">
                                         <a href="#"><i class="icon-star_outline1"></i></a>
@@ -127,9 +127,7 @@
                                     </div>
                                 </div>
                                 <div class="tpproduct__hover-text">
-                                    <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                        <a class="tp-btn-2" href="shop-details-4.html">Add to cart</a>
-                                    </div>
+                                    <livewire:add-to-cart :productId="$product->id" />
                                     <div class="tpproduct__descrip">
                                         <ul>
                                             <li>Terjual {{ $product->terjual }}+ </li>
@@ -158,7 +156,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="tpfeature__thumb p-relative pb-40">
-                        <img src="{{ $products->getMedia('foto_product')->first()?->getUrl() }}" alt="">
+                        <img src="{{ $products->getMedia('foto_product')->first()?->getUrl() }}" alt="" style="width: 100%; height: 100%; object-fit: cover;">
                         <div class="tpfeature__shape d-none d-md-block">
                             <img class="tpfeature__shape-one" src="orfarm/assets/img/product/feature-shape-1.png" alt="">
                             <img class="tpfeature__shape-two" src="orfarm/assets/img/product/feature-shape-2.png" alt="">
@@ -184,7 +182,7 @@
                                         <span class="tpfeature__product-">{{ $products->kategori->nama_kategori }}</span>
                                     </div>
                                     <div class="tpfeature__btn">
-                                        <a class="tp-btn-4" href="cart.html">Add To Cart</a>
+                                        <a class="tp-btn-4" href="cart.html">Keranjang</a>
                                     </div>
                                 </div>
                             </div>

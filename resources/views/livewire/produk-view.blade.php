@@ -39,8 +39,6 @@
                                 <span class="tpproduct__info-hot bage__hot">{{ $product->label == 1 ? 'SUPER MURAH🔥' : 'MURAH' }}</span>
                             </div>
                             <div class="tpproduct__shopping">
-                                <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
-                                <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
                                 <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
                             </div>
                         </div>
@@ -64,9 +62,8 @@
                             </div>
                         </div>
                         <div class="tpproduct__hover-text">
-                            <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                <a class="tp-btn-2" href="">Add to cart</a>
-                            </div>
+                            <livewire:add-to-cart :productId="$product->id" :key="'add-to-cart-'.$product->id" />
+
                             <div class="tpproduct__descrip">
                                 <ul>
                                     <li>Terjual {{ $product->terjual }}+ </li>
