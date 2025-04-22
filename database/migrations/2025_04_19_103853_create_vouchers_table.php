@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('heroes', function (Blueprint $table) {
-            $table->string('cta_text')->nullable();
+        Schema::create('vouchers', function (Blueprint $table) {
+            $table->id();
+            $table->string('code')->unique();
+            $table->decimal('potongan', 10, 2);
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('hero', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('vouchers');
     }
 };
