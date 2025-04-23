@@ -24,6 +24,8 @@ class CheckoutForm extends Component
     public $isCalculatingShipping = false;
     public $originCityId = '113';
     public $selectedShipping = null;
+    public $selectedPaymentMethod = 'bni';
+
 
     public function mount()
     {

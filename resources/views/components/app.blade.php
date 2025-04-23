@@ -24,8 +24,6 @@
     <link rel="stylesheet" href="{{ asset('orfarm/assets/css/icon-dukamarket.css') }}">
     <link rel="stylesheet" href="{{ asset('orfarm/assets/css/main.css') }}">
 
-
-
     @livewireStyles
 
     <style>
@@ -197,7 +195,6 @@
     <script src="{{ asset('orfarm/assets/js/ajax-form.js') }}"></script>
     <script src="{{ asset('orfarm/assets/js/meanmenu.js') }}"></script>
     <script src="{{ asset('orfarm/assets/js/main.js') }}"></script>
-
 
 
     @livewireScripts

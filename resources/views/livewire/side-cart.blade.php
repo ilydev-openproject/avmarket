@@ -4,20 +4,14 @@
         <h4 class="tpcart__title">Keranjang Anda</h4>
         <div class="tpcart__product">
             <div class="tpcart__product-list">
-                @php
-                $cartItems = array_slice($cart, 0, 5); // Ambil 5 item pertama
-                $totalCartItems = count($cart);
-                $remainingItems = $totalCartItems - count($cartItems);
-                @endphp
-
                 <ul>
-                    @forelse($cartItems as $id => $item)
+                    @forelse($displayedCart as $id => $item)
                     <li>
                         <div class="tpcart__item">
                             <div class="tpcart__img">
                                 <img src="{{ $item['gambar'] }}" alt="{{ $item['nama'] }}">
                                 <div class="tpcart__del">
-                                    <a href="#" wire:click.prevent="removeFromCart({{ $id }})">
+                                    <a href="#" wire:click.prevent="removeFromCart('{{ $id }}')">
                                         <i class="icon-x-circle"></i>
                                     </a>
                                 </div>

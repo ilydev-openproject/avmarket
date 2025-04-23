@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vouchers', function (Blueprint $table) {
+        Schema::create('order_item', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->unique();
-            $table->decimal('potongan', 10, 2);
+            $table->foreignId('order_id')->constrained();
+            $table->foreignId('product_id')->constrained();
+            $table->string('product_name');
+            $table->decimal('price', 15, 2);
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vouchers');
+        Schema::dropIfExists('order_item');
     }
 };

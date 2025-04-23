@@ -16,6 +16,9 @@ Route::get('/produk/{any}', [TokoController::class, 'detail']);
 Route::get('/keranjang', [CartController::class, 'index'])->name('keranjang');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 
+// routes/web.php
+Route::get('/order/success/{order}', [OrderController::class, 'success'])->name('order.success');
+
 Route::get('/clear-cart', function () {
     session()->forget('cart');
     return 'cart cleared';
