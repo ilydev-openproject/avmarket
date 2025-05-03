@@ -47,7 +47,7 @@ class ProdukView extends Component
         }
 
         return view('livewire.produk-view', [
-            'products' => $products->paginate(5),
+            'products' => $products->paginate(15),
         ]);
     }
 }
