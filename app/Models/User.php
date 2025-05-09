@@ -12,6 +12,8 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
     protected $primaryKey = 'id_user';
+    public $incrementing = true;
+    protected $keyType = 'int';
     /**
      * The attributes that are mass assignable.
      *
@@ -46,5 +48,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function user_cart()
+    {
+        return $this->hasMany(UserCart::class);
     }
 }

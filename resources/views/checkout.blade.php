@@ -20,9 +20,7 @@
     <!-- checkout-area start -->
     <section class="checkout-area pb-50">
         <div class="container">
-            <form action="#">
-                <livewire:checkout-form />
-            </form>
+            <livewire:checkout-form />
         </div>
     </section>
     <!-- checkout-area end -->

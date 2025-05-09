@@ -6,38 +6,42 @@
             <div class="tpcart__product-list">
                 <ul>
                     @forelse($displayedCart as $id => $item)
-                    <li>
-                        <div class="tpcart__item">
-                            <div class="tpcart__img">
-                                <img src="{{ $item['gambar'] }}" alt="{{ $item['nama'] }}">
-                                <div class="tpcart__del">
-                                    <a href="#" wire:click.prevent="removeFromCart('{{ $id }}')">
-                                        <i class="icon-x-circle"></i>
-                                    </a>
+                        <li wire:key="displayed-cart-{{ $id }}">
+                            <div class="tpcart__item">
+                                <div class="tpcart__img">
+                                    <img src="{{ $item['gambar'] }}" alt="{{ $item['nama'] }}">
+                                    <div class="tpcart__del">
+                                        <a wire:click="removeFromCart({{ Auth::check() ? $item['id'] : $id }})">
+                                            <i class="icon-x-circle"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="tpcart__content">
+                                    <span class="tpcart__content-title">
+                                        <a href="#">{{ $item['nama'] }}</a>
+                                    </span>
+                                    <div class="tpcart__cart-price">
+                                        <span class="quantity">{{ $item['quantity'] }} x</span>
+                                        <span class="new-price">Rp{{ number_format($item['harga'], 0, ',', '.') }}</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="tpcart__content">
-                                <span class="tpcart__content-title">
-                                    <a href="#">{{ $item['nama'] }}</a>
-                                </span>
-                                <div class="tpcart__cart-price">
-                                    <span class="quantity">{{ $item['quantity'] }} x</span>
-                                    <span class="new-price">Rp{{ number_format($item['harga'], 0, ',', '.') }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
                     @empty
-                    <li>
-                        <p class="text-center">Keranjang kosong</p>
-                    </li>
+                        <li>
+                            <p class="text-center">Keranjang kosong</p>
+                        </li>
                     @endforelse
 
-                    @if($remainingItems > 0)
-                    <li class="text-center text-muted mt-2">
-                        +{{ $remainingItems }} item lainnya
-                    </li>
+                    @if((int) $remainingItems > 0)
+                        <li class="text-center text-muted mt-2">
+                            +{{ $remainingItems }} item lainnya
+                        </li>
                     @endif
+                    <!-- <pre>{{ json_encode($cart) }}</pre> -->
+                    <!-- <pre>{{ $remainingItems }}</pre> -->
+
+
                 </ul>
             </div>
             <div class="tpcart__checkout">
@@ -47,7 +51,7 @@
                 </div>
                 <div class="tpcart__checkout-btn">
                     <a class="tpcart-btn mb-10" href="/keranjang">Lihat Keranjang</a>
-                    <a class="tpcheck-btn" href="checkout.html">Checkout</a>
+                    <a class="tpcheck-btn" href="/checkout">Checkout</a>
                 </div>
             </div>
         </div>

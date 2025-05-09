@@ -7687,45 +7687,45 @@ p.checkout-coupon input[type="text"]:focus {
     left: 30px;
     font-size: 16px;
 }
-.tptrack__id form,
-.tptrack__email form {
+.tptrack__id .form,
+.tptrack__email .form {
     position: relative;
 }
-.tptrack__id form input,
-.tptrack__email form input {
+.tptrack__id .form input,
+.tptrack__email .form input {
     width: 100%;
     height: 60px;
     border: none;
-    background-color: var(--tp-common-white);
+    background-color: var(--tp-common-white) !important;
     padding: 10px 60px;
     border-radius: 6px;
 }
-.tptrack__id form input::-webkit-input-placeholder,
-.tptrack__email form input::-webkit-input-placeholder {
+.tptrack__id .form input::-webkit-input-placeholder,
+.tptrack__email .form input::-webkit-input-placeholder {
     font-family: var(--tp-ff-jost);
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
     color: #8a94ac;
 }
-.tptrack__id form input:-moz-placeholder,
-.tptrack__email form input:-moz-placeholder {
+.tptrack__id .form input:-moz-placeholder,
+.tptrack__email .form input:-moz-placeholder {
     font-family: var(--tp-ff-jost);
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
     color: #8a94ac;
 }
-.tptrack__id form input::-moz-placeholder,
-.tptrack__email form input::-moz-placeholder {
+.tptrack__id .form input::-moz-placeholder,
+.tptrack__email .form input::-moz-placeholder {
     font-family: var(--tp-ff-jost);
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
     color: #8a94ac;
 }
-.tptrack__id form input:-ms-input-placeholder,
-.tptrack__email form input:-ms-input-placeholder {
+.tptrack__id .form input:-ms-input-placeholder,
+.tptrack__email .form input:-ms-input-placeholder {
     font-family: var(--tp-ff-jost);
     font-weight: 400;
     font-size: 14px;

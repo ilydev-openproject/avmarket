@@ -33,4 +33,9 @@ class Product extends Model implements HasMedia
     {
         return $this->hasMany(Hero::class);
     }
+
+    public function user_cart()
+    {
+        return $this->hasMany(UserCart::class, 'id_product');
+    }
 }

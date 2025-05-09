@@ -80,8 +80,8 @@ class CheckoutForm extends Component
             $response = Http::withHeaders([
                 'key' => env('RAJAONGKIR_API_KEY')
             ])->get('https://api.rajaongkir.com/starter/city', [
-                'province' => $provinceId
-            ]);
+                        'province' => $provinceId
+                    ]);
 
             if ($response->successful()) {
                 $data = $response->json();
@@ -131,11 +131,11 @@ class CheckoutForm extends Component
                 $response = Http::withHeaders([
                     'key' => env('RAJAONGKIR_API_KEY')
                 ])->post('https://api.rajaongkir.com/starter/cost', [
-                    'origin' => $this->originCityId,
-                    'destination' => $this->selectedCity,
-                    'weight' => $this->weight * 1000,
-                    'courier' => $courier
-                ]);
+                            'origin' => $this->originCityId,
+                            'destination' => $this->selectedCity,
+                            'weight' => $this->weight * 1000,
+                            'courier' => $courier
+                        ]);
 
                 $data = $response->json();
 
@@ -192,6 +192,27 @@ class CheckoutForm extends Component
 
         $this->reset($resets[$level] ?? []);
         $this->reset('error');
+    }
+    public function placeOrder()
+    {
+        // Cek apakah user sudah login
+        if (!auth()->check()) {
+            return redirect()->route('login'); // arahkan ke halaman login jika belum login
+        }
+
+        // Validasi sederhana
+        if (!$this->selectedCity || !$this->selectedShipping) {
+            $this->addError('checkout', 'Silakan lengkapi alamat dan pilih metode pengiriman.');
+            return;
+        }
+
+        // Simulasi proses order (di sini kamu bisa menyimpan ke database dsb.)
+        $shipping = $this->shippingCosts[$this->selectedShipping] ?? null;
+
+        if (!$shipping) {
+            $this->addError('checkout', 'Layanan pengiriman tidak valid.');
+            return;
+        }
     }
 
     public function render()

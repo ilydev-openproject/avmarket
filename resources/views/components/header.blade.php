@@ -20,13 +20,14 @@
                                         <a href="/toko">Toko</a>
                                         <ul class="sub-menu">
                                             @php
-                                            use App\Models\Kategori;
-                                            use App\Models\Product;
+                                                use App\Models\Kategori;
+                                                use App\Models\Product;
 
-                                            $kategori = Kategori::with('product')->get();
+                                                $kategori = Kategori::with('product')->get();
                                             @endphp
                                             @foreach ($kategori as $kat)
-                                            <li><a href="/toko/{{ $kat->slug }}">{{ ucfirst($kat->nama_kategori) }}</a></li>
+                                                <li><a href="/toko/{{ $kat->slug }}">{{ ucfirst($kat->nama_kategori) }}</a>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </li>
@@ -65,7 +66,7 @@
                                 <button class="tp-search-toggle"><i class="icon-search"></i></button>
                             </div>
                             <div class="header__info-user tpcolor__yellow ml-10">
-                                <a href="log-in.html"><i class="icon-user"></i></a>
+                                <a href="/profile"><i class="icon-user"></i></a>
                             </div>
 
                             <livewire:favorite-counter />
@@ -100,7 +101,8 @@
     <!-- header-search-end -->
 
     <!-- header-cart-start -->
-    <livewire:side-cart />
+    <livewire:side-cart :key="now()" />
+
     <div class="cartbody-overlay"></div>
     <!-- header-cart-end -->
 
@@ -155,17 +157,23 @@
         <div class="tpsideinfo__nabtab">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Menu</button>
+                    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                        aria-selected="true">Menu</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Categories</button>
+                    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                        data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                        aria-selected="false">Categories</button>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"
+                    tabindex="0">
                     <div class="mobile-menu"></div>
                 </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"
+                    tabindex="0">
                     <div class="tpsidebar-categories">
                         <ul>
                             <li><a href="shop-details.html">Dairy Farm</a></li>
