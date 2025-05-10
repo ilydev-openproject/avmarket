@@ -27,9 +27,9 @@ Route::get('/auth/google/redirect', [GoogleLoginController::class, 'redirectToGo
 Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
 
 // routes/web.php
-Route::middleware(['auth'])->group(function () {
-    Route::get('/profile', \App\Livewire\Profile::class)->name('profil');
-});
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/profile', \App\Livewire\Profile::class)->name('profil');
+// });
 
 // routes/web.php
 Route::get('/order/success/{order}', [OrderController::class, 'success'])->name('order.success');
