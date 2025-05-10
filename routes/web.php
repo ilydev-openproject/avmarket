@@ -9,7 +9,6 @@ use App\Http\Controllers\TokoController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\GoogleLoginController;
-use auth;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/toko', [TokoController::class, 'index']);
