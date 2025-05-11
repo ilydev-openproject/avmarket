@@ -66,8 +66,34 @@
                                 <button class="tp-search-toggle"><i class="icon-search"></i></button>
                             </div>
                             <div class="header__info-user tpcolor__yellow ml-10">
-                                <a href="/profile"><i class="icon-user"></i></a>
+                                <div class="header__menu main-menu text-center">
+                                    <nav id="mobile-menu">
+                                        <ul>
+                                            <li class="has-dropdown">
+                                                <a href="#" class="no-after"><i class="icon-user"></i></a>
+                                                <ul class="sub-menu my-3">
+                                                    <li><a href="/profile">Profil Saya</a></li>
+                                                    <li><a href="/orders">Pesanan Saya</a></li>
+                                                    <li>
+                                                        <a href="#"
+                                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                            Logout
+                                                        </a>
+                                                    </li>
+                                                </ul>
+
+                                                <!-- Form logout tersembunyi -->
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                    style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </li>
+
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
+
 
                             <livewire:favorite-counter />
                             <livewire:cart-counter />

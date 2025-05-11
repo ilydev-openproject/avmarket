@@ -25,6 +25,7 @@ class GoogleLoginController extends Controller
         );
 
         Auth::login($user);
-        return redirect()->intended('/checkout');
+        session()->regenerate();
+        return redirect('/profile');
     }
 }

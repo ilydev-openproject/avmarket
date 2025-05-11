@@ -164,6 +164,15 @@
                 transform: rotate(360deg);
             }
         }
+
+        a.no-after::after {
+            display: none !important;
+        }
+
+        .main-menu ul li a.no-after {
+            padding: 0 !important;
+            /* margin-bottom: 20px; */
+        }
     </style>
 </head>
 

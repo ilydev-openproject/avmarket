@@ -2,6 +2,7 @@
 
 use Livewire\Livewire;
 use App\Livewire\ProdukView;
+use App\Http\Controllers\Profile;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
@@ -26,10 +27,9 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/auth/google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
 
-// routes/web.php
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/profile', \App\Livewire\Profile::class)->name('profil');
-// });
+
+Route::get('/profile', [Profile::class, 'index'])->name('profile');
+
 
 // routes/web.php
 Route::get('/order/success/{order}', [OrderController::class, 'success'])->name('order.success');
