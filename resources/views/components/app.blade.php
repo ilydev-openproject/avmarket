@@ -44,42 +44,43 @@
 
     @if (isset($product))
         <script type="application/ld+json">
-                {
-                    "@context": "https://schema.org",
-                    "@type": "Product",
-                    "name": "{{ $product->name }}",
-                    "image": "{{ asset('image/produk/' . $product->image) }}",
-                    "description": "{{ \Str::limit($product->description, 160) }}",
-                    "sku": "{{ $product->sku }}",
-                    "brand": {
-                        "@type": "Brand",
-                        "name": "Gamora"
-                    },
-                    "offers": {
-                        "@type": "Offer",
-                        "priceCurrency": "IDR",
-                        "price": "{{ $product->price }}",
-                        "availability": "https://schema.org/InStock",
-                        "url": "{{ $meta['url'] }}"
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Product",
+                        "name": "{{ $product->name }}",
+                        "image": "{{ asset('image/produk/' . $product->image) }}",
+                        "description": "{{ \Str::limit($product->description, 160) }}",
+                        "sku": "{{ $product->sku }}",
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "Gamora"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "priceCurrency": "IDR",
+                            "price": "{{ $product->price }}",
+                            "availability": "https://schema.org/InStock",
+                            "url": "{{ $meta['url'] }}"
+                        }
                     }
-                }
-                </script>
+                    </script>
     @else
         <script type="application/ld+json">
-                {
-                    "@context": "https://schema.org",
-                    "@type": "WebPage",
-                    "name": "{{ $meta['title'] }}",
-                    "description": "{{ $meta['description'] }}",
-                    "url": "{{ $meta['url'] }}",
-                    "publisher": {
-                        "@type": "Organization",
-                        "name": "Gamora",
-                        "logo": "{{ asset('image/logo/icon.png') }}"
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "WebPage",
+                        "name": "{{ $meta['title'] }}",
+                        "description": "{{ $meta['description'] }}",
+                        "url": "{{ $meta['url'] }}",
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Gamora",
+                            "logo": "{{ asset('image/logo/icon.png') }}"
+                        }
                     }
-                }
-                </script>
+                    </script>
     @endif
+    google-site-verification=QyHv6G9P1HUqsm6MlywyapoSZa9FtZ3lMiaYrpqrO68
     @livewireStyles
 
 </head>
