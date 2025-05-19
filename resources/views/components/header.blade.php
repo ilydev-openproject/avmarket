@@ -135,18 +135,13 @@
     <!-- mobile-menu-area -->
     <div id="header-sticky-2" class="tpmobile-menu d-xl-none">
         <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-lg-4 col-md-4 col-3 col-sm-3">
-                    <div class="mobile-menu-icon">
-                        <button class="tp-menu-toggle"><i class="icon-menu1"></i></button>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-6 col-sm-4">
-                    <div class="header__logo text-center">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-6 col-md-6 col-6 col-sm-6">
+                    <div class="header__logo">
                         <a href="index.html"><img src="{{ asset('orfarm/assets/img/logo/logo.png') }}" alt=" logo"></a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-3 col-sm-5">
+                <div class="col-lg-6 col-md-6 col-3 col-sm-5">
                     <div class="header__info d-flex align-items-center">
                         <div class="header__info-search tpcolor__purple ml-10 d-none d-sm-block">
                             <button class="tp-search-toggle"><i class="icon-search"></i></button>
@@ -163,6 +158,24 @@
                             </button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-mobile d-lg-none d-block">
+        <div class="container">
+            <div class="row d-flex justify-content-between align-items-center">
+                <div class="col py-3 d-flex justify-content-center align-items-center">
+                    <i class="fad fa-home"></i>
+                </div>
+                <div class="col py-3 d-flex justify-content-center align-items-center">
+                    <i class="fad fa-bags-shopping"></i>
+                </div>
+                <div class="col py-3 d-flex justify-content-center align-items-center">
+                    <i class="fad fa-newspaper"></i>
+                </div>
+                <div class="col py-3 d-flex justify-content-center align-items-center">
+                    <i class="fad fa-user"></i>
                 </div>
             </div>
         </div>

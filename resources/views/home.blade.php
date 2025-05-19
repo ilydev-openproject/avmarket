@@ -4,35 +4,41 @@
         <div class="swiper-container slider-active">
             <div class="swiper-wrapper">
                 @foreach ($hero as $hero)
-                <div class="swiper-slide ">
-                    <div class="tpslider pt-90 pb-0 grey-bg" data-background="orfarm/assets/img/slider/shape-bg.jpg" style="background-size: cover; background-repeat: no-repeat;">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-xxl-5 col-lg-6 col-md-6 col-12 col-sm-6">
-                                    <div class="tpslider__content pt-20">
-                                        <span class="tpslider__sub-title mb-35">{{$hero->subheader}}</span>
-                                        <h2 class="tpslider__title mb-30">{{ $hero->header }}.</h2>
-                                        <p>{!! $hero->paragraph !!}</p>
-                                        <div class="tpslider__btn">
-                                            <a class="tp-btn" href="{{ $hero->cta }}">{{$hero->cta_text}}</a>
+                    <div class="swiper-slide ">
+                        <div class="tpslider pt-90 pb-0 grey-bg" data-background="orfarm/assets/img/slider/shape-bg.jpg"
+                            style="background-size: cover; background-repeat: no-repeat;">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-xxl-5 col-lg-6 col-md-6 col-12 col-sm-6">
+                                        <div class="tpslider__content pt-20">
+                                            <span class="tpslider__sub-title mb-35">{{$hero->subheader}}</span>
+                                            <h2 class="tpslider__title mb-30">{{ $hero->header }}.</h2>
+                                            <p>{!! $hero->paragraph !!}</p>
+                                            <div class="tpslider__btn">
+                                                <a class="tp-btn" href="{{ $hero->cta }}">{{$hero->cta_text}}</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-xxl-7 col-lg-6 col-md-6 col-12 col-sm-6">
-                                    <div class="tpslider__thumb p-relative pt-15">
-                                        <img class="tpslider__thumb-img" src="{{ $hero->getFirstMediaUrl('foto_hero') }}" alt="slider-bg">
-                                        <div class="tpslider__shape d-none d-md-block">
-                                            <img class="tpslider__shape-one" src="orfarm/assets/img/slider/slider-shape-1.png" alt="shape">
-                                            <img class="tpslider__shape-two" src="orfarm/assets/img/slider/slider-shape-2.png" alt="shape">
-                                            <img class="tpslider__shape-three" src="orfarm/assets/img/slider/slider-shape-3.png" alt="shape">
-                                            <img class="tpslider__shape-four" src="orfarm/assets/img/slider/slider-shape-4.png" alt="shape">
+                                    <div class="col-xxl-7 col-lg-6 col-md-6 col-12 col-sm-6">
+                                        <div class="tpslider__thumb p-relative pt-15">
+                                            <img class="tpslider__thumb-img"
+                                                src="{{ $hero->getFirstMediaUrl('foto_hero') }}" alt="slider-bg">
+                                            <div class="tpslider__shape d-none d-md-block">
+                                                <img class="tpslider__shape-one"
+                                                    src="orfarm/assets/img/slider/slider-shape-1.png" alt="shape">
+                                                <img class="tpslider__shape-two"
+                                                    src="orfarm/assets/img/slider/slider-shape-2.png" alt="shape">
+                                                <img class="tpslider__shape-three"
+                                                    src="orfarm/assets/img/slider/slider-shape-3.png" alt="shape">
+                                                <img class="tpslider__shape-four"
+                                                    src="orfarm/assets/img/slider/slider-shape-4.png" alt="shape">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
             </div>
             <div class="tpslider__arrow d-none  d-xxl-block">
@@ -50,21 +56,24 @@
             <div class="swiper-container category-active w-100">
                 <div class="swiper-wrapper d-flex justify-content-start justify-content-xl-center">
                     @foreach ($kategori as $kategori)
-                    <div class="swiper-slide">
-                        <div class="category__item mb-30">
-                            <div class="category__thumb fix mb-15">
-                                <a href="{{ route('toko.kategori', ['kategoriSlug' => $kategori->slug]) }}">
-                                    <img src="{{ $kategori->getFirstMediaUrl('foto_kategori')}}" alt="{{ $kategori->nama_kategori }}">
-                                </a>
-                            </div>
-                            <div class="category__content">
-                                <h5 class="category__title" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                    <a href="{{ route('toko.kategori', ['kategoriSlug' => $kategori->slug]) }}">{{ ucfirst($kategori->nama_kategori) }}</a>
-                                </h5>
-                                <span class="category__count">{{ $kategori->Product->count() }} items</span>
+                        <div class="swiper-slide">
+                            <div class="category__item mb-30">
+                                <div class="category__thumb fix mb-15">
+                                    <a href="{{ route('toko.kategori', ['kategoriSlug' => $kategori->slug]) }}">
+                                        <img src="{{ $kategori->getFirstMediaUrl('foto_kategori')}}"
+                                            alt="{{ $kategori->nama_kategori }}">
+                                    </a>
+                                </div>
+                                <div class="category__content">
+                                    <h5 class="category__title"
+                                        style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        <a
+                                            href="{{ route('toko.kategori', ['kategoriSlug' => $kategori->slug]) }}">{{ ucfirst($kategori->nama_kategori) }}</a>
+                                    </h5>
+                                    <span class="category__count">{{ $kategori->Product->count() }} items</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -80,7 +89,8 @@
                     <div class="tpsection mb-35">
                         <h4 class="tpsection__sub-title">~ Produk Spesial ~</h4>
                         <h4 class="tpsection__title">Penawaran Produk Mingguan</h4>
-                        <p>Nikmati diskon eksklusif setiap minggu untuk produk pilihan! Hemat lebih banyak dan temukan barang favorit Anda dengan harga terbaik.</p>
+                        <p>Nikmati diskon eksklusif setiap minggu untuk produk pilihan! Hemat lebih banyak dan temukan
+                            barang favorit Anda dengan harga terbaik.</p>
                     </div>
                 </div>
             </div>
@@ -88,62 +98,70 @@
                 <div class="swiper-container tpproduct-active tpslider-bottom p-relative">
                     <div class="swiper-wrapper">
                         @foreach ($product as $product)
-                        <div class="swiper-slide">
-                            <div class="tpproduct p-relative">
-                                <div class="tpproduct__thumb p-relative text-center">
-                                    <a href="/produk/{{ $product->slug }}">
-                                        <img src="{{ $product->getMedia('foto_product')->first()?->getUrl() }}" alt="{{$product->nama_product}}">
-                                    </a>
-                                    <a class="tpproduct__thumb-img" href="/produk/{{ $product->slug }}">
-                                        <img src="{{ $product->getMedia('foto_product')->get(1)?->getUrl() }}" alt="{{$product->nama_product}}">
-                                    </a>
-                                    <div class="tpproduct__info bage">
-                                        <span class="tpproduct__info-discount bage__discount">{{$product->diskon}}%</span>
-                                        <span class="tpproduct__info-hot bage__hot">{{ $product->label == 1 ? 'SUPER MURAH🔥' : '' }}</span>
+                            <div class="swiper-slide">
+                                <div class="tpproduct p-relative">
+                                    <div class="tpproduct__thumb p-relative text-center">
+                                        <a href="/produk/{{ $product->slug }}">
+                                            <img src="{{ $product->getMedia('foto_product')->first()?->getUrl() }}"
+                                                alt="{{$product->nama_product}}">
+                                        </a>
+                                        <a class="tpproduct__thumb-img" href="/produk/{{ $product->slug }}">
+                                            <img src="{{ $product->getMedia('foto_product')->get(1)?->getUrl() }}"
+                                                alt="{{$product->nama_product}}">
+                                        </a>
+                                        <div class="tpproduct__info bage">
+                                            <span
+                                                class="tpproduct__info-discount bage__discount">{{$product->diskon}}%</span>
+                                            <span
+                                                class="tpproduct__info-hot bage__hot">{{ $product->label == 1 ? 'SUPER MURAH🔥' : '' }}</span>
+                                        </div>
+                                        <div class="tpproduct__shopping">
+                                            <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i
+                                                    class="icon-heart icons"></i></a>
+                                            <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
+                                            <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
+                                        </div>
                                     </div>
-                                    <div class="tpproduct__shopping">
-                                        <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i class="icon-heart icons"></i></a>
-                                        <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
-                                        <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
+                                    <div class="tpproduct__content">
+                                        <span class="tpproduct__content-weight">
+                                            <a
+                                                href="/produk/{{ $product->slug }}">{{ ucfirst($product->kategori->nama_kategori) }}</a>
+                                        </span>
+                                        <h4 class="tpproduct__title">
+                                            <a href="/produk/{{ $product->slug }}">{{ ucfirst($product->nama_product) }}</a>
+                                        </h4>
+                                        <div class="tpproduct__rating mb-5">
+                                            <a href="#"><i class="icon-star_outline1"></i></a>
+                                            <a href="#"><i class="icon-star_outline1"></i></a>
+                                            <a href="#"><i class="icon-star_outline1"></i></a>
+                                            <a href="#"><i class="icon-star_outline1"></i></a>
+                                            <a href="#"><i class="icon-star_outline1"></i></a>
+                                        </div>
+                                        <div class="tpproduct__price">
+                                            <span>Rp{{ number_format($product->harga, 0, ',', '.') }}</span><br>
+                                            <del>Rp{{ number_format($product->harga + ($product->harga * $product->diskon / 100), 0, ',', '.') }}</del>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="tpproduct__content">
-                                    <span class="tpproduct__content-weight">
-                                        <a href="/produk/{{ $product->slug }}">{{ ucfirst($product->kategori->nama_kategori) }}</a>
-                                    </span>
-                                    <h4 class="tpproduct__title">
-                                        <a href="/produk/{{ $product->slug }}">{{ ucfirst($product->nama_product) }}</a>
-                                    </h4>
-                                    <div class="tpproduct__rating mb-5">
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                        <a href="#"><i class="icon-star_outline1"></i></a>
-                                    </div>
-                                    <div class="tpproduct__price">
-                                        <span>Rp{{ number_format($product->harga, 0, ',', '.') }}</span><br>
-                                        <del>Rp{{ number_format($product->harga + ($product->harga * $product->diskon / 100), 0, ',', '.') }}</del>
-                                    </div>
-                                </div>
-                                <div class="tpproduct__hover-text">
-                                    <livewire:add-to-cart :productId="$product->id" />
-                                    <div class="tpproduct__descrip">
-                                        <ul>
-                                            <li>Terjual {{ $product->terjual }}+ </li>
-                                            <li>{{ $product->created_at->since() }}</li>
-                                            <li>Jaminan Privasi Aman</li>
-                                        </ul>
+                                    <div class="tpproduct__hover-text">
+                                        <livewire:add-to-cart :productId="$product->id" />
+                                        <div class="tpproduct__descrip">
+                                            <ul>
+                                                <li>Terjual {{ $product->terjual }}+ </li>
+                                                <li>{{ $product->created_at->since() }}</li>
+                                                <li>Jaminan Privasi Aman</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
                 <div class="tpproduct-btn">
-                    <div class="tpprduct-arrow tpproduct-btn__prv"><a href="#"><i class="icon-chevron-left"></i></a></div>
-                    <div class="tpprduct-arrow tpproduct-btn__nxt"><a href="#"><i class="icon-chevron-right"></i></a></div>
+                    <div class="tpprduct-arrow tpproduct-btn__prv"><a href="#"><i class="icon-chevron-left"></i></a>
+                    </div>
+                    <div class="tpprduct-arrow tpproduct-btn__nxt"><a href="#"><i class="icon-chevron-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,10 +174,13 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12">
                     <div class="tpfeature__thumb p-relative pb-40">
-                        <img src="{{ $products->getMedia('foto_product')->first()?->getUrl() }}" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="{{ $products->getMedia('foto_product')->first()?->getUrl() }}" alt=""
+                            style="width: 100%; height: 100%; object-fit: cover;">
                         <div class="tpfeature__shape d-none d-md-block">
-                            <img class="tpfeature__shape-one" src="orfarm/assets/img/product/feature-shape-1.png" alt="">
-                            <img class="tpfeature__shape-two" src="orfarm/assets/img/product/feature-shape-2.png" alt="">
+                            <img class="tpfeature__shape-one" src="orfarm/assets/img/product/feature-shape-1.png"
+                                alt="">
+                            <img class="tpfeature__shape-two" src="orfarm/assets/img/product/feature-shape-2.png"
+                                alt="">
                         </div>
                     </div>
                 </div>
@@ -167,8 +188,10 @@
                     <div class="tpproduct-feature p-relative pt-45 pb-40">
                         <div class="tpsection tpfeature__content mb-35">
                             <h4 class="tpsection__sub-title mb-0">~ Pilihan Terbaik Untuk Kamu ~</h4>
-                            <h4 class="tpsection__title tpfeature__title mb-25">{{ $products->nama_product }} <br> <span>{{ $product->brand }}</span> - Averros Indonesia</h4>
-                            <p>{!! substr($product->ringkasan, 0, 100) !!}{!! strlen($product->ringkasan) > 100 ? '...' : '' !!}</p>
+                            <h4 class="tpsection__title tpfeature__title mb-25">{{ $products->nama_product }} <br>
+                                <span>{{ $product->brand }}</span> - Averros Indonesia</h4>
+                            <p>{!! substr($product->ringkasan, 0, 100) !!}{!! strlen($product->ringkasan) > 100 ? '...' : '' !!}
+                            </p>
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
@@ -179,7 +202,8 @@
                                     </div>
                                     <div class="tpfeature__product-item mb-45">
                                         <h4 class="tpfeature__product-title">Kategori:</h4>
-                                        <span class="tpfeature__product-">{{ $products->kategori->nama_kategori }}</span>
+                                        <span
+                                            class="tpfeature__product-">{{ $products->kategori->nama_kategori }}</span>
                                     </div>
                                     <div class="tpfeature__btn">
                                         <a class="tp-btn-4" href="cart.html">Keranjang</a>
@@ -190,7 +214,8 @@
                                 <div class="tpfeature__box">
                                     <div class="tpfeature__product-item mb-25">
                                         <h4 class="tpfeature__product-title">Ingredient:</h4>
-                                        <span class="tpfeature__product-info text-truncate ">{!! $products->ingredient !!}</span>
+                                        <span
+                                            class="tpfeature__product-info text-truncate ">{!! $products->ingredient !!}</span>
                                     </div>
                                     <div class="tpfeature__product-item mb-45">
                                         <h4 class="tpfeature__product-title">Ukuran:</h4>
@@ -203,7 +228,8 @@
                             </div>
                         </div>
                         <div class="tpfeature__shape d-none d-md-block">
-                            <img class="tpfeature__shape-three" src="orfarm/assets/img/product/feature-shape-3.png" alt="">
+                            <img class="tpfeature__shape-three" src="orfarm/assets/img/product/feature-shape-3.png"
+                                alt="">
                         </div>
                     </div>
                 </div>
@@ -217,20 +243,21 @@
         <div class="container">
             <div class="row">
                 @foreach ($promo as $promo)
-                <div class="col-lg-4 col-md-6">
-                    <div class="tpbanner__item mb-30">
-                        <a href="shop-3.html">
-                            <div class="tpbanner__content" data-background="{{ $promo->getMedia('banner_promo')->first()?->getUrl() }}">
-                                <span class="tpbanner__sub-title mb-10">{{ ucfirst($promo->judul) }}</span>
-                                @php
-                                $text_promo = ucfirst(Str::limit(strip_tags($promo->text_promo), 35))
-                                @endphp
-                                <h4 class="tpbanner__title mb-30">{{ $text_promo }}</h4>
-                                <p>Lihat <strong>{{$promo->judul}}</strong> nyaaa</p>
-                            </div>
-                        </a>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="tpbanner__item mb-30">
+                            <a href="shop-3.html">
+                                <div class="tpbanner__content"
+                                    data-background="{{ $promo->getMedia('banner_promo')->first()?->getUrl() }}">
+                                    <span class="tpbanner__sub-title mb-10">{{ ucfirst($promo->judul) }}</span>
+                                    @php
+                                        $text_promo = ucfirst(Str::limit(strip_tags($promo->text_promo), 35))
+                                    @endphp
+                                    <h4 class="tpbanner__title mb-30">{{ $text_promo }}</h4>
+                                    <p>Lihat <strong>{{$promo->judul}}</strong> nyaaa</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -253,9 +280,14 @@
                     <div class="tpnavtab__area pb-40">
                         <nav>
                             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all" aria-selected="true">Semua</button>
+                                <button class="nav-link active" id="nav-all-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all"
+                                    aria-selected="true">Semua</button>
                                 @foreach ($kategoris as $kat)
-                                <button class="nav-link" id="nav-{{$kat->slug}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{$kat->slug}}" type="button" role="tab" aria-controls="nav-{{$kat->slug}}" aria-selected="false">{{ ucfirst($kat->nama_kategori) }}</button>
+                                    <button class="nav-link" id="nav-{{$kat->slug}}-tab" data-bs-toggle="tab"
+                                        data-bs-target="#nav-{{$kat->slug}}" type="button" role="tab"
+                                        aria-controls="nav-{{$kat->slug}}"
+                                        aria-selected="false">{{ ucfirst($kat->nama_kategori) }}</button>
                                 @endforeach
                             </div>
                         </nav>
@@ -277,7 +309,7 @@
     <!-- product-area-end -->
 
     <!-- product-coundown-area-start -->
-    <section class="product-coundown-area tpcoundown__bg grey-bg pb-25" data-background="orfarm/assets/img/banner/coundpwn-bg-1.png">
+    <!-- <section class="product-coundown-area tpcoundown__bg grey-bg pb-25" data-background="orfarm/assets/img/banner/coundpwn-bg-1.png">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -306,7 +338,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- product-coundown-area-end -->
 
     <!-- blog-area-start -->
@@ -334,10 +366,13 @@
                                     <span class="author-by"><a href="#">Admin</a></span>
                                     <span class="post-data"><a href="#">SEP 15. 2022</a></span>
                                 </div>
-                                <h4 class="tpblog__title"><a href="blog-details.html">Avocado Grilled Salmon, Rich In Nutrients For The Body</a></h4>
-                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...</p>
+                                <h4 class="tpblog__title"><a href="blog-details.html">Avocado Grilled Salmon, Rich In
+                                        Nutrients For The Body</a></h4>
+                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...
+                                </p>
                                 <div class="tpblog__details">
-                                    <a href="blog-details.html">Continue reading <i class="icon-chevrons-right"></i> </a>
+                                    <a href="blog-details.html">Continue reading <i class="icon-chevrons-right"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -355,7 +390,8 @@
                                 </div>
                                 <h4 class="tpblog__title"><a href="blog-details.html">The Best Great Benefits Of
                                         Fresh Beef For Women's Health</a></h4>
-                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...</p>
+                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...
+                                </p>
                                 <div class="tpblog__details">
                                     <a href="blog-details.html">Continue reading <i class="icon-chevrons-right"></i></a>
                                 </div>
@@ -375,7 +411,8 @@
                                 </div>
                                 <h4 class="tpblog__title"><a href="blog-details.html">Ways To Choose Fruits &
                                         Seafoods Good For Pregnancy</a></h4>
-                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...</p>
+                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...
+                                </p>
                                 <div class="tpblog__details">
                                     <a href="blog-details.html">Continue reading <i class="icon-chevrons-right"></i></a>
                                 </div>
@@ -393,8 +430,10 @@
                                     <span class="author-by"><a href="#">Admin</a></span>
                                     <span class="post-data"><a href="#">SEP 15. 2022</a></span>
                                 </div>
-                                <h4 class="tpblog__title"><a href="blog-details.html">Summer Breakfast For The Healthy Morning With Tomatoes</a></h4>
-                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...</p>
+                                <h4 class="tpblog__title"><a href="blog-details.html">Summer Breakfast For The Healthy
+                                        Morning With Tomatoes</a></h4>
+                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...
+                                </p>
                                 <div class="tpblog__details">
                                     <a href="blog-details.html">Continue reading <i class="icon-chevrons-right"></i></a>
                                 </div>
@@ -412,8 +451,10 @@
                                     <span class="author-by"><a href="#">Admin</a></span>
                                     <span class="post-data"><a href="#">SEP 15. 2022</a></span>
                                 </div>
-                                <h4 class="tpblog__title"><a href="blog-details.html">Popular Reasons You Must Drinks Juice Everyday</a></h4>
-                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...</p>
+                                <h4 class="tpblog__title"><a href="blog-details.html">Popular Reasons You Must Drinks
+                                        Juice Everyday</a></h4>
+                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...
+                                </p>
                                 <div class="tpblog__details">
                                     <a href="blog-details.html">Continue reading <i class="icon-chevrons-right"></i></a>
                                 </div>
@@ -431,8 +472,10 @@
                                     <span class="author-by"><a href="#">Admin</a></span>
                                     <span class="post-data"><a href="#">SEP 15. 2022</a></span>
                                 </div>
-                                <h4 class="tpblog__title"><a href="blog-details.html">Perfect Quality Reasonable Price For Your Family</a></h4>
-                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...</p>
+                                <h4 class="tpblog__title"><a href="blog-details.html">Perfect Quality Reasonable Price
+                                        For Your Family</a></h4>
+                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...
+                                </p>
                                 <div class="tpblog__details">
                                     <a href="blog-details.html">Continue reading <i class="icon-chevrons-right"></i></a>
                                 </div>
@@ -450,8 +493,10 @@
                                     <span class="author-by"><a href="#">Admin</a></span>
                                     <span class="post-data"><a href="#">SEP 15. 2022</a></span>
                                 </div>
-                                <h4 class="tpblog__title"><a href="blog-details.html">Ways To Choose Fruits Seafoods Good For Pregnancy</a></h4>
-                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...</p>
+                                <h4 class="tpblog__title"><a href="blog-details.html">Ways To Choose Fruits Seafoods
+                                        Good For Pregnancy</a></h4>
+                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...
+                                </p>
                                 <div class="tpblog__details">
                                     <a href="blog-details.html">Continue reading <i class="icon-chevrons-right"></i></a>
                                 </div>
@@ -469,8 +514,10 @@
                                     <span class="author-by"><a href="#">Admin</a></span>
                                     <span class="post-data"><a href="#">SEP 15. 2022</a></span>
                                 </div>
-                                <h4 class="tpblog__title"><a href="blog-details.html">The Best Great Benefits Of Fresh Beef For Women’s Health</a></h4>
-                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...</p>
+                                <h4 class="tpblog__title"><a href="blog-details.html">The Best Great Benefits Of Fresh
+                                        Beef For Women’s Health</a></h4>
+                                <p>These are the people who make your life easier. Egestas is tristique vestibulum...
+                                </p>
                                 <div class="tpblog__details">
                                     <a href="blog-details.html">Continue reading <i class="icon-chevrons-right"></i></a>
                                 </div>
