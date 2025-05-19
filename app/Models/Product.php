@@ -38,4 +38,8 @@ class Product extends Model implements HasMedia
     {
         return $this->hasMany(UserCart::class, 'id_product');
     }
+    public function order_item()
+    {
+        return $this->hasMany(OrderItem::class, 'product_id', 'id_product');
+    }
 }

@@ -66,8 +66,8 @@ return [
 
         'user' => [
             'driver' => 'local',
-            'root'   => public_path('user'),
-            'url'    => env('APP_URL') . '/user',
+            'root' => public_path('user'),
+            'url' => env('APP_URL') . '/user',
         ],
 
         'foto_product' => [
@@ -82,6 +82,20 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/public/gambar'),
             'url' => env('APP_URL') . '/storage/gambar',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+        'posts' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/posts'),
+            'url' => env('APP_URL') . '/storage/posts',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+        'profile_photo' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/profile_photo'),
+            'url' => env('APP_URL') . '/storage/profile_photo',
             'visibility' => 'public',
             'throw' => false,
         ],

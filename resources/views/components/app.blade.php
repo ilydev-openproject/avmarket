@@ -23,6 +23,9 @@
     <link rel="stylesheet" href="{{ asset('orfarm/assets/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('orfarm/assets/css/icon-dukamarket.css') }}">
     <link rel="stylesheet" href="{{ asset('orfarm/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     @livewireStyles
 
@@ -173,6 +176,20 @@
             padding: 0 !important;
             /* margin-bottom: 20px; */
         }
+
+        .uploadfoto {
+            appearance: base;
+        }
+
+        .uploadfoto label {
+            background-color: indigo;
+            color: white;
+            padding: 0.5rem;
+            font-family: sans-serif;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
     </style>
 </head>
 
@@ -210,6 +227,8 @@
     <!-- Toastr CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
 
     <script>
         Livewire.on('toastr', ({
@@ -225,7 +244,6 @@
             toastr[type](message);
         });
     </script>
-
 </body>
 
 </html>

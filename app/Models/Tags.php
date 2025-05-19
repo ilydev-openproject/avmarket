@@ -21,4 +21,14 @@ class Tags extends Model
     {
         return $this->hasMany(Hero::class);
     }
+
+    public function posts()
+    {
+        return $this->belongsToMany(
+            Post::class,
+            'post_tags',
+            'tag_id',
+            'post_id'
+        );
+    }
 }

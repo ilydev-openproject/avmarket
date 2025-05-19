@@ -32,7 +32,7 @@
                                         </ul>
                                     </li>
                                     <li class=" has-dropdown">
-                                        <a href="blog.html">Blog</a>
+                                        <a href="/blog">Blog</a>
                                         <ul class="sub-menu">
                                             <li><a href="blog.html">Big image</a></li>
                                             <li><a href="blog-right-sidebar.html">Right sidebar</a></li>

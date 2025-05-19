@@ -27,4 +27,9 @@ class Kategori extends Model implements HasMedia
     {
         return $this->hasMany(Hero::class);
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'kategori_id', 'id_kategori');
+    }
 }
