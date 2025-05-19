@@ -34,13 +34,14 @@
                                     <li class=" has-dropdown">
                                         <a href="/blog">Blog</a>
                                         <ul class="sub-menu">
-                                            <li><a href="blog.html">Big image</a></li>
-                                            <li><a href="blog-right-sidebar.html">Right sidebar</a></li>
-                                            <li><a href="blog-left-sidebar.html">Left sidebar</a></li>
-                                            <li><a href="blog-details.html">Single Post</a></li>
+                                            @foreach ($kategori as $kat)
+                                                <li><a
+                                                        href="{{ route('blog.byKategori', $kat['slug']) }}">{{ ucwords($kat->nama_kategori) }}</a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </li>
-                                    <li class="has-dropdown">
+                                    <li class=" has-dropdown">
                                         <a href="about.html">Pages</a>
                                         <ul class="sub-menu">
                                             <li><a href="shop-location.html">Shop Location One</a></li>

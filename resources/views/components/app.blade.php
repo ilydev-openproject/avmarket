@@ -196,7 +196,7 @@
 <body>
     <x-scrolltop></x-scrolltop>
 
-    <x-header></x-header>
+    <x-header :kategori-slug="$kategoriSlug ?? null" :tag-slug="$tagSlug ?? null"></x-header>
 
     <main>
         {{ $slot }}

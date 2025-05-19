@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index($kategoriSlug = null)
     {
         $hero = Hero::with('product')->get();
         $kategori = Kategori::with('product')->get();
@@ -22,6 +22,6 @@ class HomeController extends Controller
         $kat = Kategori::all();
         $promo = Promo::inRandomOrder()->limit(3)->get();
         $products = Product::with('kategori')->inRandomOrder()->first();
-        return view('home', compact('hero', 'kategori', 'product', 'products', 'promo', 'kategoris', 'produk', 'prodkats', 'kat'));
+        return view('home', compact('hero', 'kategori', 'product', 'products', 'promo', 'kategoris', 'produk', 'prodkats', 'kat', 'kategoriSlug'));
     }
 }
