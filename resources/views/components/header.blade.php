@@ -6,7 +6,7 @@
                 <div class="row align-items-center">
                     <div class="col-xl-3">
                         <div class="header__logo">
-                            <a href="/"><img src="{{ asset('image/logo/logo.png') }}" alt=""></a>
+                            <a href="/"><img src="{{ asset('image/logo/logo.png') }}" height="50" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-6">

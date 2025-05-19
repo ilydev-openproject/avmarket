@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="updateProfile" x-data>
+    <form wire:submit.prevent="updateProfile">
         <div class="tptrack__content grey-bg">
             <div class="tptrack__item d-flex mb-20">
                 <div class="tptrack__item-icon">
@@ -77,7 +77,6 @@
                     @error('name') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
             </div>
-
             <div class="tptrack__btn">
                 <button type="submit" class="tptrack__submition active">Simpan<i
                         class="fal fa-long-arrow-right"></i></button>
