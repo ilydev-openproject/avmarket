@@ -201,7 +201,8 @@
                                             </ul>
                                             <p>Lemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut <br>
                                                 fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
-                                                <br> sequi nesciunt.</p>
+                                                <br> sequi nesciunt.
+                                            </p>
                                         </div>
                                         <div class="tpdescription__product-thumb">
                                             <img src="assets/img/product/product-single-1.png" alt="">

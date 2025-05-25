@@ -16,7 +16,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/toko', [TokoController::class, 'index']);
 
 Route::get('/toko/{kategoriSlug}', [TokoController::class, 'kategori'])->name('toko.kategori');
-Route::get('/produk/{any}', [TokoController::class, 'detail']);
+Route::get('/produk/{slug}', [TokoController::class, 'detail'])->name('product.detail');
 Route::get('/keranjang', [CartController::class, 'index'])->name('keranjang');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 

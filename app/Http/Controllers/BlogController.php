@@ -61,11 +61,11 @@ class BlogController extends Controller
             ->orderBy('created_at', 'asc')
             ->first();
         $meta = [
-            'meta_title' => $post->meta_title ?? $post->title,
-            'meta_description' => $post->meta_description ?? \Str::limit(strip_tags($post->content), 150),
-            'meta_keywords' => $post->meta_keywords ?? $post->title,
-            'meta_image' => asset('image/logo/icon.png'), // Optional: jika kamu pakai featured image
-            'meta_url' => url()->current(),
+            // 'meta_title' => $post->meta_title ?? $post->title,
+            // 'meta_description' => $post->meta_description ?? \Str::limit(strip_tags($post->content), 150),
+            // 'meta_keywords' => $post->meta_keywords ?? $post->title,
+            // 'meta_image' => asset('image/logo/icon.png'), // Optional: jika kamu pakai featured image
+            // 'meta_url' => url()->current(),
         ];
         return view('blog.show', compact('post', 'kategori', 'tags', 'previousPost', 'nextPost', 'meta'));
     }

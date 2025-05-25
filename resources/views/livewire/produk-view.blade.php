@@ -34,10 +34,10 @@
                     <div class="col">
                         <div class="tpproduct p-relative mb-20">
                             <div class="tpproduct__thumb p-relative text-center">
-                                <a href="/produk/{{ $product->slug }}"><img
+                                <a href="{{ route('product.detail', $product->slug) }}"><img
                                         src="{{ $product->getMedia('foto_product')->first()?->getUrl() }}"
                                         alt="{{$product->nama_product}}" style="aspect-ratio: 1/1; object-fit: cover;"></a>
-                                <a class="tpproduct__thumb-img" href="/produk/{{ $product->slug }}"><img
+                                <a class="tpproduct__thumb-img" href="{{ route('product.detail', $product->slug) }}"><img
                                         src="{{ $product->getMedia('foto_product')->get(1)?->getUrl() }}"
                                         alt="{{$product->nama_product}}" style="aspect-ratio: 1/1; object-fit: cover;"></a>
                                 <div class="tpproduct__info bage">
@@ -52,10 +52,11 @@
                             <div class="tpproduct__content">
                                 <span class="tpproduct__content-weight">
                                     <a
-                                        href="/produk/{{ $product->slug }}">{{ ucfirst($product->kategori->nama_kategori) }}</a>
+                                        href="{{ route('product.detail', $product->slug) }}">{{ ucfirst($product->kategori->nama_kategori) }}</a>
                                 </span>
                                 <h4 class="tpproduct__title">
-                                    <a href="/produk/{{ $product->slug }}">{{ ucfirst($product->nama_product) }}</a>
+                                    <a
+                                        href="{{ route('product.detail', $product->slug) }}">{{ ucfirst($product->nama_product) }}</a>
                                 </h4>
                                 <div class="tpproduct__rating mb-5">
                                     <a href="#"><i class="icon-star_outline1"></i></a>

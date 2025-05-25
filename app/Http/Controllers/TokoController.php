@@ -32,14 +32,11 @@ class TokoController extends Controller
             ->take(6)
             ->get();
 
-        $recentProduct = Product::with('kategori', 'tags')
-            ->latest()
-            ->take(3)
-            ->get();
+        $recentProduct = Product::with('kategori', 'tags')->latest()->limit(3)->get();
 
         $meta = [
             'meta_title' => $product->nama_product ?? $product->title,
-            'meta_description' => $product->deskripsi ?? \Str::limit(strip_tags($product->content ?? ''), 150),
+            'meta_description' => $product->deskripsi ?? \Str::limit(strip_tags($product->content), 150),
             'meta_keywords' => $product->keywords ?? $product->title,
             'meta_image' => $product->getFirstMediaUrl('foto_product') ?? asset('image/logo/icon.png'),
             'meta_url' => url()->current(),
@@ -47,6 +44,7 @@ class TokoController extends Controller
 
         return view('detail', compact('product', 'relatedProducts', 'recentProduct', 'meta'));
     }
+
 
 
     public function kategori($kategoriSlug)
