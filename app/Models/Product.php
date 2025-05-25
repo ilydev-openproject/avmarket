@@ -13,7 +13,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Product extends Model implements HasMedia
 {
-    use InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
     protected $casts = [
         'foto_product' => 'array',
     ];
@@ -41,5 +41,17 @@ class Product extends Model implements HasMedia
     public function order_item()
     {
         return $this->hasMany(OrderItem::class, 'product_id', 'id_product');
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->format('webp') // atau 'jpg'
+            ->width(300)
+            ->height(300)
+            ->performOnCollections('foto_product')
+            ->sharpen(10)
+            ->queued();
+
     }
 }

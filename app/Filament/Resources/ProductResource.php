@@ -95,6 +95,9 @@ class ProductResource extends Resource
                             ->label('Foto atau desain (600x600)')
                             ->disk('foto_product')
                             ->collection('foto_product')
+                            ->conversion('webp')
+                            ->image()
+                            ->imageEditor()
                             ->multiple()
                             ->required(),
                         Section::make([
