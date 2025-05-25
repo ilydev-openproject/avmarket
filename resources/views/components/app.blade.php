@@ -5,25 +5,25 @@
     <meta name="google-site-verification" content="QyHv6G9P1HUqsm6MlywyapoSZa9FtZ3lMiaYrpqrO68" />
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ $meta['title'] }}</title>
-    <meta name="description" content="{{ $meta['description'] }}">
-    <meta name="keywords" content="{{ $meta['keywords'] }}">
+    <title>{{ $meta['meta_title'] ?? $meta['title'] }}</title>
+    <meta name="description" content="{{ $meta['meta_description'] ?? $meta['description'] }}">
+    <meta name="keywords" content="{{ $meta['meta_keywords'] ?? $meta['keywords'] }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index,follow">
-    <link rel="canonical" href="{{ $meta['url'] }}">
+    <link rel="canonical" href="{{ $meta['meta_url'] ?? $meta['url'] }}">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="{{ $meta['title'] }}">
-    <meta property="og:description" content="{{ $meta['description'] }}">
-    <meta property="og:image" content="{{ $meta['image'] }}">
-    <meta property="og:url" content="{{ $meta['url'] }}">
+    <meta property="og:title" content="{{ $meta['meta_title'] ?? $meta['title'] }}">
+    <meta property="og:description" content="{{ $meta['meta_description'] ?? $meta['description'] }}">
+    <meta property="og:image" content="{{ $meta['meta_image'] ?? $meta['image'] }}">
+    <meta property="og:url" content="{{ $meta['meta_url'] ?? $meta['url'] }}">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $meta['title'] }}">
-    <meta name="twitter:description" content="{{ $meta['description'] }}">
-    <meta name="twitter:image" content="{{ $meta['image'] }}">
+    <meta name="twitter:title" content="{{ $meta['meta_title'] ?? $meta['title'] }}">
+    <meta name="twitter:description" content="{{ $meta['meta_description'] ?? $meta['description'] }}">
+    <meta name="twitter:image" content="{{ $meta['meta_image'] ?? $meta['image'] }}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/webp" href="{{ asset('image/logo/icon.png') }}">
@@ -45,41 +45,41 @@
 
     @if (isset($product))
         <script type="application/ld+json">
-                                {
-                                    "@context": "https://schema.org",
-                                    "@type": "Product",
-                                    "name": "{{ $product->name }}",
-                                    "image": "{{ asset('image/produk/' . $product->image) }}",
-                                    "description": "{{ \Str::limit($product->description, 160) }}",
-                                    "sku": "{{ $product->sku }}",
-                                    "brand": {
-                                        "@type": "Brand",
-                                        "name": "Gamora"
-                                    },
-                                    "offers": {
-                                        "@type": "Offer",
-                                        "priceCurrency": "IDR",
-                                        "price": "{{ $product->price }}",
-                                        "availability": "https://schema.org/InStock",
-                                        "url": "{{ $meta['url'] }}"
-                                    }
-                                }
-                                </script>
+                                                {
+                                                    "@context": "https://schema.org",
+                                                    "@type": "Product",
+                                                    "name": "{{ $product->name }}",
+                                                    "image": "{{ asset('image/produk/' . $product->image) }}",
+                                                    "description": "{{ \Str::limit($product->description, 160) }}",
+                                                    "sku": "{{ $product->sku }}",
+                                                    "brand": {
+                                                        "@type": "Brand",
+                                                        "name": "Gamora"
+                                                    },
+                                                    "offers": {
+                                                        "@type": "Offer",
+                                                        "priceCurrency": "IDR",
+                                                        "price": "{{ $product->price }}",
+                                                        "availability": "https://schema.org/InStock",
+                                                        "url": "{{ $meta['meta_url'] ?? $meta['url'] }}"
+                                                    }
+                                                }
+                                                </script>
     @else
         <script type="application/ld+json">
-                                {
-                                    "@context": "https://schema.org",
-                                    "@type": "WebPage",
-                                    "name": "{{ $meta['title'] }}",
-                                    "description": "{{ $meta['description'] }}",
-                                    "url": "{{ $meta['url'] }}",
-                                    "publisher": {
-                                        "@type": "Organization",
-                                        "name": "Gamora",
-                                        "logo": "{{ asset('image/logo/icon.png') }}"
-                                    }
-                                }
-                                </script>
+                                                {
+                                                    "@context": "https://schema.org",
+                                                    "@type": "WebPage",
+                                                    "name": "{{ $meta['meta_title'] ?? $meta['title'] }}",
+                                                    "description": "{{ $meta['meta_description'] ?? $meta['description'] }}",
+                                                    "url": "{{ $meta['meta_url'] ?? $meta['url'] }}",
+                                                    "publisher": {
+                                                        "@type": "Organization",
+                                                        "name": "Gamora",
+                                                        "logo": "{{ asset('image/logo/icon.png') }}"
+                                                    }
+                                                }
+                                                </script>
     @endif
 
     @livewireStyles

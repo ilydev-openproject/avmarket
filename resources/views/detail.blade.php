@@ -49,21 +49,31 @@
                                         <div class="tpproduct-details__nab">
                                             <div class="tab-content" id="nav-tabContents">
                                                 @foreach($product->getMedia('foto_product') as $index => $media)
-                                                <div class="tab-pane fade p-5 {{ $loop->first ? 'show active' : '' }} w-img" id="nav-{{ $index }}" role="tabpanel" aria-labelledby="nav-tab-{{ $index }}" tabindex="0">
-                                                    <img src="{{ $media->getUrl() }}" alt="{{$media->nama_product}}" style="aspect-ratio: 1/1; object-fit: cover; object-position: center;">
-                                                    <div class="tpproduct__info bage">
-                                                        <span class="tpproduct__info-hot bage__hot">{{ $product->label == 1 ? 'SUPER MURAH🔥' : 'MURAH' }}</span>
+                                                    <div class="tab-pane fade p-5 {{ $loop->first ? 'show active' : '' }} w-img"
+                                                        id="nav-{{ $index }}" role="tabpanel"
+                                                        aria-labelledby="nav-tab-{{ $index }}" tabindex="0">
+                                                        <img src="{{ $media->getUrl() }}" alt="{{$media->nama_product}}"
+                                                            style="aspect-ratio: 1/1; object-fit: cover; object-position: center;">
+                                                        <div class="tpproduct__info bage">
+                                                            <span
+                                                                class="tpproduct__info-hot bage__hot">{{ $product->label == 1 ? 'SUPER MURAH🔥' : 'MURAH' }}</span>
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 @endforeach
                                             </div>
 
                                             <nav>
-                                                <div class="nav nav-tabs justify-content-center py-3" id="nav-tab" role="tablist">
+                                                <div class="nav nav-tabs justify-content-center py-3" id="nav-tab"
+                                                    role="tablist">
                                                     @foreach($product->getMedia('foto_product') as $index => $media)
-                                                    <button class="nav-link {{ $loop->first ? 'active' : '' }}" id="nav-tab-{{ $index }}" data-bs-toggle="tab" data-bs-target="#nav-{{ $index }}" type="button" role="tab" aria-controls="nav-{{ $index }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">
-                                                        <img src="{{ $media->getUrl() }}" alt="{{$media->nama_product}}" style="aspect-ratio: 1/1; object-fit: cover; object-position: center;">
-                                                    </button>
+                                                        <button class="nav-link {{ $loop->first ? 'active' : '' }}"
+                                                            id="nav-tab-{{ $index }}" data-bs-toggle="tab"
+                                                            data-bs-target="#nav-{{ $index }}" type="button" role="tab"
+                                                            aria-controls="nav-{{ $index }}"
+                                                            aria-selected="{{ $loop->first ? 'true' : 'false' }}">
+                                                            <img src="{{ $media->getUrl() }}" alt="{{$media->nama_product}}"
+                                                                style="aspect-ratio: 1/1; object-fit: cover; object-position: center;">
+                                                        </button>
                                                     @endforeach
                                                 </div>
                                             </nav>
@@ -74,7 +84,8 @@
                                         <div class="product__details">
                                             <div class="product__details-price-box">
                                                 <del>Rp{{ number_format($product->harga + ($product->harga * $product->diskon / 100), 0, ',', '.') }}</del>
-                                                <h5 class="product__details-price">Rp{{ number_format($product->harga, 0, ',', '.') }}</h5>
+                                                <h5 class="product__details-price">
+                                                    Rp{{ number_format($product->harga, 0, ',', '.') }}</h5>
                                                 <div class="ms-4">
                                                     <span>{!! $product->manfaat !!}</span>
                                                 </div>
@@ -106,10 +117,12 @@
                                             <div class="product__details-stock mb-25">
                                                 <ul>
                                                     <li>Terjual: <i>{{ $product->terjual }}+</i></li>
-                                                    <li>Kategori: <span>{{ $product->kategori->nama_kategori }}</span></li>
+                                                    <li>Kategori: <span>{{ $product->kategori->nama_kategori }}</span>
+                                                    </li>
                                                     <li>Tags:
                                                         @foreach ($product->tags as $tag)
-                                                        <a href="#" class="tag-link"><span>{{ $tag->nama_tag }}</span></a>{{ !$loop->last ? ', ' : '' }}
+                                                            <a href="#"
+                                                                class="tag-link"><span>{{ $tag->nama_tag }}</span></a>{{ !$loop->last ? ', ' : '' }}
                                                         @endforeach
                                                     </li>
                                                 </ul>
@@ -127,17 +140,21 @@
                             <div class="tpdescription__box-center d-flex align-items-center justify-content-center">
                                 <nav>
                                     <div class="nav nav-tabs" role="tablist">
-                                        <button class="nav-link active" id="nav-description-tab" data-bs-toggle="tab" data-bs-target="#nav-description" type="button" role="tab" aria-controls="nav-description" aria-selected="true">Deskripsi</button>
-                                        <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Ulasan (1)</button>
+                                        <button class="nav-link active" id="nav-description-tab" data-bs-toggle="tab"
+                                            data-bs-target="#nav-description" type="button" role="tab"
+                                            aria-controls="nav-description" aria-selected="true">Deskripsi</button>
+                                        <!-- <button class="nav-link" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Ulasan (1)</button> -->
                                     </div>
                                 </nav>
                             </div>
                             <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab" tabindex="0">
+                                <div class="tab-pane fade show active" id="nav-description" role="tabpanel"
+                                    aria-labelledby="nav-description-tab" tabindex="0">
                                     <div class="tpdescription__content">
                                         <p>{!! $product->deskripsi !!}</p>
                                     </div>
-                                    <div class="tpdescription__product-wrapper mt-30 mb-30 d-flex justify-content-between align-items-center">
+                                    <div
+                                        class="tpdescription__product-wrapper mt-30 mb-30 d-flex justify-content-between align-items-center">
                                         <div class="tpdescription__product-info">
                                             <h5 class="tpdescription__product-title">DETAIL PRODUK</h5>
                                             <ul class="tpdescription__product-info">
@@ -151,17 +168,28 @@
                                     </div>
                                     <div class="tpdescription__video pb-4">
                                         <h5 class="tpdescription__product-title">Manfaat Produk</h5>
-                                        <p>Berikut beberapa manfaat dari produk {{ $product->nama_product}} untuk kebutuhan harian ataupun solusi dari permasalahan anda terkait dengan kesehatan herbal {{ $product->kategori->nama_kategori }} :</p>
+                                        <p>Berikut beberapa manfaat dari produk {{ $product->nama_product}} untuk
+                                            kebutuhan harian ataupun solusi dari permasalahan anda terkait dengan
+                                            kesehatan herbal {{ $product->kategori->nama_kategori }} :</p>
                                         <ul class="ps-4">
                                             {!! $product->manfaat !!}
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="nav-information" role="tabpanel" aria-labelledby="nav-info-tab" tabindex="0">
+                                <div class="tab-pane fade" id="nav-information" role="tabpanel"
+                                    aria-labelledby="nav-info-tab" tabindex="0">
                                     <div class="tpdescription__content">
-                                        <p>Designed by Puik in 1949 as one of the first models created especially for Carl Hansen & Son, and produced since 1950. The last of a series of chairs wegner designed based on inspiration from antique chinese armchairs. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia eserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, aque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
+                                        <p>Designed by Puik in 1949 as one of the first models created especially for
+                                            Carl Hansen & Son, and produced since 1950. The last of a series of chairs
+                                            wegner designed based on inspiration from antique chinese armchairs.
+                                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                            eserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste
+                                            natus error sit voluptatem accusantium doloremque laudantium, totam rem
+                                            aperiam, aque ipsa quae ab illo inventore veritatis et quasi architecto
+                                            beatae vitae dicta sunt explicabo. </p>
                                     </div>
-                                    <div class="tpdescription__product-wrapper mt-30 mb-30 d-flex justify-content-between align-items-center">
+                                    <div
+                                        class="tpdescription__product-wrapper mt-30 mb-30 d-flex justify-content-between align-items-center">
                                         <div class="tpdescription__product-info">
                                             <h5 class="tpdescription__product-title">PRODUCT DETAILS</h5>
                                             <ul class="tpdescription__product-info">
@@ -171,7 +199,9 @@
                                                 <li>Length: 48cm</li>
                                                 <li>Depth: 52 cm</li>
                                             </ul>
-                                            <p>Lemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut <br> fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem <br> sequi nesciunt.</p>
+                                            <p>Lemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut <br>
+                                                fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem
+                                                <br> sequi nesciunt.</p>
                                         </div>
                                         <div class="tpdescription__product-thumb">
                                             <img src="assets/img/product/product-single-1.png" alt="">
@@ -179,18 +209,28 @@
                                     </div>
                                     <div class="tpdescription__video">
                                         <h5 class="tpdescription__product-title">PRODUCT DETAILS</h5>
-                                        <p>Form is an armless modern chair with a minimalistic expression. With a simple and contemporary design Form Chair has a soft and welcoming ilhouette and a distinctly residential look. The legs appear almost as if they are growing out of the shell. This gives the design flexibility and makes it possible to vary the frame. Unika is a mouth blown series of small, glass pendant lamps, originally designed for the Restaurant Gronbech. Est eum itaque maiores qui blanditiis architecto. Eligendi saepe rem ut. Cumque quia earum eligendi. </p>
+                                        <p>Form is an armless modern chair with a minimalistic expression. With a simple
+                                            and contemporary design Form Chair has a soft and welcoming ilhouette and a
+                                            distinctly residential look. The legs appear almost as if they are growing
+                                            out of the shell. This gives the design flexibility and makes it possible to
+                                            vary the frame. Unika is a mouth blown series of small, glass pendant lamps,
+                                            originally designed for the Restaurant Gronbech. Est eum itaque maiores qui
+                                            blanditiis architecto. Eligendi saepe rem ut. Cumque quia earum eligendi.
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="nav-review" role="tabpanel" aria-labelledby="nav-review-tab" tabindex="0">
+                                <div class="tab-pane fade" id="nav-review" role="tabpanel"
+                                    aria-labelledby="nav-review-tab" tabindex="0">
                                     <div class="tpreview__wrapper">
-                                        <h4 class="tpreview__wrapper-title">1 review for Cheap and delicious fresh chicken</h4>
+                                        <h4 class="tpreview__wrapper-title">1 review for Cheap and delicious fresh
+                                            chicken</h4>
                                         <div class="tpreview__comment">
                                             <div class="tpreview__comment-img mr-20">
                                                 <img src="assets/img/testimonial/test-avata-1.png" alt="">
                                             </div>
                                             <div class="tpreview__comment-text">
-                                                <div class="tpreview__comment-autor-info d-flex align-items-center justify-content-between">
+                                                <div
+                                                    class="tpreview__comment-autor-info d-flex align-items-center justify-content-between">
                                                     <div class="tpreview__comment-author">
                                                         <span>admin</span>
                                                     </div>
