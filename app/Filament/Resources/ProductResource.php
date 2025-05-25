@@ -145,6 +145,7 @@ class ProductResource extends Resource
             ->columns([
                 TextColumn::make('nama_product')
                     ->label('Judul')
+                    ->searchable()
                     ->limit(20),
                 TextColumn::make('slug')
                     ->label('Slug')

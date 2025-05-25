@@ -189,7 +189,8 @@
                         <div class="tpsection tpfeature__content mb-35">
                             <h4 class="tpsection__sub-title mb-0">~ Pilihan Terbaik Untuk Kamu ~</h4>
                             <h4 class="tpsection__title tpfeature__title mb-25">{{ $products->nama_product }} <br>
-                                <span>{{ $product->brand }}</span> - Averros Indonesia</h4>
+                                <span>{{ $product->brand }}</span> - Gamora Indonesia
+                            </h4>
                             <p>{!! substr($product->ringkasan, 0, 100) !!}{!! strlen($product->ringkasan) > 100 ? '...' : '' !!}
                             </p>
                         </div>

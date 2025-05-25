@@ -257,7 +257,7 @@
                                                         class="img-fluid mb-3" style="max-height: 50px;">
                                                     <h6 class="card-title fw-bold mb-1">Transfer BNI</h6>
                                                     <p class="text-muted small">No. Rek: 1234 5678 9012</p>
-                                                    <p class="text-muted small">Averros Herbal Indonesia</p>
+                                                    <p class="text-muted small">Gamora Herbal Indonesia</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -275,7 +275,7 @@
                                                         class="img-fluid mb-3" style="max-height: 50px;">
                                                     <h6 class="card-title fw-bold mb-1">Transfer BCA</h6>
                                                     <p class="text-muted small">No. Rek: 3456 7890 1234</p>
-                                                    <p class="text-muted small">Averros Herbal Indonesia</p>
+                                                    <p class="text-muted small">Gamora Herbal Indonesia</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -293,7 +293,7 @@
                                                         class="img-fluid mb-3" style="max-height: 80px;">
                                                     <h6 class="card-title fw-bold mb-1">COD</h6>
                                                     <p class="text-muted small">Bayar di Tempat</p>
-                                                    <p class="text-muted small">Averros Herbal Indonesia</p>
+                                                    <p class="text-muted small">Gamora Herbal Indonesia</p>
                                                 </div>
                                             </div>
                                         </div>
