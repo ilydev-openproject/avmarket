@@ -50,8 +50,7 @@ class Product extends Model implements HasMedia
             ->width(300)
             ->height(300)
             ->performOnCollections('foto_product')
-            ->sharpen(10)
-            ->queued();
+            ->sharpen(10);
 
     }
 }
