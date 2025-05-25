@@ -103,7 +103,7 @@ class ProductResource extends Resource
                                 ->maxLength(5000)
                                 ->columnSpan(3),
                             RichEditor::make('deskripsi')
-                                ->label('Meta Description')
+                                ->label('Description')
                                 ->columnSpan(3),
                             RichEditor::make('ingredient')
                                 ->label('Ingredient (Pisah dengan ",")')

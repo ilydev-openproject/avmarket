@@ -25,15 +25,29 @@ class TokoController extends Controller
     public function detail($slug)
     {
         $product = Product::with('kategori', 'tags')->where('slug', $slug)->firstOrFail();
+
         $relatedProducts = Product::where('id_kategori', $product->id_kategori)
             ->where('id', '!=', $product->id)
             ->latest()
             ->take(6)
             ->get();
-        $recentProduct = Product::with('kategori', 'tags')->orderBy('id', 'desc')->limit(3)->get();
 
-        return view('detail', compact('product', 'relatedProducts', 'recentProduct'));
+        $recentProduct = Product::with('kategori', 'tags')
+            ->latest()
+            ->take(3)
+            ->get();
+
+        $meta = [
+            'meta_title' => $product->nama_product ?? $product->title,
+            'meta_description' => $product->deskripsi ?? \Str::limit(strip_tags($product->content ?? ''), 150),
+            'meta_keywords' => $product->keywords ?? $product->title,
+            'meta_image' => $product->getFirstMediaUrl('foto_product') ?? asset('image/logo/icon.png'),
+            'meta_url' => url()->current(),
+        ];
+
+        return view('detail', compact('product', 'relatedProducts', 'recentProduct', 'meta'));
     }
+
 
     public function kategori($kategoriSlug)
     {
