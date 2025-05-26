@@ -13,14 +13,27 @@ class GenerateSitemap extends Command
 
     public function handle()
     {
-        $sitemap = Sitemap::create()
-            ->add('/');
+        $sitemap = Sitemap::create()->add('/');
 
-        MetaTag::all()->each(function ($metaTag) use ($sitemap) {
-            $sitemap->add($metaTag->url);
+        // Tambahkan produk
+        \App\Models\Product::all()->each(function ($product) use ($sitemap) {
+            $sitemap->add(route('product.detail', $product->slug));
+        });
+
+        // Tambahkan postingan
+        \App\Models\Post::all()->each(function ($post) use ($sitemap) {
+            $sitemap->add(route('blog.show', $post->slug));
+        });
+
+        // Tambahkan dari MetaTag jika perlu
+        \App\Models\MetaTag::all()->each(function ($meta) use ($sitemap) {
+            if (!empty($meta->url)) {
+                $sitemap->add($meta->url);
+            }
         });
 
         $sitemap->writeToFile(public_path('sitemap.xml'));
         $this->info('Sitemap generated!');
     }
+
 }
