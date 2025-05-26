@@ -324,9 +324,9 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="tpsidebar__banner mb-30">
+                        <!-- <div class="tpsidebar__banner mb-30">
                             <img src="{{ asset('orfarm/assets/img/shape/sidebar-product-1.png') }}" alt="">
-                        </div>
+                        </div> -->
                         <x-toko.recent-product :recentProduct="$recentProduct"></x-toko.recent-product>
                     </div>
                 </div>
