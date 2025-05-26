@@ -128,6 +128,17 @@ class ProductResource extends Resource
                                 ->relationship('tags', 'nama_tag')
                                 ->preload()
                                 ->required()
+                                ->createOptionForm([
+                                    TextInput::make('nama_tag')
+                                        ->label('Nama Tag')
+                                        ->live(onBlur: true)
+                                        ->afterStateUpdated(fn($state, callable $set) => $set('slug', Str::slug($state)))
+                                        ->required(),
+                                    TextInput::make('slug')
+                                        ->label('Slug')
+                                        ->readOnly()
+                                        ->unique(Tags::class, 'slug', ignoreRecord: true)
+                                ])
                                 ->columnSpan(2),
                             Select::make('label')
                                 ->preload()
