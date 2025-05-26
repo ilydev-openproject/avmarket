@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Models\Tag;
 use Filament\Forms;
 use App\Models\Tags;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables;
 use App\Models\Product;
 use App\Models\Kategori;
@@ -107,6 +108,9 @@ class ProductResource extends Resource
                                 ->columnSpan(3),
                             RichEditor::make('deskripsi')
                                 ->label('Description')
+                                ->columnSpan(3),
+                            Textarea::make('keyword')
+                                ->label('meta_keyword')
                                 ->columnSpan(3),
                             RichEditor::make('ingredient')
                                 ->label('Ingredient (Pisah dengan ",")')
