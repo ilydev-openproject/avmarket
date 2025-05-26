@@ -46,12 +46,11 @@ class Product extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')
-            ->format('webp') // atau 'jpg'
+            ->format('png') // atau 'jpg'
             ->width(300)
             ->height(300)
             ->performOnCollections('foto_product')
-            ->sharpen(10)
-            ->queued();
+            ->sharpen(10);
 
     }
 }
