@@ -5,7 +5,7 @@
             <div class="swiper-wrapper">
                 @foreach ($hero as $hero)
                     <div class="swiper-slide ">
-                        <div class="tpslider pt-90 pb-0 grey-bg" data-background="orfarm/assets/img/slider/shape-bg.jpg"
+                        <div class="tpslider pt-90 mb-96 grey-bg" data-background="orfarm/assets/img/slider/shape-bg.jpg"
                             style="background-size: cover; background-repeat: no-repeat;">
                             <div class="container">
                                 <div class="row align-items-center">
@@ -19,10 +19,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xxl-7 col-lg-6 col-md-6 col-12 col-sm-6">
+                                    <div class="col-xxl-7 col-lg-6 col-md-6 col-12 col-sm-6 text-center">
                                         <div class="tpslider__thumb p-relative pt-15">
                                             <img class="tpslider__thumb-img"
-                                                src="{{ $hero->getFirstMediaUrl('foto_hero') }}" alt="slider-bg">
+                                                src="{{ $hero->getFirstMediaUrl('foto_hero') }}" height="500"
+                                                alt="slider-bg">
                                             <div class="tpslider__shape d-none d-md-block">
                                                 <img class="tpslider__shape-one"
                                                     src="orfarm/assets/img/slider/slider-shape-1.png" alt="shape">

@@ -89,7 +89,6 @@
                                                     @csrf
                                                 </form>
                                             </li>
-
                                         </ul>
                                     </nav>
                                 </div>
@@ -139,7 +138,7 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-6 col-md-6 col-6 col-sm-6">
                     <div class="header__logo">
-                        <a href="index.html"><img src="{{ asset('orfarm/assets/img/logo/logo.png') }}" alt=" logo"></a>
+                        <a href="index.html"><img src="{{ asset('image/logo/logo.png') }}" height="50" alt=" logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-3 col-sm-5">
@@ -153,11 +152,7 @@
                         <div class="header__info-wishlist tpcolor__greenish ml-10 d-none d-sm-block">
                             <a href="wishlist.html"><i class="icon-heart icons"></i></a>
                         </div>
-                        <div class="header__info-cart tpcolor__oasis ml-10 tp-cart-toggle">
-                            <button><i><img src="{{ asset('orfarm/assets/img/icon/cart-1.svg') }}" alt=""></i>
-                                <span>5</span>
-                            </button>
-                        </div>
+                        <livewire:cart-counter />
                     </div>
                 </div>
             </div>
