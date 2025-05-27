@@ -10,18 +10,22 @@
     background-position: bottom;
     @media #{$xl,$lg} {
         padding-top: 50px;
+        padding-bottom: 50px;
         height: 600px;
     }
     @media #{$md} {
         padding-top: 50px;
+        padding-bottom: 50px;
         height: 550px;
     }
     @media #{$xs} {
         padding-top: 50px;
+        padding-bottom: 50px;
         height: 700px;
     }
     @media #{$sm} {
         padding-top: 50px;
+        padding-bottom: 50px;
         height: 450px;
     }
     &__content {

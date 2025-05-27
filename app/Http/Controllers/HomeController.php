@@ -21,7 +21,7 @@ class HomeController extends Controller
         $kategoris = Kategori::with('product')->get();
         $kat = Kategori::all();
         $promo = Promo::inRandomOrder()->limit(3)->get();
-        $products = Product::with('kategori')->inRandomOrder()->first();
-        return view('home', compact('hero', 'kategori', 'product', 'products', 'promo', 'kategoris', 'produk', 'prodkats', 'kat', 'kategoriSlug'));
+        $SingleProduct = Product::with('kategori')->inRandomOrder()->first();
+        return view('home', compact('hero', 'kategori', 'product', 'SingleProduct', 'promo', 'kategoris', 'produk', 'prodkats', 'kat', 'kategoriSlug'));
     }
 }

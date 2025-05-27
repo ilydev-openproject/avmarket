@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class AddToCart extends Component
 {
     public $productId;
+    public $context;
     public string $view = 'livewire.add-to-cart';
 
     public function addToCart()
@@ -54,6 +55,6 @@ class AddToCart extends Component
 
     public function render()
     {
-        return view($this->view);
+        return view('livewire.add-to-cart');
     }
 }

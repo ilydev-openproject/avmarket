@@ -14,7 +14,7 @@
                             <nav id="mobile-menu">
                                 <ul>
                                     <li class="has-homemenu">
-                                        <a href="/">Beranda</a>
+                                        <a href="{{ route('home') }}" wire:wire:navigate>Beranda</a>
                                     </li>
                                     <li class="has-dropdown">
                                         <a href="/toko">Toko</a>

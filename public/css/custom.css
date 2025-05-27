@@ -297,3 +297,12 @@ a.no-after::after {
         display: none;
     }
 }
+
+@media (max-width: 767px) {
+    .tpslider {
+        padding-top: 50px;
+        padding-bottom: 150px !important;
+        /* margin-bottom: 50px !important; */
+        height: auto;
+    }
+}
