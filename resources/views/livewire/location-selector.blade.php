@@ -99,8 +99,6 @@
     @if ($error)
         <div class="text-danger mt-1 text-sm">{{ $error }}</div>
     @endif
-
-    @push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
         <script>
             document.addEventListener('click', function (event) {
@@ -111,5 +109,4 @@
                 }
             });
         </script>
-    @endpush
 </div>

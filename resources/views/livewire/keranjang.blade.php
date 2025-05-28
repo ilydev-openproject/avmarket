@@ -42,11 +42,11 @@
                             <td class="product-price">
                                 <span class="amount mb-5"><b>Rp{{ number_format($item['harga'], 0, ',', '.') }}</b></span>
                             </td>
-                            <a href="#" wire:click.prevent="removeFromCart({{ Auth::check() ? $item['id'] : $id }})"
+                            <button type="button" wire:click="removeFromCart({{ Auth::check() ? $item['id'] : $id }})"
                                 class="btn btn-outline-danger px-4 mt-5">
                                 <i class="icon-trash"></i>
                                 <span>Hapus</span>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -72,10 +72,10 @@
                                             </button>
                                         </div>
                                         <!-- <div class="coupon2">
-                                            <button class="tp-btn tp-color-btn banner-animation" name="update_cart" type="submit">
-                                                Update cart
-                                            </button>
-                                        </div> -->
+                                                        <button class="tp-btn tp-color-btn banner-animation" name="update_cart" type="submit">
+                                                            Update cart
+                                                        </button>
+                                                    </div> -->
                                     </div>
                                 </div>
                             </div>

@@ -6,7 +6,8 @@
                 <div class="row align-items-center">
                     <div class="col-xl-3">
                         <div class="header__logo">
-                            <a href="/"><img src="{{ asset('image/logo/logo.png') }}" height="50" alt=""></a>
+                            <a href="{{ route('home')}}" wire:navigate><img src="{{ asset('image/logo/logo.png') }}" height="50"
+                                    alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-6">
@@ -14,10 +15,10 @@
                             <nav id="mobile-menu">
                                 <ul>
                                     <li class="has-homemenu">
-                                        <a href="{{ route('home') }}" wire:wire:navigate>Beranda</a>
+                                        <a href="{{ route('home') }}" wire:navigate>Beranda</a>
                                     </li>
                                     <li class="has-dropdown">
-                                        <a href="/toko">Toko</a>
+                                        <a href="{{ route('toko') }}" wire:navigate>Toko</a>
                                         <ul class="sub-menu">
                                             @php
                                                 use App\Models\Kategori;
@@ -26,22 +27,23 @@
                                                 $kategori = Kategori::with('product')->get();
                                             @endphp
                                             @foreach ($kategori as $kat)
-                                                <li><a href="/toko/{{ $kat->slug }}">{{ ucfirst($kat->nama_kategori) }}</a>
+                                                <li><a
+                                                        href="{{ route('toko.kategori', $kat->slug) }}" wire:navigate>{{ ucfirst($kat->nama_kategori) }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>
                                     </li>
                                     <li class=" has-dropdown">
-                                        <a href="/blog">Blog</a>
+                                        <a href="{{ route('blog.index') }}">Blog</a>
                                         <ul class="sub-menu">
                                             @foreach ($kategori as $kat)
                                                 <li><a
-                                                        href="{{ route('blog.byKategori', $kat['slug']) }}">{{ ucwords($kat->nama_kategori) }}</a>
+                                                        href="{{ route('blog.byKategori', $kat->slug) }}" wire:navigate>{{ ucwords($kat->nama_kategori) }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li class=" has-dropdown">
+                                    <!-- <li class=" has-dropdown">
                                         <a href="about.html">Pages</a>
                                         <ul class="sub-menu">
                                             <li><a href="shop-location.html">Shop Location One</a></li>
@@ -56,7 +58,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li> -->
                                 </ul>
                             </nav>
                         </div>
@@ -73,7 +75,7 @@
                                             <li class="has-dropdown">
                                                 <a href="#" class="no-after"><i class="icon-user"></i></a>
                                                 <ul class="sub-menu my-3">
-                                                    <li><a href="/profile">Profil Saya</a></li>
+                                                    <li><a href="{{ route('profile') }}" wire:navigate>Profil Saya</a></li>
                                                     <li><a href="/orders">Pesanan Saya</a></li>
                                                     <li>
                                                         <a href="#"
@@ -85,7 +87,7 @@
 
                                                 <!-- Form logout tersembunyi -->
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                    style="display: none;">
+                                                    style="display: none;" wire:navigate>
                                                     @csrf
                                                 </form>
                                             </li>

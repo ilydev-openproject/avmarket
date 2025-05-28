@@ -147,8 +147,12 @@
                                         </div>
                                     </div>
                                     <div class="tpproduct__hover-text">
-                                        <livewire:add-to-cart :productId="$productItem->id" context="list"
-                                            :key="'single_cart'" />
+                                        <div class="tpproduct__hover-btn d-flex justify-content-center mb-10">
+                                            <a href="/produk/{{ $productItem->slug }}"
+                                                class="tp-btn-2 d-flex justify-content-center mb-10">
+                                                Lihat Produk
+                                            </a>
+                                        </div>
                                         <div class="tpproduct__descrip">
                                             <ul>
                                                 <li>Terjual {{ $productItem->terjual }}+ </li>
@@ -194,9 +198,9 @@
                         <div class="tpsection tpfeature__content mb-35">
                             <h4 class="tpsection__sub-title mb-0">~ Pilihan Terbaik Untuk Kamu ~</h4>
                             <h4 class="tpsection__title tpfeature__title mb-25">{{ $SingleProduct->nama_product }} <br>
-                                <span>{{ $productItem->brand }}</span> - Gamora Indonesia
+                                <span>{{ $SingleProduct->brand }}</span> - Gamora Indonesia
                             </h4>
-                            <p>{!! substr($productItem->ringkasan, 0, 100) !!}{!! strlen($productItem->ringkasan) > 100 ? '...' : '' !!}
+                            <p>{!! substr($SingleProduct->ringkasan, 0, 100) !!}{!! strlen($productItem->ringkasan) > 100 ? '...' : '' !!}
                             </p>
                         </div>
                         <div class="row">
@@ -227,9 +231,9 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-around align-items-center">
-                                <livewire:add-to-cart :productId="$SingleProduct->id" context="single"
-                                    :key="'single-cart-'" />
-
+                                <div class="tpfeature__btn" bis_skin_checked="1">
+                                    <a class="tp-btn-4" href="/produk/{{ $SingleProduct->slug }}">Lihat Produk</a>
+                                </div>
                                 <div class="tpfeature__btn">
                                     <a class="tp-btn-3" href="/produk/{{ $SingleProduct->slug }}">Selengkapnya</a>
                                 </div>
@@ -300,87 +304,7 @@
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-all" role="tabpanel"
-                                aria-labelledby="nav-all-tab" tabindex="0">
-                                <div class="tpproduct__arrow p-relative">
-                                    <div class="swiper-container tpproduct-active tpslider-bottom p-relative">
-                                        <div class="swiper-wrapper">
-                                            @foreach ($produk as $prod)
-                                                <div class="swiper-slide">
-                                                    <div class="tpproduct p-relative">
-                                                        <div class="tpproduct__thumb p-relative text-center">
-                                                            <a href="#"><img
-                                                                    src="{{ $prod->getMedia('foto_product')->first()?->getUrl() }}"
-                                                                    alt=""
-                                                                    style="aspect-ratio: 1/1 !important; overflow: hidden; object-fit: cover;"></a>
-                                                            <a class="tpproduct__thumb-img" href="shop-details.html"><img
-                                                                    src="{{ $prod->getMedia('foto_product')->get(1)?->getUrl() }}"
-                                                                    alt=""
-                                                                    style="aspect-ratio: 1/1 !important; overflow: hidden; object-fit: cover;"></a>
-                                                            <div class="tpproduct__info bage">
-                                                                <span
-                                                                    class="tpproduct__info-discount bage__discount">{{$prod->diskon}}%</span>
-                                                                <span
-                                                                    class="tpproduct__info-hot bage__hot">{{ $prod->label == 1 ? 'SUPER MURAH🔥' : '' }}</span>
-                                                            </div>
-                                                            <div class="tpproduct__shopping">
-                                                                <a class="tpproduct__shopping-wishlist"
-                                                                    href="wishlist.html"><i
-                                                                        class="icon-heart icons"></i></a>
-                                                                <a class="tpproduct__shopping-wishlist" href="#"><i
-                                                                        class="icon-layers"></i></a>
-                                                                <a class="tpproduct__shopping-cart" href="#"><i
-                                                                        class="icon-eye"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tpproduct__content">
-                                                            <span class="tpproduct__content-weight">
-                                                                <a
-                                                                    href="shop-details-4.html">{{ ucfirst($prod->kategori->nama_kategori) }}</a>
-                                                            </span>
-                                                            <h4 class="tpproduct__title">
-                                                                <a
-                                                                    href="shop-details-4.html">{{ ucfirst($prod->nama_product) }}</a>
-                                                            </h4>
-                                                            <div class="tpproduct__rating mb-5">
-                                                                <a href="#"><i class="icon-star_outline1"></i></a>
-                                                                <a href="#"><i class="icon-star_outline1"></i></a>
-                                                                <a href="#"><i class="icon-star_outline1"></i></a>
-                                                                <a href="#"><i class="icon-star_outline1"></i></a>
-                                                                <a href="#"><i class="icon-star_outline1"></i></a>
-                                                            </div>
-                                                            <div class="tpproduct__price">
-                                                                <span>Rp{{ number_format($prod->harga, 0, ',', '.') }}</span><br>
-                                                                <del>Rp{{ number_format($prod->harga + ($prod->harga * $prod->diskon / 100), 0, ',', '.') }}</del>
-                                                            </div>
-                                                        </div>
-                                                        <div class="tpproduct__hover-text">
-                                                            <div
-                                                                class="tpproduct__hover-btn d-flex justify-content-center mb-10">
-                                                                <livewire:add-to-cart :productId="$prod->id" />
-                                                            </div>
-                                                            <div class="tpproduct__descrip">
-                                                                <ul>
-                                                                    <li>Terjual 2000+ </li>
-                                                                    <li>{{ $prod->created_at->since() }}</li>
-                                                                    <li>LIFE: 60 days</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    <div class="tpproduct-btn">
-                                        <div class="tpprduct-arrow tpproduct-btn__prv"><a href="#"><i
-                                                    class="icon-chevron-left"></i></a></div>
-                                        <div class="tpprduct-arrow tpproduct-btn__nxt"><a href="#"><i
-                                                    class="icon-chevron-right"></i></a></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <x-prodkat></x-prodkat>
+                            <x-produk :produk="$product"></x-produk>
                         </div>
                     </div>
                 </div>

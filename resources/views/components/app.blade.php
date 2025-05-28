@@ -41,46 +41,47 @@
     <link rel="stylesheet" href="{{ asset('orfarm/assets/css/icon-dukamarket.css') }}">
     <link rel="stylesheet" href="{{ asset('orfarm/assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     @if (isset($product))
         <script type="application/ld+json">
-                                                                                                                        {
-                                                                                                                            "@context": "https://schema.org",
-                                                                                                                            "@type": "Product",
-                                                                                                                            "name": "{{ $product->name }}",
-                                                                                                                            "image": "{{ asset('image/produk/' . $product->image) }}",
-                                                                                                                            "description": "{{ \Str::limit($product->description, 160) }}",
-                                                                                                                            "sku": "{{ $product->sku }}",
-                                                                                                                            "brand": {
-                                                                                                                                "@type": "Brand",
-                                                                                                                                "name": "Gamora"
-                                                                                                                            },
-                                                                                                                            "offers": {
-                                                                                                                                "@type": "Offer",
-                                                                                                                                "priceCurrency": "IDR",
-                                                                                                                                "price": "{{ $product->price }}",
-                                                                                                                                "availability": "https://schema.org/InStock",
-                                                                                                                                "url": "{{ $meta['meta_url'] ?? $meta['url'] }}"
-                                                                                                                            }
-                                                                                                                        }
-                                                                                                                        </script>
+                                                                                                                                                                    {
+                                                                                                                                                                        "@context": "https://schema.org",
+                                                                                                                                                                        "@type": "Product",
+                                                                                                                                                                        "name": "{{ $product->name }}",
+                                                                                                                                                                        "image": "{{ asset('image/produk/' . $product->image) }}",
+                                                                                                                                                                        "description": "{{ \Str::limit($product->description, 160) }}",
+                                                                                                                                                                        "sku": "{{ $product->sku }}",
+                                                                                                                                                                        "brand": {
+                                                                                                                                                                            "@type": "Brand",
+                                                                                                                                                                            "name": "Gamora"
+                                                                                                                                                                        },
+                                                                                                                                                                        "offers": {
+                                                                                                                                                                            "@type": "Offer",
+                                                                                                                                                                            "priceCurrency": "IDR",
+                                                                                                                                                                            "price": "{{ $product->price }}",
+                                                                                                                                                                            "availability": "https://schema.org/InStock",
+                                                                                                                                                                            "url": "{{ $meta['meta_url'] ?? $meta['url'] }}"
+                                                                                                                                                                        }
+                                                                                                                                                                    }
+                                                                                                                                                                    </script>
     @else
         <script type="application/ld+json">
-                                                                                                                        {
-                                                                                                                            "@context": "https://schema.org",
-                                                                                                                            "@type": "WebPage",
-                                                                                                                            "name": "{{ $meta['meta_title'] ?? $meta['title'] }}",
-                                                                                                                            "description": "{{ $meta['meta_description'] ?? $meta['description'] }}",
-                                                                                                                            "url": "{{ $meta['meta_url'] ?? $meta['url'] }}",
-                                                                                                                            "publisher": {
-                                                                                                                                "@type": "Organization",
-                                                                                                                                "name": "Gamora",
-                                                                                                                                "logo": "{{ asset('image/logo/icon.png') }}"
-                                                                                                                            }
-                                                                                                                        }
-                                                                                                                        </script>
+                                                                                                                                                                    {
+                                                                                                                                                                        "@context": "https://schema.org",
+                                                                                                                                                                        "@type": "WebPage",
+                                                                                                                                                                        "name": "{{ $meta['meta_title'] ?? $meta['title'] }}",
+                                                                                                                                                                        "description": "{{ $meta['meta_description'] ?? $meta['description'] }}",
+                                                                                                                                                                        "url": "{{ $meta['meta_url'] ?? $meta['url'] }}",
+                                                                                                                                                                        "publisher": {
+                                                                                                                                                                            "@type": "Organization",
+                                                                                                                                                                            "name": "Gamora",
+                                                                                                                                                                            "logo": "{{ asset('image/logo/icon.png') }}"
+                                                                                                                                                                        }
+                                                                                                                                                                    }
+                                                                                                                                                                    </script>
     @endif
 
     @livewireStyles
@@ -88,6 +89,7 @@
 </head>
 
 <body>
+
     <x-scrolltop></x-scrolltop>
 
     <x-header :kategori-slug="$kategoriSlug ?? null" :tag-slug="$tagSlug ?? null"></x-header>
@@ -98,6 +100,7 @@
 
     <!-- footer-area-start -->
     <x-footer></x-footer>
+    @livewireScripts
 
     <!-- JS here -->
     <script src="{{ asset('orfarm/assets/js/jquery.js') }}"></script>
@@ -115,9 +118,8 @@
     <script src="{{ asset('orfarm/assets/js/ajax-form.js') }}"></script>
     <script src="{{ asset('orfarm/assets/js/meanmenu.js') }}"></script>
     <script src="{{ asset('orfarm/assets/js/main.js') }}"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script> -->
 
-
-    @livewireScripts
     <!-- Toastr CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

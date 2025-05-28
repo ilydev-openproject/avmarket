@@ -13,7 +13,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\GoogleLoginController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/toko', [TokoController::class, 'index']);
+Route::get('/toko', [TokoController::class, 'index'])->name('toko');
 
 Route::get('/toko/{kategoriSlug}', [TokoController::class, 'kategori'])->name('toko.kategori');
 Route::get('/produk/{slug}', [TokoController::class, 'detail'])->name('product.detail');
