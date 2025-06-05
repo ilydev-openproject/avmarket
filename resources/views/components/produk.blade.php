@@ -7,9 +7,10 @@
                         <div class="swiper-slide">
                             <div class="tpproduct p-relative">
                                 <div class="tpproduct__thumb p-relative text-center">
-                                    <a href="#"><img src="{{ $prod->getMedia('foto_product')->first()?->getUrl() }}" alt=""
+                                    <a href="/produk/{{ $prod->slug}}"><img
+                                            src="{{ $prod->getMedia('foto_product')->first()?->getUrl() }}" alt=""
                                             style="aspect-ratio: 1/1 !important; overflow: hidden; object-fit: cover;"></a>
-                                    <a class="tpproduct__thumb-img" href="shop-details.html"><img
+                                    <a class="tpproduct__thumb-img" href="/produk/{{ $prod->slug}}"><img
                                             src="{{ $prod->getMedia('foto_product')->get(1)?->getUrl() }}" alt=""
                                             style="aspect-ratio: 1/1 !important; overflow: hidden; object-fit: cover;"></a>
                                     <div class="tpproduct__info bage">
@@ -18,10 +19,8 @@
                                             class="tpproduct__info-hot bage__hot">{{ $prod->label == 1 ? 'SUPER MURAH🔥' : '' }}</span>
                                     </div>
                                     <div class="tpproduct__shopping">
-                                        <a class="tpproduct__shopping-wishlist" href="wishlist.html"><i
-                                                class="icon-heart icons"></i></a>
-                                        <a class="tpproduct__shopping-wishlist" href="#"><i class="icon-layers"></i></a>
-                                        <a class="tpproduct__shopping-cart" href="#"><i class="icon-eye"></i></a>
+                                        <a class="tpproduct__shopping-cart" href="/produk/{{ $prod->slug}}"><i
+                                                class="icon-eye"></i></a>
                                     </div>
                                 </div>
                                 <div class="tpproduct__content">
@@ -29,7 +28,7 @@
                                         <a href="shop-details-4.html">{{ ucfirst($prod->kategori->nama_kategori) }}</a>
                                     </span>
                                     <h4 class="tpproduct__title">
-                                        <a href="shop-details-4.html">{{ ucfirst($prod->nama_product) }}</a>
+                                        <a href="/produk/{{ $prod->slug}}">{{ ucfirst($prod->nama_product) }}</a>
                                     </h4>
                                     <div class="tpproduct__rating mb-5">
                                         <a href="#"><i class="icon-star_outline1"></i></a>
