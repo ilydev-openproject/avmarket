@@ -9,6 +9,7 @@
         "akaunting/laravel-money": "^6.0",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.3",
+        "google-gemini-php/client": "^2.2",
         "intervention/image": "^3.11",
         "laravel/framework": "^11.9",
         "laravel/socialite": "^5.20",
