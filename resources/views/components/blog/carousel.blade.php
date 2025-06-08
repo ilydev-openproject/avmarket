@@ -10,7 +10,8 @@
                                     <source srcset="{{ $post->getFirstMedia('post_image')->getUrl('avif') }}" type="image/avif">
                                 @endif
                                 <source srcset="{{ $post->getFirstMedia('post_image')->getUrl('webp') }}" type="image/webp">
-                                <img src="{{ $post->getFirstMediaUrl('post_image') }}" alt="{{ $post->title }}">
+                                <img src="{{ $post->getFirstMediaUrl('post_image') }}" alt="{{ $post->title }}"
+                                    class="post-image">
                             </picture>
                         @else
                             <div class="w-full h-48 bg-gray-200 flex items-center justify-center">
