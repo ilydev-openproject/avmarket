@@ -324,3 +324,9 @@ a.no-after::after {
     object-position: center !important;
     object-fit: cover !important;
 }
+.tpblog__single-img {
+    aspect-ratio: 16/9 !important;
+    overflow: hidden !important;
+    object-position: center !important;
+    object-fit: cover !important;
+}
