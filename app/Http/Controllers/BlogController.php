@@ -11,19 +11,19 @@ class BlogController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('kategori', 'tags')->latest()->paginate(6); // untuk daftar utama
-        $carposts = Post::with('kategori', 'tags')->latest()->take(5)->get(); // untuk carousel
+        $posts = Post::with('kategori', 'tags')->where('is_published', '1')->latest()->paginate(6); // untuk daftar utama
+        $carposts = Post::with('kategori', 'tags')->where('is_published', '1')->latest()->take(5)->get(); // untuk carousel
         $kategoris = Kategori::all();
         $tags = Tags::all();
-        $recentPosts = Post::latest()->take(3)->get();
+        $recentPosts = Post::latest()->where('is_published', '1')->take(3)->get();
 
         return view('blog.index', compact('posts', 'carposts', 'kategoris', 'tags', 'recentPosts'));
     }
 
     public function byKategori($kategoriSlug = null)
     {
-        $posts = Post::with('kategori', 'tags')->latest()->paginate(6); // untuk daftar utama
-        $carposts = Post::with('kategori', 'tags')->latest()->take(5)->get(); // untuk carousel
+        $posts = Post::with('kategori', 'tags')->where('is_published', '1')->latest()->paginate(6); // untuk daftar utama
+        $carposts = Post::with('kategori', 'tags')->where('is_published', '1')->latest()->take(5)->get(); // untuk carousel
         $kategoris = Kategori::all();
         $tags = Tags::all();
         $recentPosts = Post::latest()->take(3)->get();
@@ -33,8 +33,8 @@ class BlogController extends Controller
 
     public function byTag($tagSlug = null)
     {
-        $posts = Post::with('kategori', 'tags')->latest()->paginate(6); // untuk daftar utama
-        $carposts = Post::with('kategori', 'tags')->latest()->take(5)->get(); // untuk carousel
+        $posts = Post::with('kategori', 'tags')->where('is_published', '1')->latest()->paginate(6); // untuk daftar utama
+        $carposts = Post::with('kategori', 'tags')->where('is_published', '1')->latest()->take(5)->get(); // untuk carousel
         $kategoris = Kategori::all();
         $tags = Tags::all();
         $recentPosts = Post::latest()->take(3)->get();
@@ -53,10 +53,10 @@ class BlogController extends Controller
 
         // Ambil previous dan next post
         $previousPost = Post::where('is_published', true)
-            ->where('created_at', '<', $post->created_at)
+            ->where('created_at', '<', $post->created_at)->where('is_published', '1')
             ->orderBy('created_at', 'desc')
             ->first();
-        $nextPost = Post::where('is_published', true)
+        $nextPost = Post::where('is_published', true)->where('is_published', '1')
             ->where('created_at', '>', $post->created_at)
             ->orderBy('created_at', 'asc')
             ->first();
