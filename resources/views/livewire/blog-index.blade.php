@@ -21,7 +21,7 @@
                                                 <source srcset="{{ $post->getFirstMedia('post_image')->getUrl('webp') }}"
                                                     type="image/webp">
                                                 <img src="{{ $post->getFirstMediaUrl('post_image') }}" alt="{{ $post->title }}"
-                                                    class="w-full h-48 object-cover post-image">
+                                                    class="post-image">
                                             </picture>
                                         @else
                                             <div class="w-full h-48 bg-gray-200 flex items-center justify-center">

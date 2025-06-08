@@ -306,6 +306,12 @@ a.no-after::after {
         height: auto;
     }
 }
+.post-image {
+    aspect-ratio: 16/9 !important;
+    overflow: hidden;
+    object-position: center;
+    object-fit: cover;
+}
 .tpblog__thumb img {
     aspect-ratio: 16/9 !important;
     overflow: hidden;
