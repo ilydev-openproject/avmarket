@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use Gemini;
 use App\Models\Tag;
 use Filament\Forms;
 use App\Models\Tags;
-use Filament\Forms\Components\Textarea;
 use Filament\Tables;
 use App\Models\Product;
 use App\Models\Kategori;
@@ -13,24 +13,31 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use League\Uri\Idna\Option;
+use Gemini\Data\SafetySetting;
+use Gemini\Enums\HarmCategory;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Grid;
+use Illuminate\Support\Facades\Log;
 use Filament\Forms\Components\Split;
+use Gemini\Enums\HarmBlockThreshold;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms\Components\ToggleButtons;
+use Filament\Forms\Components\Actions\Action;
 use App\Filament\Resources\ProductResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\ProductResource\RelationManagers;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use App\Filament\Resources\ProductResource\RelationManagers;
 
 class ProductResource extends Resource
 {
@@ -47,6 +54,70 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
+                Section::make('✨ AI Product Generator')
+                    ->icon('heroicon-o-sparkles')
+                    ->collapsible()
+                    ->schema([
+                        TextInput::make('ai_product_prompt')
+                            ->label('Nama Produk atau Topik')
+                            ->placeholder('Contoh: Titan Gel Gold Original')
+                            ->helperText('Masukkan nama produk, AI akan membuat deskripsi, manfaat, dll.')
+                            ->dehydrated(false)
+                            ->suffixAction(
+                                Action::make('generateProductContent')
+                                    ->label('Generate Deskripsi Produk')
+                                    ->icon('heroicon-o-bolt')
+                                    ->action(function ($set, $get) {
+                                        $topic = $get('ai_product_prompt');
+                                        if (empty($topic)) {
+                                            Notification::make()->title('Topik tidak boleh kosong')->warning()->send();
+                                            return;
+                                        }
+
+                                        Notification::make()->title('Sedang membuat deskripsi produk...')->info()->send();
+                                        $aiResponse = self::callProductGeneratorApi($topic);
+
+                                        if (empty($aiResponse)) {
+                                            Notification::make()->title('AI Gagal Merespons')->danger()->send();
+                                            return;
+                                        }
+
+                                        // Mengisi field-field relevan
+                                        $set('nama_product', $aiResponse['nama_product'] ?? '');
+                                        $set('slug', Str::slug($aiResponse['nama_product'] ?? ''));
+                                        $set('brand', $aiResponse['brand'] ?? '');
+                                        $set('ringkasan', $aiResponse['ringkasan'] ?? '');
+                                        $set('deskripsi', $aiResponse['deskripsi'] ?? '');
+                                        $set('keyword', $aiResponse['keyword'] ?? '');
+                                        $set('ingredient', $aiResponse['ingredient'] ?? '');
+                                        $set('manfaat', $aiResponse['manfaat'] ?? '');
+
+                                        // Logika untuk mengisi Kategori
+                                        $suggestedCategoryName = $aiResponse['suggested_category'] ?? null;
+                                        if ($suggestedCategoryName) {
+                                            $category = Kategori::where('nama_kategori', 'like', '%' . $suggestedCategoryName . '%')->first();
+                                            if ($category) {
+                                                $set('id_kategori', $category->id_kategori);
+                                            }
+                                        }
+
+                                        // Logika untuk mengisi Tags
+                                        $suggestedTags = $aiResponse['suggested_tags'] ?? [];
+                                        if (!empty($suggestedTags) && is_array($suggestedTags)) {
+                                            $tagIds = [];
+                                            foreach ($suggestedTags as $tagName) {
+                                                $tag = Tags::firstOrCreate(
+                                                    ['slug' => Str::slug($tagName)],
+                                                    ['nama_tag' => trim($tagName)]
+                                                );
+                                                $tagIds[] = $tag->id;
+                                            }
+                                            $set('tags', $tagIds);
+                                        }
+                                        Notification::make()->title('Deskripsi produk berhasil dibuat!')->success()->send();
+                                    })
+                            )
+                    ]),
                 Section::make('Nama & Slug')
                     ->schema([
                         TextInput::make('nama_product')
@@ -156,7 +227,54 @@ class ProductResource extends Resource
             ])
             ->columns(4);
     }
+    public static function callProductGeneratorApi(string $topic): array
+    {
+        $kategoriList = Kategori::pluck('nama_kategori')->implode(', ');
+        $tagList = Tags::pluck('nama_tag')->implode(', ');
 
+        $prompt = "Anda adalah seorang copywriter ahli untuk produk e-commerce, khususnya produk kesehatan dan keintiman pria & wanita.
+        Berdasarkan nama produk berikut: '{$topic}', buatkan deskripsi lengkap untuk halaman produk.
+
+        Aturan Penting:
+        - Gunakan gaya bahasa yang persuasif, informatif, tapi tetap profesional dan tidak vulgar.
+        - Fokus pada manfaat dan keunggulan produk.
+        - Hasil HARUS dalam format JSON yang valid, dengan struktur persis seperti ini:
+        {
+            \"nama_product\": \"(Nama produk resmi, sedikit dipercantik jika perlu)\",
+            \"brand\": \"(Tebak nama brand dari nama produk, jika tidak tahu, isi dengan nama produknya)\",
+            \"ringkasan\": \"(Ringkasan singkat produk dalam 1-2 kalimat yang menarik)\",
+            \"deskripsi\": \"(Deskripsi produk lengkap dalam format HTML, jelaskan apa itu produk, untuk siapa, dan kenapa orang harus membelinya. Gunakan paragraf dan bold.)\",
+            \"manfaat\": \"(Manfaat utama produk dalam format HTML, gunakan list <ul><li>...</li></ul>)\",
+            \"ingredient\": \"(Bahan-bahan utama dalam format HTML, gunakan list <ul><li>...</li></ul>. Jika tidak tahu pasti, sebutkan bahan-bahan herbal umum yang relevan dan aman untuk kategori produk ini.)\",
+            \"keyword\": \"(5-7 keyword relevan untuk SEO, pisahkan dengan koma)\",
+            \"suggested_category\": \"(Pilih SATU kategori yang paling cocok dari daftar ini: {$kategoriList})\",
+            \"suggested_tags\": [\"(Pilih 3-5 tag yang paling cocok dari daftar ini: {$tagList})\"]
+        }";
+
+        try {
+            $apiKey = getenv('GEMINI_API_KEY');
+            $client = Gemini::client($apiKey);
+            $model = $client->generativeModel('gemini-2.5-flash-preview-05-20');
+            $result = $model->generateContent($prompt);
+
+            $jsonResponse = $result->text();
+            $cleanedJson = trim($jsonResponse, " \n\r\t\v\0`");
+            if (Str::startsWith($cleanedJson, 'json')) {
+                $cleanedJson = Str::after($cleanedJson, 'json');
+            }
+            $data = json_decode($cleanedJson, true);
+
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                Log::error('Gemini API Response - Invalid JSON: ' . json_last_error_msg(), ['response' => $jsonResponse]);
+                return [];
+            }
+            return $data;
+
+        } catch (\Exception $e) {
+            Log::error('Gemini API call failed: ' . $e->getMessage());
+            return [];
+        }
+    }
     public static function table(Table $table): Table
     {
         return $table
