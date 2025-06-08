@@ -47,41 +47,62 @@
 
     @if (isset($product))
         <script type="application/ld+json">
-                                                        {
-                                                            "@context": "https://schema.org",
-                                                            "@type": "Product",
-                                                            "name": "{{ $product->name }}",
-                                                            "image": "{{ asset('image/produk/' . $product->image) }}",
-                                                            "description": "{{ \Str::limit($product->description, 160) }}",
-                                                            "sku": "{{ $product->sku }}",
-                                                            "brand": {
-                                                                "@type": "Brand",
-                                                                "name": "Gamora"
-                                                            },
-                                                            "offers": {
-                                                                "@type": "Offer",
-                                                                "priceCurrency": "IDR",
-                                                                "price": "{{ $product->price }}",
-                                                                "availability": "https://schema.org/InStock",
-                                                                "url": "{{ $meta['meta_url'] ?? $meta['url'] }}"
-                                                            }
-                                                        }
-                                                        </script>
+                                        {
+                                            "@context": "https://schema.org",
+                                            "@type": "Product",
+                                            "name": "{{ $product->nama_product }}",
+                                            // CARA PENGAMBILAN GAMBAR DARI SPATIE MEDIA LIBRARY
+                                            "image": "{{ $product->getFirstMediaUrl('foto_product', 'thumb') }}",
+                                            "description": "{{ \Str::limit(strip_tags($product->deskripsi), 250) }}",
+                                            // Kita bisa gunakan No. BPOM sebagai SKU yang unik
+                                            "sku": "{{ $product->bpom }}",
+                                            "brand": {
+                                                "@type": "Brand",
+                                                "name": "{{ $product->brand }}"
+                                            },
+                                            "offers": {
+                                                "@type": "Offer",
+                                                "priceCurrency": "IDR",
+                                                // Menghitung harga setelah diskon
+                                                "price": "{{ $product->harga - ($product->harga * $product->diskon / 100) }}",
+                                                // Ketersediaan dinamis berdasarkan stok
+                                                "availability": "{{ $product->stok > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' }}",
+                                                // URL kanonikal ke halaman produk
+                                                "url": "{{ route('product.detail', $product) }}"
+                                            },
+                                            // Menambahkan agregat rating jika Anda memiliki sistem review
+                                            "aggregateRating": {
+                                                "@type": "AggregateRating",
+                                                "ratingValue": "4.8", // Contoh statis, idealnya dinamis dari review
+                                                "reviewCount": "89" // Contoh statis
+                                            }
+                                        }
+                                        </script>
     @else
         <script type="application/ld+json">
-                                                        {
-                                                            "@context": "https://schema.org",
-                                                            "@type": "WebPage",
-                                                            "name": "{{ $meta['meta_title'] ?? $meta['title'] }}",
-                                                            "description": "{{ $meta['meta_description'] ?? $meta['description'] }}",
-                                                            "url": "{{ $meta['meta_url'] ?? $meta['url'] }}",
-                                                            "publisher": {
-                                                                "@type": "Organization",
-                                                                "name": "Gamora",
-                                                                "logo": "{{ asset('image/logo/icon.png') }}"
-                                                            }
-                                                        }
-                                                        </script>
+                                {
+                                    "@context": "https://schema.org",
+                                    "@type": "Article", // Diubah menjadi 'Article' untuk postingan blog
+                                    "headline": "{{ $post->meta_title ?? $post->title }}",
+                                    "description": "{{ $post->meta_description ?? \Str::limit(strip_tags($post->content), 160) }}",
+                                    "image": "{{ $post->getFirstMediaUrl('post_image', 'webp') }}", // Menggunakan cara Spatie juga
+                                    "url": "{{ route('blog.show', $post) }}", // Menggunakan route post
+                                    "datePublished": "{{ $post->created_at->toIso8601String() }}",
+                                    "dateModified": "{{ $post->updated_at->toIso8601String() }}",
+                                    "author": {
+                                        "@type": "Person",
+                                        "name": "{{ $post->author->name ?? 'Gamora Team' }}" // Asumsi ada relasi author
+                                    },
+                                    "publisher": {
+                                        "@type": "Organization",
+                                        "name": "Gamora",
+                                        "logo": {
+                                            "@type": "ImageObject",
+                                            "url": "{{ asset('image/logo/icon.png') }}"
+                                        }
+                                    }
+                                }
+                                </script>
     @endif
 
     @livewireStyles

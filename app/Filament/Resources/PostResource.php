@@ -213,6 +213,7 @@ class PostResource extends Resource
                             ]),
 
                     ]),
+
                 Section::make('SEO')
                     ->icon('heroicon-o-globe-alt')
                     ->schema([
