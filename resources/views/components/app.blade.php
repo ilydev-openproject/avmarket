@@ -46,63 +46,81 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     @if (isset($product))
+        {{-- ============================================= --}}
+        {{-- UNTUK HALAMAN DETAIL PRODUK --}}
+        {{-- ============================================= --}}
         <script type="application/ld+json">
-                {
-                    "@context": "https://schema.org",
-                    "@type": "Product",
-                    "name": "{{ $product->nama_product }}",
-                    // CARA PENGAMBILAN GAMBAR DARI SPATIE MEDIA LIBRARY
-                    "image": "{{ $product->getFirstMediaUrl('foto_product', 'thumbnail') }}",
-                    "description": "{{ \Str::limit(strip_tags($product->deskripsi), 250) }}",
-                    // Kita bisa gunakan No. BPOM sebagai SKU yang unik
-                    "sku": "{{ $product->bpom }}",
-                    "brand": {
-                        "@type": "Brand",
-                        "name": "{{ $product->brand }}"
-                    },
-                    "offers": {
-                        "@type": "Offer",
-                        "priceCurrency": "IDR",
-                        // Menghitung harga setelah diskon
-                        "price": "{{ $product->harga - ($product->harga * $product->diskon / 100) }}",
-                        // Ketersediaan dinamis berdasarkan stok
-                        "availability": "{{ $product->stok > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' }}",
-                        // URL kanonikal ke halaman produk
-                        "url": "{{ route('product.detail', $product) }}"
-                    },
-                    // Menambahkan agregat rating jika Anda memiliki sistem review
-                    "aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": "4.8", // Contoh statis, idealnya dinamis dari review
-                        "reviewCount": "89" // Contoh statis
-                    }
+        {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": "{{ $product->nama_product }}",
+            "image": "{{ $product->getFirstMediaUrl('foto_product', 'thumbnail') }}",
+            "description": "{{ \Str::limit(strip_tags($product->deskripsi), 250) }}",
+            "sku": "{{ $product->bpom }}",
+            "brand": {
+                "@type": "Brand",
+                "name": "{{ $product->brand }}"
+            },
+            "offers": {
+                "@type": "Offer",
+                "priceCurrency": "IDR",
+                "price": "{{ $product->harga - ($product->harga * $product->diskon / 100) }}",
+                "availability": "{{ $product->stok > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' }}",
+                "url": "{{ url()->current() }}"
+            }
+        }
+        </script>
+
+    @elseif (isset($post))
+        {{-- ============================================= --}}
+        {{-- UNTUK HALAMAN DETAIL ARTIKEL/BLOG --}}
+        {{-- ============================================= --}}
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "{{ $post->meta_title ?? $post->title }}",
+            "description": "{{ $post->meta_description ?? \Str::limit(strip_tags($post->content), 160) }}",
+            "image": "{{ $post->getFirstMediaUrl('post_image', 'thumbnail') }}",
+            "url": "{{ url()->current() }}",
+            "datePublished": "{{ $post->created_at->toIso8601String() }}",
+            "dateModified": "{{ $post->updated_at->toIso8601String() }}",
+            "author": {
+                "@type": "Organization",
+                "name": "Gamora"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Gamora",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "{{ asset('image/logo/icon.png') }}"
                 }
-                </script>
+            }
+        }
+        </script>
+
     @else
+        {{-- ============================================= --}}
+        {{-- UNTUK HALAMAN LAINNYA (HOMEPAGE, DLL) --}}
+        {{-- ============================================= --}}
         <script type="application/ld+json">
-                    {
-                        "@context": "https://schema.org",
-                        "@type": "Article", // Diubah menjadi 'Article' untuk postingan blog
-                        "headline": "{{ $post->meta_title ?? $post->title }}",
-                        "description": "{{ $post->meta_description ?? \Str::limit(strip_tags($post->content), 160) }}",
-                        "image": "{{ $post->getFirstMediaUrl('post_image', 'thumbnail') }}", // Menggunakan cara Spatie juga
-                        "url": "{{ route('blog.show', $post) }}", // Menggunakan route post
-                        "datePublished": "{{ $post->created_at->toIso8601String() }}",
-                        "dateModified": "{{ $post->updated_at->toIso8601String() }}",
-                        "author": {
-                            "@type": "Person",
-                            "name": "{{ $post->author->name ?? 'Gamora Team' }}" // Asumsi ada relasi author
-                        },
-                        "publisher": {
-                            "@type": "Organization",
-                            "name": "Gamora",
-                            "logo": {
-                                "@type": "ImageObject",
-                                "url": "{{ asset('image/logo/icon.png') }}"
-                            }
-                        }
-                    }
-                    </script>
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "{{ $meta['meta_title'] ?? ($meta['title'] ?? 'Gamora Indonesia') }}",
+            "description": "{{ $meta['meta_description'] ?? ($meta['description'] ?? 'Toko Herbal Online Terpercaya untuk Kesehatan dan Keintiman Anda.') }}",
+            "url": "{{ url()->current() }}",
+            "publisher": {
+                "@type": "Organization",
+                "name": "Gamora",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "{{ asset('image/logo/icon.png') }}"
+                }
+            }
+        }
+        </script>
     @endif
 
     @livewireStyles
