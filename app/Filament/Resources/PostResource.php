@@ -201,6 +201,7 @@ class PostResource extends Resource
                             ->image()
                             ->nullable()
                             ->disk('posts')
+                            ->imageEditor()
                             ->rules(['mimes:jpeg,png,gif', 'max:5120']) // 5 x 1024 = 5120 KB
                             ->imagePreviewHeight('250')
                             // ->imageResizeTargetWidth('1200')
