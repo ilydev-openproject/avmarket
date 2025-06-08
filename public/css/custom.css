@@ -314,13 +314,13 @@ a.no-after::after {
 }
 .tpblog__thumb img {
     aspect-ratio: 16/9 !important;
-    overflow: hidden;
-    object-position: center;
-    object-fit: cover;
+    overflow: hidden !important;
+    object-position: center !important;
+    object-fit: cover !important;
 }
 .tp-blog-details__thumb img {
     aspect-ratio: 16/9 !important;
-    overflow: hidden;
-    object-position: center;
-    object-fit: cover;
+    overflow: hidden !important;
+    object-position: center !important;
+    object-fit: cover !important;
 }
